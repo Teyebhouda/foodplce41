@@ -164,7 +164,7 @@ class ItemController extends Controller {
                $apireference = $produitApi['Référence'];
                $apiPrice = $produitApi['PrixHT'];
                $apiPhoto = $produitApi['Photo'];
-   dd($apiPhoto);
+   //dd($apiPhoto);
                // Find products with matching barcode
                if (!(isset($existingProducts[$apireference]))) {
                    // Update prices for matching products
