@@ -188,9 +188,9 @@ class ItemController extends Controller {
                       $img_url = '';
                   }
          foreach($categories as $category){
-            //dd($category);
+            dd($apiFamille);
 if($category->name == $apiFamille )
-dd($category);
+
 $productcategory=$category->id;
 
 //dd($productcategory);
