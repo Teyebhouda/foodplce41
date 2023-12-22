@@ -209,7 +209,10 @@ class ItemController extends Controller {
            }
    
            // Optionally, you might return a success message or any other response here
-           return ['message' => 'Products synchronized successfully'];
+           //return ['message' => 'Products synchronized successfully'];
+           Session::flash('message',__('successerr.menu_add_item')); 
+           Session::flash('alert-class', 'alert-success');
+           return redirect("menuitem");
        } else {
            // Handle unsuccessful API request
            return response('Failed to fetch data from API', 500);
