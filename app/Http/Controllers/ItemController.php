@@ -142,6 +142,7 @@ class ItemController extends Controller {
    public function SynchronizeProducts()
    {
        // Fetch all products from the API
+
        $apiUrl = env('API_foodplace_URL');
       // dd($apiUrl);
        $client = new Client();
@@ -158,14 +159,14 @@ class ItemController extends Controller {
                ->where("is_deleted", '0')
                ->get()
                ->keyBy('reference');
-               $categories = Category::all(); // Replace Category with your actual model name for categories
+        $categories =Category::orderBy('id','DESC')->where("is_deleted",'0')->get();
            foreach ($produitsApi as $produitApi) {
                $apiname = $produitApi['Libellé'];
                $apireference = $produitApi['Référence'];
                $apiPrice = $produitApi['PrixHT'];
                $apiPhoto = $produitApi['Photo'];
                $apiFamille = $produitApi['Famille'];
-
+dd($apiFamille);
                
                // dd($categories);
    //dd($apiPhoto);
