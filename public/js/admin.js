@@ -191,7 +191,7 @@ $(document).ready(function () {
         columns: [
             {data: 'id'    , name: 'id'},
             {data: 'name'  , name: 'name'},
-            {data: 'name'  , name: 'reference'},
+            {data: 'reference'  , reference: 'reference'},
             {data: 'category'  , name: 'category'},
             {data: 'description' , name:'description'},
             {data: 'price', name:'price'},
