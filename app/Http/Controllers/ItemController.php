@@ -26,7 +26,7 @@ class ItemController extends Controller {
     }
 
     public function itemdatatable(){
-        $item =Item::with('categoryitem')->orderBy('id','DESC')->where("is_deleted",'0')->get();
+       /* $item =Item::with('categoryitem')->orderBy('id','DESC')->where("is_deleted",'0')->get();
 
         return DataTables::of($item)
             ->editColumn('id', function ($item) {
@@ -59,7 +59,7 @@ class ItemController extends Controller {
                return $return;         
             })
            
-            ->make(true);
+            ->make(true);*/
     }
 
    public function add_menu_item(Request $request){

@@ -171,6 +171,7 @@ function editing(id){
              $("#id").val(data.data.id);
              $("#editcategory").val(data.data.category);
              $("#editname").val(data.data.item_name);
+             $("#editreference").val(data.data.reference);
              $("#editprice").val(data.data.price);
              $("#edititemlist").val(data.data.menu_id);
              if(data.data.type=='1'){//paid
