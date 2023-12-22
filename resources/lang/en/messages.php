@@ -181,6 +181,7 @@
     "select_cat"=>"Select Category",
     "select_item"=>"Select Item",
     "item_name"=>"Item Name",
+    "item_reference"=>"Item Reference",
     "paid"=>"Paid",
     "free"=>"Free",
     "menu_item"=>"Menu Item",

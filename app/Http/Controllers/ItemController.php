@@ -81,6 +81,7 @@ class ItemController extends Controller {
            $store->menu_name=$request->get("name");
            $store->price=number_format($request->get("price"),2,".",".");;
            $store->menu_image=$img_url;
+           $store->reference=$request->get("reference");
            $store->save();  
            Session::flash('message',__('successerr.menu_add_item')); 
            Session::flash('alert-class', 'alert-success');
@@ -113,6 +114,7 @@ class ItemController extends Controller {
            $store->category=$request->get("category");
            $store->description=$request->get("description");
            $store->menu_name=$request->get("name");
+           $store->reference=$request->get("reference");
            $store->price=number_format($request->get("price"),2,".",".");;
            $store->menu_image=$img_url;
            $store->save();  

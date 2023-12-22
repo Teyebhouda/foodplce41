@@ -39,6 +39,7 @@
                         <tr>
                            <th>{{__('messages.id')}}</th>
                            <th>{{__('messages.item_name')}}</th>
+                           <th>{{__('messages.item_reference')}}</th>
                            <th>{{__('messages.category')}}</th>
                            <th>{{__('messages.description')}}</th>
                            <th>{{__('messages.price')}}</th>
@@ -77,6 +78,10 @@
                   <div class="form-group">
                      <label>{{__('messages.item_name')}}</label>
                      <input type="text" class="form-control" placeholder="{{__('messages.item_name')}}" name="name" required>
+                  </div>
+                  <div class="form-group">
+                     <label>{{__('messages.item_reference')}}</label>
+                     <input type="text" class="form-control" placeholder="{{__('messages.item_reference')}}" name="reference" required>
                   </div>
                   <div class="form-group">
                      <label>{{__('messages.description')}}</label>
@@ -138,6 +143,10 @@
                   <div class="form-group">
                      <label>{{__('messages.item_name')}}</label>
                      <input type="text" class="form-control" placeholder="{{__('messages.item_name')}}" id="name" name="name" required>
+                  </div>
+                  <div class="form-group">
+                     <label>{{__('messages.item_reference')}}</label>
+                     <input type="text" class="form-control" placeholder="{{__('messages.item_reference')}}" id="reference" name="reference" required>
                   </div>
                   <div class="form-group">
                      <label>{{__('messages.description')}}</label>
