@@ -215,7 +215,16 @@ $productcategory=$category->id;
                    if ($matchingProduct->price != $apiPrice) {
                        $matchingProduct->price = $apiPrice;
                    }
-   
+                   foreach($categories as $category){
+                    //dd($category);
+        if($category->name == $apiFamille )
+        
+        $productcategory=$category->id;
+        
+        //dd($productcategory);
+        
+                 }
+                 $matchingProduct->category=$productcategory;
                    $matchingProduct->save();
                }
            }
