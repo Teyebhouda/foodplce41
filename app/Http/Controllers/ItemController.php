@@ -219,7 +219,7 @@ $productcategory=$category->id;
                    }
                    foreach ($categories as $category) {
                     if($category->cat_name =="DESSERTS")
-                  { dd($category);}
+                  { dd($apiFamille);}
                     if ($category->cat_name == $apiFamille) {
                       //  dd($apiFamille);
                         $productcategory = $category->id;
