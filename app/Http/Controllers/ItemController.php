@@ -143,9 +143,9 @@ class ItemController extends Controller {
    {
        // Fetch all products from the API
        $apiUrl = env('API_foodplace_URL');
-       dd($apiUrl);
+      // dd($apiUrl);
        $client = new Client();
-       $response = $client->get($apiUrl . 'ProduitsSortie');
+       $response = $client->get('https://api.alaindata.com/foodplace41/ProduitsSortie');
    
        // Check if the request was successful (status code 200)
        if ($response->getStatusCode() === 200) {
