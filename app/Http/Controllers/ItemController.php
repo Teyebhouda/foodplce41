@@ -189,7 +189,7 @@ class ItemController extends Controller {
                   }
          foreach($categories as $category){
            // dd($apiFamille);
-if($category->name == $apiFamille )
+if($category->cat_name == $apiFamille )
 
 $productcategory=$category->id;
 
@@ -216,7 +216,7 @@ $productcategory=$category->id;
                        $matchingProduct->price = $apiPrice;
                    }
                    foreach ($categories as $category) {
-                   // dd($categories);
+                    dd($categories);
                     if ($category->cat_name == $apiFamille) {
                       //  dd($apiFamille);
                         $productcategory = $category->id;
