@@ -146,7 +146,7 @@ class ItemController extends Controller {
       // dd($apiUrl);
        $client = new Client();
        $response = $client->get('https://api.alaindata.com/foodplace41/ProduitsSortie');
-   
+      // $response2 = $client->get('https://api.alaindata.com/foodplace41/sousfamille');
        // Check if the request was successful (status code 200)
        if ($response->getStatusCode() === 200) {
            $produitsApi = json_decode($response->getBody(), true);
@@ -164,6 +164,8 @@ class ItemController extends Controller {
                $apireference = $produitApi['Référence'];
                $apiPrice = $produitApi['PrixHT'];
                $apiPhoto = $produitApi['Photo'];
+               $apiFamille = $produitApi['Famille'];
+               $categories =Category::orderBy('id','DESC')->where("is_deleted",'0')->get();
    //dd($apiPhoto);
                // Find products with matching barcode
                if (!(isset($existingProducts[$apireference]))) {
@@ -183,9 +185,16 @@ class ItemController extends Controller {
                   }else{
                       $img_url = '';
                   }
-         
+         foreach($categories as $category){
+if($category->name ==$apiFamille )
+{
+$productcategory=$category->id;
+
+}
+
+         }
                 $store=new Item();
-                //$store->category=$request->get("category");
+                $store->category=$productcategory;
                 //$store->description=$request->get("description");
                 $store->menu_name=$apiname;
                 $store->price=number_format($apiPrice,2,".",".");;
