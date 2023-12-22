@@ -207,7 +207,7 @@ $productcategory=$category->id;
                } else {
                    // Product exists, update if needed
                    $matchingProduct = $existingProducts[$apireference];
-                //dd($matchingProduct);
+                dd($matchingProduct);
                    if ($matchingProduct->menu_name != $apiname) {
                        $matchingProduct->menu_name = $apiname;
                    }
