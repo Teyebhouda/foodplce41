@@ -92,7 +92,7 @@
                   </div>
                   <div class="col-md-12">
                      <div class="col-md-6">
-                          @if(Session::get("demo")==2)
+                          @if(Session::get("demo")==0)
                                <button id="payment-button" type="button" class="btn btn-primary btn-md form-control" onclick="disablebtn()">
                            {{__('messages.add')}}
                            </button>
