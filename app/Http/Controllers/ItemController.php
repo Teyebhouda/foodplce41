@@ -12,6 +12,8 @@ use App\Item;
 use App\Ingredient;
 use Hash;
 use Illuminate\Support\Facades\Http;
+use GuzzleHttp\Client; // Import GuzzleHttp\Client
+
 class ItemController extends Controller {
   
     public function delete($id){
@@ -137,86 +139,87 @@ class ItemController extends Controller {
   
 
 
-   public function SynchronizeProducts(){
-
+   public function SynchronizeProducts()
+   {
+       // Fetch all products from the API
+       $apiUrl = env('API_foodplace_URL');
+       $client = new Client();
+       $response = $client->get($apiUrl . 'ProduitsSortie');
    
-   // Fetch all products from the API
- $apiUrl = env('API_foodplace_URL');
-  $response = Http::get($apiUrl . 'ProduitsSortie');
-  $produitsApi = $response->json();
-
-     // Retrieve all existing products and organize them by slug
- $barcodes = collect($produitsApi)->pluck('codeabarre')->toArray();
- $existingProducts =Item::whereIn('reference', $barcodes)->with('categoryitem')->orderBy('id','DESC')->where("is_deleted",'0')->get()->keyBy('reference');
-   /*$existingProducts = Product::whereIn('slug', $barcodes)
-       ->with('categories')
-     ->get()*/
-
-     $notExistingProducts =Item::whereIn('reference', $barcodes)->with('categoryitem')->orderBy('id','DESC')->where("is_deleted",'0')->get()->keyBy('reference');
-     
-
-
-     foreach ($produitsApi as $produitApi) {
-                  $apiname = $produitApi['Libellé'];
-                  $apireference = $produitApi['codeabarre'];
-                  $apiPrice = $produitApi['PrixHT'];
-                  $apiPhoto = $produitApi['Photo'];
-          
-            // Find products with matching barcode
-            if (!(isset($existingProducts[$apireference]))) {
-           
-          // Update prices for matching products
-          
-          if ($apiPhoto != null) 
-          {
-            /* $file = $request->file('image');
-             $filename = $file->getClientOriginalName();
-             $extension = $file->getClientOriginalExtension() ?: 'png';
-             $folderName = '/upload/images/menu_item_icon';
-             $picture = str_random(10).time() . '.' . $extension;
-             $destinationPath = public_path() . $folderName;
-             $request->file('image')->move($destinationPath, $picture);
-             $img_url =$picture;*/
-
-         }else{
-             $img_url = '';
-         }
-
-       $store=new Item();
-       //$store->category=$request->get("category");
-       //$store->description=$request->get("description");
-       $store->menu_name=$apiname;
-       $store->price=number_format($apiPrice,2,".",".");;
-       $store->menu_image=$img_url;
-       $store->reference=$apireference;
-       $store->save();
-
-            }
-            else {    
-                $matchingProduct = $existingProducts[$apireference];
-                if ($matchingProduct->menu_name != $apiname) {
-                    $matchingProduct->menu_name = $apiname;
-                   
-                    }
-                    if ($matchingProduct->price != $apiPrice ) {
-                        $matchingProduct->price = $apiPrice; 
-                        
-                    }
-                    $matchingProduct->save();
-                    
-                    
-                   // $virtualProducts->push($matchingProduct);
-                    
-              
-                   
-                }
-        }
+       // Check if the request was successful (status code 200)
+       if ($response->getStatusCode() === 200) {
+           $produitsApi = json_decode($response->getBody(), true);
+   
+           $barcodes = collect($produitsApi)->pluck('codeabarre')->toArray();
+           $existingProducts = Item::whereIn('reference', $barcodes)
+               ->with('categoryitem')
+               ->orderBy('id', 'DESC')
+               ->where("is_deleted", '0')
+               ->get()
+               ->keyBy('reference');
+   
+           foreach ($produitsApi as $produitApi) {
+               $apiname = $produitApi['Libellé'];
+               $apireference = $produitApi['codeabarre'];
+               $apiPrice = $produitApi['PrixHT'];
+               $apiPhoto = $produitApi['Photo'];
+   
+               // Find products with matching barcode
+               if (!(isset($existingProducts[$apireference]))) {
+                   // Update prices for matching products
+                     
+                   if ($apiPhoto != null) 
+                   {
+                     /* $file = $request->file('image');
+                      $filename = $file->getClientOriginalName();
+                      $extension = $file->getClientOriginalExtension() ?: 'png';
+                      $folderName = '/upload/images/menu_item_icon';
+                      $picture = str_random(10).time() . '.' . $extension;
+                      $destinationPath = public_path() . $folderName;
+                      $request->file('image')->move($destinationPath, $picture);
+                      $img_url =$picture;*/
+         
+                  }else{
+                      $img_url = '';
+                  }
+         
+                $store=new Item();
+                //$store->category=$request->get("category");
+                //$store->description=$request->get("description");
+                $store->menu_name=$apiname;
+                $store->price=number_format($apiPrice,2,".",".");;
+                $store->menu_image=$img_url;
+                $store->reference=$apireference;
+                $store->save();
+               } else {
+                   // Product exists, update if needed
+                   $matchingProduct = $existingProducts[$apireference];
+   
+                   if ($matchingProduct->menu_name != $apiname) {
+                       $matchingProduct->menu_name = $apiname;
+                   }
+   
+                   if ($matchingProduct->price != $apiPrice) {
+                       $matchingProduct->price = $apiPrice;
+                   }
+   
+                   $matchingProduct->save();
+               }
+           }
+   
+           // Optionally, you might return a success message or any other response here
+           return ['message' => 'Products synchronized successfully'];
+       } else {
+           // Handle unsuccessful API request
+           return response('Failed to fetch data from API', 500);
+       }
+   }
 
 
 
 }
 
 
-}
+
 
 
