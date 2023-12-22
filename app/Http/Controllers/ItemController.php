@@ -218,10 +218,9 @@ $productcategory=$category->id;
                        $matchingProduct->price = $apiPrice;
                    }
                    foreach ($categories as $category) {
-                    if($apiFamille =="DESSERTS")
-                  { dd($apiFamille);}
+                   
                     if ($category->cat_name == $apiFamille) {
-                      //  dd($apiFamille);
+                       dd($apiFamille);
                         $productcategory = $category->id;
                         $matchingProduct->category = $productcategory;
                     }
