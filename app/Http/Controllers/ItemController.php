@@ -158,7 +158,7 @@ class ItemController extends Controller {
                ->where("is_deleted", '0')
                ->get()
                ->keyBy('reference');
-   
+               $categories = Category::all(); // Replace Category with your actual model name for categories
            foreach ($produitsApi as $produitApi) {
                $apiname = $produitApi['Libellé'];
                $apireference = $produitApi['Référence'];
@@ -166,7 +166,7 @@ class ItemController extends Controller {
                $apiPhoto = $produitApi['Photo'];
                $apiFamille = $produitApi['Famille'];
 
-               $categories = Category::all(); // Replace Category with your actual model name for categories
+               
                // dd($categories);
    //dd($apiPhoto);
                // Find products with matching barcode
