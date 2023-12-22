@@ -33,6 +33,8 @@
                </div>
                @endif
                <button  class="btn btn-primary btn-flat m-b-30 m-t-30" data-toggle="modal" data-target="#myModal">{{__('messages.add')}}{{__('messages.menu_item')}}</button>
+               <a href="{{ route('products.Synchronize') }}" class="btn btn-success">
+                  <i data-feather="refresh-cw"></i> {{ localize('Synchroniser les Produits') }}</a>
                <div class="table-responsive dtdiv">
                   <table id="menutb" class="table table-striped dttablewidth">
                      <thead>
