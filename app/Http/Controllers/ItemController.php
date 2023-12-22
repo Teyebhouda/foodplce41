@@ -179,7 +179,7 @@ class ItemController extends Controller {
                       $destinationPath = public_path() . $folderName;
                       $request->file('image')->move($destinationPath, $picture);
                       $img_url =$picture;*/
-         
+                      $img_url = '';
                   }else{
                       $img_url = '';
                   }
