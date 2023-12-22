@@ -195,7 +195,7 @@ if ($apiPhoto != null) {
     file_put_contents($destinationPath . '/' . $picture, $decodedImage);
 
     // Set the image URL
-    $img_url = $folderName . '/' . $picture;
+    $img_url = $picture;
 } else {
     $img_url = ''; // Handle the case where no image is present
 }
@@ -228,6 +228,33 @@ $productcategory=$category->id;
                    if ($matchingProduct->price != $apiPrice) {
                        $matchingProduct->price = $apiPrice;
                    }
+
+                   if ($matchingProduct->menu_image != $apiPhoto) {
+                  
+                   if ($apiPhoto != null) {
+                    // Extract extension from MIME type or any other means available
+                    $extension = 'png'; // Assuming the extension is PNG
+                
+                    // Decode base64 image data
+                    $base64Image = $apiPhoto;
+                    $decodedImage = base64_decode($base64Image);
+                
+                    // Generate filename based on product reference and current datetime
+                    $picture = $apireference . '_' . date('Ymd_His') . '.' . $extension;
+                
+                    // Set the destination path
+                    $folderName = '/upload/images/menu_item_icon';
+                    $destinationPath = public_path() . $folderName;
+                
+                    // Save the image to the specified folder
+                    file_put_contents($destinationPath . '/' . $picture, $decodedImage);
+                
+                    // Set the image URL
+                    $img_url = $picture;
+                    $matchingProduct->menu_image = $img_url;
+
+                } 
+            }
                    foreach ($categories as $category) {
                    
                     if ($category->cat_name == $apiFamille) {
@@ -237,6 +264,7 @@ $productcategory=$category->id;
                        if ($matchingProduct->category != $productcategory) {
                         $matchingProduct->category = $productcategory;}
                     }
+                    
                 }
                 
                    $matchingProduct->save();
