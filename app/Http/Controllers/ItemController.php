@@ -187,10 +187,10 @@ class ItemController extends Controller {
                   }
          foreach($categories as $category){
 if($category->name ==$apiFamille )
-{
+
 $productcategory=$category->id;
 
-}
+dd($productcategory);
 
          }
                 $store=new Item();
