@@ -200,7 +200,7 @@ $(document).ready(function () {
             {data: 'action', name:'action'}
         ],
          columnDefs: [
-            { targets: 5,
+            { targets: 6,
               render: function(data) {
                     return '<img src="'+data+'" height="50">';
               }
