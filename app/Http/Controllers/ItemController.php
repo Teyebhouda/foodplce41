@@ -151,7 +151,7 @@ class ItemController extends Controller {
        if ($response->getStatusCode() === 200) {
            $produitsApi = json_decode($response->getBody(), true);
    
-           $barcodes = collect($produitsApi)->pluck('codeabarre')->toArray();
+           $barcodes = collect($produitsApi)->pluck('Référence')->toArray();
            $existingProducts = Item::whereIn('reference', $barcodes)
                ->with('categoryitem')
                ->orderBy('id', 'DESC')
@@ -161,7 +161,7 @@ class ItemController extends Controller {
    
            foreach ($produitsApi as $produitApi) {
                $apiname = $produitApi['Libellé'];
-               $apireference = $produitApi['codeabarre'];
+               $apireference = $produitApi['Référence'];
                $apiPrice = $produitApi['PrixHT'];
                $apiPhoto = $produitApi['Photo'];
    
