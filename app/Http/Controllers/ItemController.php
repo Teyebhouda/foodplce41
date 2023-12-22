@@ -220,8 +220,9 @@ $productcategory=$category->id;
                    foreach ($categories as $category) {
                    
                     if ($category->cat_name == $apiFamille) {
-                       dd($apiFamille);
+                       
                         $productcategory = $category->id;
+                        dd($productcategory);
                         $matchingProduct->category = $productcategory;
                     }
                 }
