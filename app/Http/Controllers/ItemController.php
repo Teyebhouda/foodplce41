@@ -164,7 +164,7 @@ class ItemController extends Controller {
                $apireference = $produitApi['Référence'];
                $apiPrice = $produitApi['PrixHT'];
                $apiPhoto = $produitApi['Photo'];
-   
+   dd($apiPhoto);
                // Find products with matching barcode
                if (!(isset($existingProducts[$apireference]))) {
                    // Update prices for matching products
@@ -210,7 +210,7 @@ class ItemController extends Controller {
    
            // Optionally, you might return a success message or any other response here
            //return ['message' => 'Products synchronized successfully'];
-           Session::flash('message',__('successerr.menu_add_item')); 
+           Session::flash('message',__('menu_synchronize_item')); 
            Session::flash('alert-class', 'alert-success');
            return redirect("menuitem");
        } else {

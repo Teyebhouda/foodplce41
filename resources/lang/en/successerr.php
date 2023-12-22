@@ -28,6 +28,7 @@
 		"menu_inter_update_success"=>"Menu Ingredients Update Successfully",
 		"menu_del_item"=>"Menu Item Deleted Successfully",
 		"menu_add_item"=>"Menu Item Add Successfully",
+		"menu_synchronize_item"=>"Menu Items synchronized Successfully",
 		"menu_update_item"=>"Menu Item Update Successfully",
 		"android_update"=>"Android Server Key Update Successfully",
 		"ios_serverkey"=>"IOS Server Key Update Successfully",
