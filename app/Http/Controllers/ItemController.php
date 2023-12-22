@@ -143,6 +143,7 @@ class ItemController extends Controller {
    {
        // Fetch all products from the API
        $apiUrl = env('API_foodplace_URL');
+       dd($apiUrl);
        $client = new Client();
        $response = $client->get($apiUrl . 'ProduitsSortie');
    
