@@ -175,20 +175,31 @@ dd($apiFamille);
                if (!(isset($existingProducts[$apireference]))) {
                    // Update prices for matching products
                      
-                   if ($apiPhoto != null) 
-                   {
-                     /* $file = $request->file('image');
-                      $filename = $file->getClientOriginalName();
-                      $extension = $file->getClientOriginalExtension() ?: 'png';
-                      $folderName = '/upload/images/menu_item_icon';
-                      $picture = str_random(10).time() . '.' . $extension;
-                      $destinationPath = public_path() . $folderName;
-                      $request->file('image')->move($destinationPath, $picture);
-                      $img_url =$picture;*/
-                      $img_url = '';
-                  }else{
-                      $img_url = '';
-                  }
+                  // Inside your code where you handle image conversion
+if ($apiPhoto != null) {
+    // Extract extension from MIME type or any other means available
+    $extension = 'png'; // Assuming the extension is PNG
+
+    // Decode base64 image data
+    $base64Image = $apiPhoto;
+    $decodedImage = base64_decode($base64Image);
+
+    // Generate filename based on product reference and current datetime
+    $picture = $apireference . '_' . date('Ymd_His') . '.' . $extension;
+
+    // Set the destination path
+    $folderName = '/upload/images/menu_item_icon';
+    $destinationPath = public_path() . $folderName;
+
+    // Save the image to the specified folder
+    file_put_contents($destinationPath . '/' . $picture, $decodedImage);
+
+    // Set the image URL
+    $img_url = $folderName . '/' . $picture;
+} else {
+    $img_url = ''; // Handle the case where no image is present
+}
+
          foreach($categories as $category){
            // dd($apiFamille);
 if($category->cat_name == $apiFamille )
