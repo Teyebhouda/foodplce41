@@ -167,7 +167,7 @@ class ItemController extends Controller {
                $apiFamille = $produitApi['Famille'];
 
                $categories =Category::orderBy('id','DESC')->where("is_deleted",'0')->get();
-               dd($categories);
+              // dd($categories);
    //dd($apiPhoto);
                // Find products with matching barcode
                if (!(isset($existingProducts[$apireference]))) {
@@ -188,6 +188,7 @@ class ItemController extends Controller {
                       $img_url = '';
                   }
          foreach($categories as $category){
+            dd($category);
 if($category->name == $apiFamille )
 
 $productcategory=$category->id;
