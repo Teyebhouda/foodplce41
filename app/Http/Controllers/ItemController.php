@@ -166,8 +166,9 @@ class ItemController extends Controller {
                $apiPrice = $produitApi['PrixHT'];
                $apiPhoto = $produitApi['Photo'];
                $apiFamille = $produitApi['Famille'];
+               if($apiFamille == "DESSERTS"){
 dd($apiFamille);
-               
+               }     
                // dd($categories);
    //dd($apiPhoto);
                // Find products with matching barcode
