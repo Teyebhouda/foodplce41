@@ -222,8 +222,9 @@ $productcategory=$category->id;
                     if ($category->cat_name == $apiFamille) {
                        
                         $productcategory = $category->id;
-                        dd($productcategory);
-                        $matchingProduct->category = $productcategory;
+                       // dd($productcategory);
+                       if ($matchingProduct->category != $productcategory) {
+                        $matchingProduct->category = $productcategory;}
                     }
                 }
                 
