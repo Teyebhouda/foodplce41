@@ -137,7 +137,7 @@ class ItemController extends Controller {
   
 
 
-   public function syncSynchronizeProductsronize(){
+   public function SynchronizeProducts(){
 
    
    // Fetch all products from the API
