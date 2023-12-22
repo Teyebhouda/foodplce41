@@ -35,7 +35,7 @@ class ItemController extends Controller {
             ->editColumn('name', function ($item) {
                 return $item->menu_name;
             })
-            ->editColumn('name', function ($item) {
+            ->editColumn('reference', function ($item) {
                 return $item->reference;
             })
               ->editColumn('category', function ($item) {
