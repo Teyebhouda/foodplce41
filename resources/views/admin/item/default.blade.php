@@ -41,6 +41,7 @@
                         <tr>
                            <th>{{__('messages.id')}}</th>
                            <th>{{__('messages.item_name')}}</th>
+                           <th>{{__('messages.item_reference')}}</th>
                            <th>{{__('messages.category')}}</th>
                            <th>{{__('messages.description')}}</th>
                            <th>{{__('messages.price')}}</th>
