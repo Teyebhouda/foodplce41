@@ -190,7 +190,7 @@ class ItemController extends Controller {
          foreach($categories as $category){
             //dd($category);
 if($category->name == $apiFamille )
-
+dd($category);
 $productcategory=$category->id;
 
 //dd($productcategory);
