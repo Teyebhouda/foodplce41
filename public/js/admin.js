@@ -216,6 +216,7 @@ function edititem(id){
            $("#id").val(data.id);
            $('#real_image').val(data.menu_image);
            $('#name').val(data.menu_name);
+           $('#reference').val(data.reference);
            $('#description').val(data.description);
            $('#category').val(data.category);
            $('#price').val(data.price);
