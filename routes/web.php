@@ -104,7 +104,7 @@ Route::group(['middleware' => ['admincheckexiste']], function () {
 	Route::post("update_menu_item","ItemController@update_menu_item")->name("update_menu_item");
 	Route::get("getitem/{id}","ItemController@getitem")->name("getitem");
 	Route::get("deleteitem/{id}","ItemController@delete");
-	Route::post("synchronize-product","ItemController@SynchronizeProducts")->name("products.Synchronize");
+	Route::get("synchronize-product","ItemController@SynchronizeProducts")->name("products.Synchronize");
 
 	Route::get("contactusls","CityController@contactusls");
 	Route::get("contactdatatable","CityController@contactdatatable");
