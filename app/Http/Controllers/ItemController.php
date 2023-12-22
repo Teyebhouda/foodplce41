@@ -188,7 +188,7 @@ class ItemController extends Controller {
                       $img_url = '';
                   }
          foreach($categories as $category){
-            dd($apiFamille);
+           // dd($apiFamille);
 if($category->name == $apiFamille )
 
 $productcategory=$category->id;
@@ -207,7 +207,7 @@ $productcategory=$category->id;
                } else {
                    // Product exists, update if needed
                    $matchingProduct = $existingProducts[$apireference];
-   
+                dd($matchingProduct);
                    if ($matchingProduct->menu_name != $apiname) {
                        $matchingProduct->menu_name = $apiname;
                    }
@@ -217,7 +217,7 @@ $productcategory=$category->id;
                    }
                    foreach ($categories as $category) {
                     if ($category->name == $apiFamille) {
-                        dd($apiFamille);
+                      //  dd($apiFamille);
                         $productcategory = $category->id;
                         $matchingProduct->category = $productcategory;
                     }
