@@ -41,3 +41,12 @@ All Notable changes to `laravel-share` will be documented in this file
 ## 3.1.0 - 2019-09-06
 - Add Redit share provider
 - Add Telegram share provider
+
+## 3.2.0 - 2019-12-30
+- Add support for the title attribute. (credit to Bogdan Cismariu)
+
+## 3.3.0 - 2020-09-11
+- Add `getRawLinks` method to only return the raw links
+
+## 3.3.1 - 2020-09-19
+- use `Arr::first` instead of `array_first` helper
