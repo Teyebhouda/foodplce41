@@ -499,7 +499,7 @@
             </div>
          </div>
       </div>
-      <div class="play">
+      {{-- <div class="play">
          <div class="container">
             <div class="row">
                <div class="col-md-6">
@@ -558,7 +558,7 @@
                </div>
             </div>
          </div>
-      </div>
+      </div> --}}
       <div class="footer-section">
          <div class="footer">
             <div class="container kb-footer">
