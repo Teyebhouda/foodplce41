@@ -11,7 +11,7 @@
     'service'=>'Nos Services',
     'silder1h'=>'Préparez-vous',
     'silderh2'=>'une expérience culinaire chez Food Place',
-    'silderp'=>'Curieux de savoir comment nos plats passent du bon au génial ? Commençons notre histoire à propos de nos délicieux hamburgers.',
+    'silderp'=>'Curieux de savoir comment nos plats passent du bon au génial?',
     'silder23'=>'Le meilleur restaurant à Blois offrant une cuisine incroyable.',
     'psilder23'=>'FoodPlace41 est un restaurant dynamique situé au cœur de Blois. Avec des murs vitrés offrant une vue imprenable sur l animation de la ville, nous vous proposons une expérience culinaire exceptionnelle. Découvrez nos spécialités : des hamburgers savoureux et un authentique couscous tunisien. Venez déguster nos délices uniques chez FoodPlace41 !',
     'menu_title'=>'Menu Délicieux',
