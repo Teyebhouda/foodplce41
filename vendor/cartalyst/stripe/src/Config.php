@@ -11,11 +11,11 @@
  * bundled with this package in the LICENSE file.
  *
  * @package    Stripe
- * @version    2.3.0
+ * @version    2.4.6
  * @author     Cartalyst LLC
  * @license    BSD License (3-clause)
- * @copyright  (c) 2011-2019, Cartalyst LLC
- * @link       http://cartalyst.com
+ * @copyright  (c) 2011-2021, Cartalyst LLC
+ * @link       https://cartalyst.com
  */
 
 namespace Cartalyst\Stripe;
@@ -46,14 +46,14 @@ class Config implements ConfigInterface
     /**
      * The idempotency key.
      *
-     * @var string
+     * @var string|null
      */
     protected $idempotencyKey;
 
     /**
      * The managed account id.
      *
-     * @var string
+     * @var string|null
      */
     protected $accountId;
 
@@ -76,9 +76,28 @@ class Config implements ConfigInterface
     {
         $this->setVersion($version);
 
-        $this->setApiKey($apiKey ?: getenv('STRIPE_API_KEY'));
+        $this->setApiKey($apiKey ?: self::getEnvVariable('STRIPE_API_KEY', ''));
 
-        $this->setApiVersion($apiVersion ?: getenv('STRIPE_API_VERSION') ?: '2017-06-05');
+        $this->setApiVersion($apiVersion ?: self::getEnvVariable('STRIPE_API_VERSION', '2017-06-05'));
+    }
+
+    /**
+     * @param string      $name
+     * @param string|null $default
+     *
+     * @return string|null
+     */
+    private static function getEnvVariable($name, $default = null)
+    {
+        if (isset($_SERVER[$name])) {
+            return (string) $_SERVER[$name];
+        }
+
+        if (PHP_SAPI === 'cli' && ($value = getenv($name)) !== false) {
+            return (string) $value;
+        }
+
+        return $default;
     }
 
     /**
@@ -156,7 +175,7 @@ class Config implements ConfigInterface
     /**
      * Returns the managed account id.
      *
-     * @return string
+     * @return string|null
      */
     public function getAccountId()
     {
@@ -166,7 +185,7 @@ class Config implements ConfigInterface
     /**
      * Sets the managed account id.
      *
-     * @param  string  $accountId
+     * @param  string|null  $accountId
      * @return $this
      */
     public function setAccountId($accountId)

