@@ -264,7 +264,7 @@
                      <ul class="p-0">
                         <li><a href="{{url('/')}}">{{ __('messages.home') }}</a></li>
                         <li><a href="{{url('aboutus')}}">{{__('messages.aboutus')}}</a></li>
-                        <li><a href="{{url('service')}}">{{__('messages.service')}}</a></li>
+                        {{-- <li><a href="{{url('service')}}">{{__('messages.service')}}</a></li> --}}
                         <li><a href="{{url('contactus')}}">{{__('messages.contact')}}</a></li>
                      </ul>
                   </div>
@@ -305,7 +305,7 @@
                         <ul class="p-0">
                            <li><a href="{{url('/')}}">{{ __('messages.home') }}</a></li>
                            <li><a href="{{url('aboutus')}}">{{__('messages.aboutus')}}</a></li>
-                           <li><a href="{{url('service')}}">{{__('messages.service')}}</a></li>
+                           {{-- <li><a href="{{url('service')}}">{{__('messages.service')}}</a></li> --}}
                            <li><a href="{{url('contactus')}}">{{__('messages.contact')}}</a></li>
                         </ul>
                      </div>
@@ -377,7 +377,7 @@
                      <ul>
                         <li><a href="{{url('/')}}">{{__('messages.home')}}</a></li>
                         <li><a href="{{url('aboutus')}}">{{__('messages.aboutus')}}</a></li>
-                        <li><a href="{{url('service')}}">{{__('messages.service')}}</a></li>
+                        {{-- <li><a href="{{url('service')}}">{{__('messages.service')}}</a></li> --}}
                         <li><a href="{{url('contactus')}}">{{__('messages.contact')}}</a></li>
                      </ul>
                   </div>

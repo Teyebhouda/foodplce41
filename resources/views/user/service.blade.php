@@ -2,7 +2,7 @@
  @section('content')
  <div class="container">
     <div class="about-heading">
-      <h2>{{__('messages.service')}}</h2>
+      {{-- <h2>{{__('messages.service')}}</h2> --}}
       <p>{{__('messages.service_sugg')}}</p>
     </div>
     <div class="about-history-1">
