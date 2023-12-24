@@ -8,7 +8,7 @@ use Sentinel;
 use Session;
 use DataTables;
 use App\Ingredient;
-use App\Famille;
+use App\Famille; 
 use App\Category;
 use App\Item;
 use Hash;
