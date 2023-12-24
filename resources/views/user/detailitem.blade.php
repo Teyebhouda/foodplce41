@@ -105,7 +105,7 @@
                               {{$mi->item_name}}
                               </label>
                               <label for="checkbox-{{$i}}" class="checkbox-custom-label">
-                              ({{$mi->price}})
+                              ({{$mi->price}} €)
                               </label>
                            </p>
                            <?php $i++;?>
