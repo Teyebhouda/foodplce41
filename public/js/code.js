@@ -888,12 +888,10 @@ function getUserDataFromModel(phone) {
     return new Promise((resolve, reject) => {
         $.ajax({
          
-
+           
             url: $("#path_site").val() + "/getuserphone" + "/" + phone,
             method: "GET",
-            data: {
-                phone: phone
-            },
+            
             success: function (data1) {
                 if (data1 !== null && data1.length > 0) {
                     resolve(data1[0]);
