@@ -76,7 +76,7 @@
                            @if($currentFamille != $mi->famille)
                     @php
                         $currentFamille = $mi->familleoption;
-                        dd($currentFamille);
+                        
                     @endphp
                     <h4>{{$currentFamille->name}}</h4> {{-- Assuming 'name' is the field for the famille name --}}
                 @endif
