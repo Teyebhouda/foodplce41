@@ -252,13 +252,8 @@ function addtocart() {
     });
 
     // Collecting value from selected radio buttons per family
-    var radioNames = {};
     $('input[type="radio"]:checked').each(function () {
-        var name = $(this).attr('name');
-        if (!(name in radioNames)) {
-            radioNames[name] = true;
-            ingredients.push($(this).val());
-        }
+        ingredients.push($(this).val());
     });
 
     var totalIngredients = ingredients.toString();
@@ -278,7 +273,6 @@ function addtocart() {
         }
     });
 }
-
 
 function increaseValue() {
     var value = parseInt(document.getElementById('number').value, 10);
