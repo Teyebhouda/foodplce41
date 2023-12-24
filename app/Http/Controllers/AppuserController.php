@@ -26,7 +26,6 @@ use Cart;
 class AppuserController extends Controller {
   
    private $_api_context;
-   private $apiUrl = env('API_foodplace_URL');
    public function register(Request $request){
        $checkemail=AppUser::where("email",$request->get("email"))->first();
        if(isset($checkemail)){
