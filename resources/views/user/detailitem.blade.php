@@ -63,42 +63,45 @@
                   <h2>{{__('messages.ingredients')}}</h2>
                </div>
                <div class="row">
-    <div class="col-lg-6 col-md-6">
-        <div class="detail-ingredients-head detail-ingredients-head-1">
-            <h3>{{__('messages.FI')}}</h3>
-            <form>
-                <?php $i = 0; ?>
-                <?php $currentFamilles = collect(); ?>
-                @foreach($menu_interdient1 as $mi)
-                    @if($mi->type == 0 && $mi->familleoption)
-                        <?php $currentFamilles->push($mi->familleoption->id); ?>
-                    @endif
-                @endforeach
-
-                @foreach($currentFamilles->unique() as $currentFamilleId)
-                    <?php $currentFamille = null; ?>
-                    @foreach($menu_interdient1 as $mi)
-                        @if($mi->type == 0 && $mi->familleoption && $mi->familleoption->id == $currentFamilleId)
-                            @if($currentFamille != $mi->familleoption)
-                                @php
-                                    $currentFamille = $mi->familleoption;
-                                @endphp
-                                <h4>{{$currentFamille->name}}</h4>
-                            @endif
-
-                            <p>
-                                <input type="radio" id="checkbox-{{$i}}" class="checkbox-custom" name="interdient" value="{{$mi->id}}" {{$i === 0 ? 'checked' : ''}}>
-                                <label for="checkbox-{{$i}}" class="checkbox-custom-label">
-                                    {{$mi->item_name}}
-                                </label>
-                            </p>
-                            <?php $i++; ?>
-                        @endif
-                    @endforeach
-                @endforeach
-            </form>
-        </div>
-    </div>
+                 
+                     <div class="col-lg-6 col-md-6">
+                         <div class="detail-ingredients-head detail-ingredients-head-1">
+                             <h3>{{__('messages.FI')}}</h3>
+                             <form>
+                                 <?php $i = 0; ?>
+                                 <?php $currentFamilles = collect(); ?>
+                                 @foreach($menu_interdient1 as $mi)
+                                     @if($mi->type == 0 && $mi->familleoption)
+                                         <?php $currentFamilles->push($mi->familleoption->id); ?>
+                                     @endif
+                                 @endforeach
+                 
+                                 @foreach($currentFamilles->unique() as $currentFamilleId)
+                                     <?php $currentFamille = null; ?>
+                                     @foreach($menu_interdient1 as $mi)
+                                         @if($mi->type == 0 && $mi->familleoption && $mi->familleoption->id == $currentFamilleId)
+                                             @if($currentFamille != $mi->familleoption)
+                                                 @php
+                                                     $currentFamille = $mi->familleoption;
+                                                     $checked = ($i === 0) ? 'checked' : '';
+                                                 @endphp
+                                                 <h4>{{$currentFamille->name}}</h4>
+                                             @endif
+                 
+                                             <p>
+                                                 <input type="radio" id="checkbox-{{$i}}" class="checkbox-custom" name="interdient{{$currentFamilleId}}" value="{{$mi->id}}" {{$checked}}>
+                                                 <label for="checkbox-{{$i}}" class="checkbox-custom-label">
+                                                     {{$mi->item_name}}
+                                                 </label>
+                                             </p>
+                                             <?php $i++; ?>
+                                         @endif
+                                     @endforeach
+                                 @endforeach
+                             </form>
+                         </div>
+                     </div>
+                 
     <div class="col-lg-6 col-md-6">
         <div class="detail-ingredients-head">
             <h3>{{__('messages.PI')}}</h3>
