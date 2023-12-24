@@ -786,11 +786,16 @@ function orderplace() {
                                 },
                                 body: JSON.stringify(newUserData),
                             })
-                                .then(response => response.text())
-                                .then(userData => {
-                                    //const idValue = userData.IDClient;
-                                    const idValue = userData.trim(); // Assuming the IDClient is a single value without any surrounding spaces or characters
-
+                            .then(response => response.text()) // Get the XML response as text
+                            .then(xmlString => {
+                                // Parse the XML string to a DOM object
+                                const parser = new DOMParser();
+                                const xmlDoc = parser.parseFromString(xmlString, 'text/xml');
+                        
+                                // Extract the IDClient from the XML document
+                                const idNode = xmlDoc.querySelector('IDClient'); // Replace 'IDClient' with the actual XML tag name
+                                const idValue = idNode.textContent; // Get the text content inside the tag
+                        
                                     var newCommandData = {
                                         IDClient: idValue,
                                         NuméroInterneCommande: generateUniqueNumber(),
