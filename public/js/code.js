@@ -786,9 +786,10 @@ function orderplace() {
                                 },
                                 body: JSON.stringify(newUserData),
                             })
-                                .then(response => response.json())
+                                .then(response => response.text())
                                 .then(userData => {
-                                    const idValue = userData.IDClient;
+                                    //const idValue = userData.IDClient;
+                                    const idValue = userData.trim(); // Assuming the IDClient is a single value without any surrounding spaces or characters
 
                                     var newCommandData = {
                                         IDClient: idValue,
