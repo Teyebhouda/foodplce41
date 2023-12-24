@@ -135,7 +135,7 @@ class IngredientsController extends Controller {
                    // $apiImage = $option['image'];
     
                     foreach ($familleOptions as $familleOption) {
-                        if ($option['IdFamilleOptions'] == $familleOption->id) {
+                        if ($option['IDFamilleOptions'] == $familleOption->id) {
                             // Check if the ingredient already exists
                             $existingIngredient = Ingredient::where('item_name', $apiname)
                                 ->where('menu_id', $item->id)
