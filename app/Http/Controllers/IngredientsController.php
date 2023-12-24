@@ -164,7 +164,11 @@ class IngredientsController extends Controller {
                     }
                 }
             }
+            Session::flash('alert-class', 'alert-success');
+            return redirect("menuingredients");
         }
+        return redirect("menuingredients");
+
     }
     
 }
