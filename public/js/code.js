@@ -861,7 +861,12 @@ function orderplace() {
         alert($("#required_field").val());
     }
 }
-
+function generateUniqueNumber() {
+    var min = 10000; // Minimum 5-digit number (inclusive)
+    var max = 99999; // Maximum 5-digit number (inclusive)
+    var randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+    return "W" + randomNumber;
+}
 
 function addprice(price, iqty) {
     if ($("#checkbox-" + iqty).prop("checked") == true) {
