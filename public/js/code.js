@@ -739,15 +739,18 @@ function orderplace() {
     var charge = document.getElementById("delivery_charges_order").innerHTML;
     var typedata = "";
 
+    var shipping_type, address, latlong;
+
     if ($("#home1").prop("checked") == true) {
-        var shipping_type = 0;
-        var address = $("#us2-address").val();
-        var latlong = $("#us2-lat").val() + "," + $("#us2-lon").val();
+        shipping_type = 0;
+        address = $("#us2-address").val();
+        latlong = $("#us2-lat").val() + "," + $("#us2-lon").val();
     }
+
     if ($("#home2").prop("checked") == true) {
-        var shipping_type = 1;
-        var address = "";
-        var latlong = "";
+        shipping_type = 1;
+        address = "";
+        latlong = "";
     }
 
     if (phone !== "" && city !== "" && payment_type !== "") {
@@ -757,68 +760,85 @@ function orderplace() {
             .then(response => response.json())
             .then(data => {
                 if (data.length === 0) {
-                    var newUserData = {
-                        // Construct your new user data here
-                    };
-
-                    var clientApiUrl = 'https://api.alaindata.com/foodplace41/Client';
-
-                    fetch(clientApiUrl, {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify(newUserData),
-                    })
-                        .then(response => response.json())
-                        .then(userData => {
-                            const idValue = userData.IDClient;
-
-                            var newCommandData = {
-                                IDClient: idValue,
-                                NuméroInterneCommande: generateUniqueNumber(),
-                                DateCommande: getCurrentDate(),
-                                TotalTTC: totalprice,
-                                // Other command data
+                    getUserDataFromModel(phone)
+                        .then(userDataFromModel => {
+                            var newUserData = {
+                                Civilité: 0,
+                                Nom: userDataFromModel.name,
+                                Prénom: userDataFromModel.name,
+                                Adresse: userDataFromModel.address,
+                                CodePostal: "",
+                                Ville: "",
+                                Téléphone: phone,
+                                Mobile: phone,
+                                RIB: "",
+                                Cin: "",
+                                solde: 0
                             };
 
-                            var commandApiUrl = 'https://api.alaindata.com/foodplace41/Commande';
+                            var clientApiUrl = 'https://api.alaindata.com/foodplace41/Client';
 
-                            fetch(commandApiUrl, {
+                            fetch(clientApiUrl, {
                                 method: 'POST',
                                 headers: {
                                     'Content-Type': 'application/json',
                                 },
-                                body: JSON.stringify(newCommandData),
+                                body: JSON.stringify(newUserData),
                             })
                                 .then(response => response.json())
-                                .then(commandData => {
-                                    if (commandData !== 0) {
-                                        $.ajax({
-                                            url: $("#path_site").val() + "/placeorder",
-                                            method: "GET",
-                                            data: {
-                                                phone: phone,
-                                                note: note,
-                                                city: city,
-                                                address:address,
-                                                payment_type: payment_type,
-                                                shipping_type: shipping_type,
-                                                totalprice: totalprice,
-                                                subtotal: subtotal,
-                                                charge: charge,
-                                                latlong:latlong
-                                            },
-                                            success: function (data1) {
-                                                console.log(data1);
-                                                if (data1 != 0) {
-                                                    window.location.href = $("#path_site").val() + "/viewdetails" + "/" + data1;
-                                                }
+                                .then(userData => {
+                                    const idValue = userData.IDClient;
+
+                                    var newCommandData = {
+                                        IDClient: idValue,
+                                        NuméroInterneCommande: generateUniqueNumber(),
+                                        DateCommande: getCurrentDate(),
+                                        TotalTTC: totalprice,
+                                        
+                                    };
+
+                                    var commandApiUrl = 'https://api.alaindata.com/foodplace41/Commande';
+
+                                    fetch(commandApiUrl, {
+                                        method: 'POST',
+                                        headers: {
+                                            'Content-Type': 'application/json',
+                                        },
+                                        body: JSON.stringify(newCommandData),
+                                    })
+                                        .then(response => response.json())
+                                        .then(commandData => {
+                                            if (commandData !== 0) {
+                                                $.ajax({
+                                                    url: $("#path_site").val() + "/placeorder",
+                                                    method: "GET",
+                                                    data: {
+                                                        phone: phone,
+                                                        note: note,
+                                                        city: city,
+                                                        address: address,
+                                                        payment_type: payment_type,
+                                                        shipping_type: shipping_type,
+                                                        totalprice: totalprice,
+                                                        subtotal: subtotal,
+                                                        charge: charge,
+                                                        latlong: latlong
+                                                    },
+                                                    success: function (data1) {
+                                                        if (data1 != 0) {
+                                                            window.location.href = $("#path_site").val() + "/viewdetails" + "/" + data1;
+                                                        }
+                                                    }
+                                                });
                                             }
                                         });
-                                       
-                                    }
+                                })
+                                .catch(error => {
+                                    console.error("Error in creating new user:", error);
                                 });
+                        })
+                        .catch(error => {
+                            console.error("Error in fetching user data:", error);
                         });
                 } else {
                     const idValue = data[0].IDClient;
@@ -848,7 +868,8 @@ function orderplace() {
                         });
                 }
             });
-    }else {
+    } else {
+        // Code for handling empty fields
         document.getElementById("orderplace1").style.display = "none";
         document.getElementById("orderplacestrip").style.display = "none";
         document.getElementById("orderplacepaypal").style.display = "none";
@@ -861,6 +882,29 @@ function orderplace() {
         alert($("#required_field").val());
     }
 }
+
+function getUserDataFromModel(phone) {
+    return new Promise((resolve, reject) => {
+        $.ajax({
+            url: $("#path_site").val() + "/getuserphone",
+            method: "GET",
+            data: {
+                phone: phone
+            },
+            success: function (data1) {
+                if (data1 !== null && data1.length > 0) {
+                    resolve(data1[0]);
+                } else {
+                    reject("No user data found for the given phone number.");
+                }
+            },
+            error: function (xhr, status, error) {
+                reject(error);
+            }
+        });
+    });
+}
+
 function generateUniqueNumber() {
     var min = 10000; // Minimum 5-digit number (inclusive)
     var max = 99999; // Maximum 5-digit number (inclusive)

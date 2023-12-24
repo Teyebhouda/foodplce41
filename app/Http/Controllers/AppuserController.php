@@ -329,6 +329,24 @@ class AppuserController extends Controller {
            return 1;
        }
    } 
+
+
+   public function getuserphone($phone)
+    {
+        try {
+            // Fetch user data based on the phone number ($cpwd)
+            $userData = AppUser::where('phone', $$phone)->first();
+
+            if (!$userData) {
+                return response()->json(['error' => 'No user data found for the given phone number.'], 404);
+            }
+
+            return response()->json($userData, 200);
+        } catch (\Exception $e) {
+            // Handle exceptions or errors here
+            return response()->json(['error' => 'Internal server error.'], 500);
+        }
+    }
    //aaaaa
 }
 
