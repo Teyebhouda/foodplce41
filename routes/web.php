@@ -44,7 +44,7 @@ Route::get("addcartitem","Cartcontroller@addcartitem");
 Route::get("sharesoicalmedia/{media_id}/{item_id}","frontController@sharesoicalmedia");
 Route::get("managecart","Cartcontroller@managecart");
 Route::get("cartdetails","frontController@cartdetails");
-Route::get("deletecartitem/{id}","Cartcontroller@deletecart");
+Route::get("deletecartitem11/{id}","Cartcontroller@deletecart");
 route::get("cartqtyupdate/{id}/{qty}/{op}","Cartcontroller@cartupdate");
 Route::get("userregister","AppuserController@register");
 Route::get("userlogin","AppuserController@login");
