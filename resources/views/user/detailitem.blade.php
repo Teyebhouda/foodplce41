@@ -91,7 +91,7 @@
                      <div class="detail-ingredients-head">
                         <h3>{{__('messages.PI')}}</h3>
                         <form>
-<?php $i=0; $currentFamille = null;?>
+<?php $currentFamille = null;?>
                            @foreach($menu_interdient1 as $mi)  @if($mi->type == 1 && $mi->familleoption)
  @if($currentFamille != $mi->familleoption)
                 @php
