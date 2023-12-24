@@ -762,6 +762,7 @@ function orderplace() {
                 if (data.length === 0) {
                     getUserDataFromModel(phone)
                         .then(userDataFromModel => {
+                            console.log(userDataFromModel)
                             var newUserData = {
                                 Civilité: 0,
                                 Nom: userDataFromModel.name,
@@ -886,7 +887,7 @@ function orderplace() {
 function getUserDataFromModel(phone) {
     return new Promise((resolve, reject) => {
         $.ajax({
-            url: $("#path_site").val() + "/getuserphone",
+            url: $("#path_site").val() + "/getuserphone/" + phone,
             method: "GET",
             data: {
                 phone: phone
