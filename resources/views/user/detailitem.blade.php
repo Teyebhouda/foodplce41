@@ -79,7 +79,7 @@
                     @endphp
                     <h4>{{$currentFamille->name}}</h4> {{-- Assuming 'name' is the field for the famille name --}}
                 @endif
-                @endif
+               
                            <p>
                               <input type="checkbox" id="checkbox-{{$i}}" class="checkbox-custom" name="interdient" value="{{$mi->id}}">
                               <label for="checkbox-{{$i}}" class="checkbox-custom-label">
@@ -87,7 +87,9 @@
                               </label>
                            </p>
                            <?php $i++;?>
-                           @endif @endforeach
+                           @endif
+                           @endif
+                            @endforeach
                         </form>
                      </div>
                   </div>
@@ -108,7 +110,7 @@
                     @endphp
                     <h4>{{$currentFamille->name}}</h4> {{-- Assuming 'name' is the field for the famille name --}}
                 @endif
-                @endif
+               
                 <p>
                     <input type="checkbox" id="checkbox-{{$i}}" class="checkbox-custom" name="interdient" value="{{$mi->id}}" onclick="addprice('{{$mi->price}}','{{$i}}')">
                     <label for="checkbox-{{$i}}" class="checkbox-custom-label">
@@ -117,6 +119,7 @@
                     {{$mi->price}}
                 </p>
                 <?php $i++;?>
+            @endif
             @endif
         @endforeach
                         </form>
