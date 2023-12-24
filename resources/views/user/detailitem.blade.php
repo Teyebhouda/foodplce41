@@ -71,15 +71,14 @@
             $currentFamille = null; // Initialize variable to track current famille
         @endphp
                            <?php $i=0;?>
-                           @foreach($menu_interdient1 as $mi) @if($mi->type==0)
-                           if($mi->famille)
+                           @foreach($menu_interdient1 as $mi) @if($mi->type==0 && $mi->famille)
+                           
                            @if($currentFamille != $mi->famille)
                     @php
                         $currentFamille = $mi->famille;
                     @endphp
                     <h4>{{$currentFamille->name}}</h4> {{-- Assuming 'name' is the field for the famille name --}}
                 @endif
-               
                            <p>
                               <input type="checkbox" id="checkbox-{{$i}}" class="checkbox-custom" name="interdient" value="{{$mi->id}}">
                               <label for="checkbox-{{$i}}" class="checkbox-custom-label">
@@ -87,9 +86,7 @@
                               </label>
                            </p>
                            <?php $i++;?>
-                           @endif
-                           @endif
-                            @endforeach
+                           @endif @endforeach
                         </form>
                      </div>
                   </div>
@@ -102,15 +99,14 @@
             $currentFamille = null; // Initialize variable to track current famille
         @endphp
                         @foreach($menu_interdient1 as $mi)
-            @if($mi->type==1)
-            if($mi->famille)
+            @if($mi->type==1 && $mi->famille)
                 @if($currentFamille != $mi->famille)
                     @php
                         $currentFamille = $mi->famille;
                     @endphp
                     <h4>{{$currentFamille->name}}</h4> {{-- Assuming 'name' is the field for the famille name --}}
                 @endif
-               
+
                 <p>
                     <input type="checkbox" id="checkbox-{{$i}}" class="checkbox-custom" name="interdient" value="{{$mi->id}}" onclick="addprice('{{$mi->price}}','{{$i}}')">
                     <label for="checkbox-{{$i}}" class="checkbox-custom-label">
@@ -119,7 +115,6 @@
                     {{$mi->price}}
                 </p>
                 <?php $i++;?>
-            @endif
             @endif
         @endforeach
                         </form>
