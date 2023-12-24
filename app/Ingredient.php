@@ -18,6 +18,10 @@ class Ingredient extends Model
     {      
         return $this->hasOne('App\Item', 'id', 'menu_id');
     }
+    public function famille()
+    {      
+        return $this->hasOne('App\Famille', 'id', 'famille');
+    }
    
    
 }
