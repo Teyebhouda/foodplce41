@@ -72,11 +72,13 @@
         @endphp
                            <?php $i=0;?>
                            @foreach($menu_interdient1 as $mi) @if($mi->type==0)
+                           if($mi->famille)
                            @if($currentFamille != $mi->famille)
                     @php
                         $currentFamille = $mi->famille;
                     @endphp
                     <h4>{{$currentFamille->name}}</h4> {{-- Assuming 'name' is the field for the famille name --}}
+                @endif
                 @endif
                            <p>
                               <input type="checkbox" id="checkbox-{{$i}}" class="checkbox-custom" name="interdient" value="{{$mi->id}}">
@@ -99,13 +101,14 @@
         @endphp
                         @foreach($menu_interdient1 as $mi)
             @if($mi->type==1)
+            if($mi->famille)
                 @if($currentFamille != $mi->famille)
                     @php
                         $currentFamille = $mi->famille;
                     @endphp
                     <h4>{{$currentFamille->name}}</h4> {{-- Assuming 'name' is the field for the famille name --}}
                 @endif
-
+                @endif
                 <p>
                     <input type="checkbox" id="checkbox-{{$i}}" class="checkbox-custom" name="interdient" value="{{$mi->id}}" onclick="addprice('{{$mi->price}}','{{$i}}')">
                     <label for="checkbox-{{$i}}" class="checkbox-custom-label">
