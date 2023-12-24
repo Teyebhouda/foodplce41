@@ -150,7 +150,7 @@ class IngredientsController extends Controller {
                     foreach ($familleOptions as $familleOption) {
                         if ($option['IDFamilleOptions'] == $familleOption->id) {
                             $existingIngredient = Ingredient::where('item_name', $apiname)
-                            ->where('menu_id', $item->id)
+                            
                                 ->where('category', $item->categoryitem->id)
                                 ->where('famille', $familleOption->id)
                                 ->first();
