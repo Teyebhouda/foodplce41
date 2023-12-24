@@ -71,11 +71,11 @@
             $currentFamille = null; // Initialize variable to track current famille
         @endphp
                            <?php $i=0;?>
-                           @foreach($menu_interdient1 as $mi) @if($mi->type==0 && $mi->famille)
+                           @foreach($menu_interdient1 as $mi) @if($mi->type==0 && $mi->familleoption)
                            
                            @if($currentFamille != $mi->famille)
                     @php
-                        $currentFamille = $mi->famille;
+                        $currentFamille = $mi->familleoption;
                         dd($currentFamille);
                     @endphp
                     <h4>{{$currentFamille->name}}</h4> {{-- Assuming 'name' is the field for the famille name --}}
@@ -101,9 +101,9 @@
         @endphp
                         @foreach($menu_interdient1 as $mi)
             @if($mi->type==1 && $mi->famille)
-                @if($currentFamille != $mi->famille)
+                @if($currentFamille != $mi->familleoption)
                     @php
-                        $currentFamille = $mi->famille;
+                        $currentFamille = $mi->familleoption;
                     @endphp
                     <h4>{{$currentFamille->name}}</h4> {{-- Assuming 'name' is the field for the famille name --}}
                 @endif

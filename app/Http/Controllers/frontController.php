@@ -110,7 +110,7 @@ class frontController extends Controller {
       $category=Category::where("is_deleted",'0')->get();
       $itemdetails=Item::find($item_id);
       $item=Item::with('categoryitem')->where("category",$itemdetails->category)->where("is_deleted",'0')->get();
-      $inter=Ingredient::with('famille')->where("menu_id",$item_id)->where("is_deleted",'0')->get();
+      $inter=Ingredient::with('familleoption')->where("menu_id",$item_id)->where("is_deleted",'0')->get();
       $allmenu=Item::all();
       $inter1=Ingredient::all();
        $itemdata=Item::with('categoryitem')->where("is_deleted",'0')->get();
