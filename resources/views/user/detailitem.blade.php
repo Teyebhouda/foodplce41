@@ -93,6 +93,11 @@
         @endif
     @endforeach
 </form>
+<div class="row">
+                  <div class="col-lg-6 col-md-6">
+                     <div class="detail-ingredients-head detail-ingredients-head-1">
+                        <h3>{{__('messages.FI')}}</h3>
+                        <form>
 
                         @php
             $currentFamille = null; // Initialize variable to track current famille
