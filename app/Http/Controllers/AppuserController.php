@@ -335,7 +335,7 @@ class AppuserController extends Controller {
     {
         try {
             // Fetch user data based on the phone number ($cpwd)
-            $userData = AppUser::where('phone', $$phone)->first();
+            $userData = AppUser::where('phone', $phone)->first();
 dd($userData);
             if (!$userData) {
                 return response()->json(['error' => 'No user data found for the given phone number.'], 404);
