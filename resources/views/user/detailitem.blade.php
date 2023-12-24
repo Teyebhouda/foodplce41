@@ -67,60 +67,46 @@
                      <div class="detail-ingredients-head detail-ingredients-head-1">
                         <h3>{{__('messages.FI')}}</h3>
                         <form>
-    @php
-        $currentFamille = null; // Initialize variable to track current famille
-        $i = 0;
-    @endphp
-
-    @foreach($menu_interdient1 as $mi)
-        @if($mi->type == 0 && $mi->familleoption)
-            @if($currentFamille != $mi->familleoption)
+                           <?php $i=0; $currentFamille = null;?>
+                           @foreach($menu_interdient1 as $mi)         @if($mi->type == 0 && $mi->familleoption)
+ @if($currentFamille != $mi->familleoption)
                 @php
                     $currentFamille = $mi->familleoption;
                 @endphp
                 <h4>{{$currentFamille->name}}</h4>
             @endif
 
-            <p>
-                <input type="checkbox" id="checkbox-{{$i}}" class="checkbox-custom" name="interdient" value="{{$mi->id}}">
-                <label for="checkbox-{{$i}}" class="checkbox-custom-label">
-                    {{$mi->item_name}}
-                </label>
-            </p>
-            @php
-                $i++;
-            @endphp
-        @endif
-    @endforeach
-</form>
-<div class="row">
+                           <p>
+                              <input type="checkbox" id="checkbox-{{$i}}" class="checkbox-custom" name="interdient" value="{{$mi->id}}">
+                              <label for="checkbox-{{$i}}" class="checkbox-custom-label">
+                              {{$mi->item_name}}
+                              </label>
+                           </p>
+                           <?php $i++;?>
+                           @endif @endforeach
+                        </form>
+                     </div>
+                  </div>
                   <div class="col-lg-6 col-md-6">
-                     <div class="detail-ingredients-head detail-ingredients-head-1">
-                        <h3>{{__('messages.FI')}}</h3>
+                     <div class="detail-ingredients-head">
+                        <h3>{{__('messages.PI')}}</h3>
                         <form>
-
-                        @php
-            $currentFamille = null; // Initialize variable to track current famille
-        @endphp
-                        @foreach($menu_interdient1 as $mi)
-            @if($mi->type==1 && $mi->famille)
-                @if($currentFamille != $mi->familleoption)
-                    @php
-                        $currentFamille = $mi->familleoption;
-                    @endphp
-                    <h4>{{$currentFamille->name}}</h4> {{-- Assuming 'name' is the field for the famille name --}}
-                @endif
-
-                <p>
-                    <input type="checkbox" id="checkbox-{{$i}}" class="checkbox-custom" name="interdient" value="{{$mi->id}}" onclick="addprice('{{$mi->price}}','{{$i}}')">
-                    <label for="checkbox-{{$i}}" class="checkbox-custom-label">
-                        {{$mi->item_name}}
-                    </label>
-                    {{$mi->price}}
-                </p>
-                <?php $i++;?>
+<?php $i=0; $currentFamille = null;?>
+                           @foreach($menu_interdient1 as $mi)  @if($mi->type == 0 && $mi->familleoption)
+ @if($currentFamille != $mi->familleoption)
+                @php
+                    $currentFamille = $mi->familleoption;
+                @endphp
+                <h4>{{$currentFamille->name}}</h4>
             @endif
-        @endforeach
+                           <p>
+                              <input type="checkbox" id="checkbox-{{$i}}" class="checkbox-custom" name="interdient" value="{{$mi->id}}" onclick="addprice('{{$mi->price}}','{{$i}}')">
+                              <label for="checkbox-{{$i}}" class="checkbox-custom-label">
+                              {{$mi->item_name}}
+                              </label>
+                           </p>
+                           <?php $i++;?>
+                           @endif @endforeach
                         </form>
                      </div>
                   </div>
