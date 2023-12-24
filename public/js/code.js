@@ -757,7 +757,7 @@ function orderplace() {
         var apiUrl = 'https://api.alaindata.com/foodplace41/GetClientByNTel/' + phone;
 
         fetch(apiUrl)
-            .then(response => response.json())
+            .then(response => response.text())
             .then(data => {
                 if (data.length === 0) {
                     getUserDataFromModel(phone)
@@ -848,7 +848,11 @@ function orderplace() {
                             console.error("Error in fetching user data:", error);
                         });
                 } else {
-                    const idValue = data[0].IDClient;
+                    const idStartIndex = data.indexOf('"IDClient":') + '"IDClient":'.length;
+                    const idEndIndex = data.indexOf(',', idStartIndex) !== -1 ? userData.indexOf(',', idStartIndex) : userData.indexOf('}', idStartIndex);
+                    const idValue = data.substring(idStartIndex, idEndIndex);
+                    
+                    //const idValue = data[0].IDClient;
 
                     var newCommandData = {
                         IDClient: idValue,
@@ -870,8 +874,27 @@ function orderplace() {
                         .then(response => response.json())
                         .then(commandData => {
                             if (commandData !== 0) {
-                                window.location.href = $("#path_site").val() + "/viewdetails" + "/" + commandData;
-                            }
+                                $.ajax({
+                                    url: $("#path_site").val() + "/placeorder",
+                                    method: "GET",
+                                    data: {
+                                        phone: phone,
+                                        note: note,
+                                        city: city,
+                                        address: address,
+                                        payment_type: payment_type,
+                                        shipping_type: shipping_type,
+                                        totalprice: totalprice,
+                                        subtotal: subtotal,
+                                        charge: charge,
+                                        latlong: latlong
+                                    },
+                                    success: function (data1) {
+                                        if (data1 != 0) {
+                                            window.location.href = $("#path_site").val() + "/viewdetails" + "/" + data1;
+                                        }
+                                    }
+                                });                            }
                         });
                 }
             });
