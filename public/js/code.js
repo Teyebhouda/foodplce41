@@ -252,7 +252,7 @@ function addtocart() {
     });
 
     // Collecting value from selected radio buttons per family
-    $.each($('input[type="radio"]:checked'), function () {
+    $.each($("input[type='radio']:checked"), function () {
         ingredients.push($(this).val());
     });
 
