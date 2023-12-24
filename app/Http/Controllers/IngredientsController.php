@@ -114,145 +114,63 @@ class IngredientsController extends Controller {
     }
 
     public function SynchronizeIngredients()
-    {
-        $apiUrl = env('API_foodplace_URL');
-              
-        $client = new Client();
-    
-        //$response = $client->get($apiUrl . '/LigneFamilleOptions');
-        $response = $client->get('https://api.alaindata.com/foodplace41/LigneFamilleOptions');
-    
-        if ($response->getStatusCode() === 200) {
-            $optionsApi = json_decode($response->getBody(), true);
-    
-            $items = Item::where('is_deleted', '0')->get();
-            //$familleOptions = Famille::get();
-    
-            foreach ($items as $item) {
-                $categoriesToCheck = ['BURGERS', 'PANINIS', 'SANDWICHS'];
+{
+    $apiUrl = env('API_foodplace_URL');
+    $client = new Client();
+    $response = $client->get('https://api.alaindata.com/foodplace41/LigneFamilleOptions');
 
-                if (in_array($item->categoryitem->cat_name, $categoriesToCheck)) {
-                
+    if ($response->getStatusCode() === 200) {
+        $optionsApi = json_decode($response->getBody(), true);
+
+        $categoriesToCheck = [
+            'BURGERS' => ['SAUCES', 'BOISSONS', 'LEGUMES'],
+            'PANINIS' => ['SAUCES', 'VIANDES', 'BOISSONS'],
+            'SANDWICHS' => ['SAUCES', 'VIANDES', 'BOISSONS'],
+            'TACOS' => ['SAUCES', 'VIANDES', 'BOISSONS'],
+            '1ER PIZZA' => ['SUUPLIMENTS PIZZA', 'BOISSONS']
+        ];
+
+        $items = Item::where('is_deleted', '0')->get();
+
+        foreach ($items as $item) {
+            $catName = $item->categoryitem->cat_name;
+
+            if (isset($categoriesToCheck[$catName])) {
+                $desiredFamilles = $categoriesToCheck[$catName];
+
                 foreach ($optionsApi as $option) {
                     $apiname = $option['designation'];
                     $apiPrixUni = $option['PrixUni'];
-                   // $apiImage = $option['image'];
-                   $familleOptions = Famille::whereIn('name', ['SAUCES', 'BOISSONS', 'LEGUMES'])->get();
-                   foreach ($familleOptions as $familleOption) {
+
+                    $familleOptions = Famille::whereIn('name', $desiredFamilles)->get();
+
+                    foreach ($familleOptions as $familleOption) {
                         if ($option['IDFamilleOptions'] == $familleOption->id) {
-                            // Check if the ingredient already exists
                             $existingIngredient = Ingredient::where('item_name', $apiname)
                                 ->where('menu_id', $item->id)
                                 ->where('category', $item->categoryitem->id)
                                 ->where('famille', $familleOption->id)
                                 ->first();
-    
+
                             if (!$existingIngredient) {
                                 $store = new Ingredient();
                                 $store->item_name = $apiname;
                                 $store->menu_id = $item->id;
                                 $store->category = $item->categoryitem->id;
                                 $store->famille = $familleOption->id;
-    
-                                if ($familleOption->type == "simple") {
-                                    $store->type = 0;
-                                    $store->price = 0.00;
-                                } else {
-                                    $store->type = 1;
-                                    $store->price = number_format($apiPrixUni, 2, ".", ".");
-                                }
-    
+                                $store->type = $familleOption->type === 'simple' ? 0 : 1;
+                                $store->price = $store->type === 0 ? 0.00 : number_format($apiPrixUni, 2, ".", ".");
                                 $store->save();
                             }
                         }
                     }
                 }
-            }elseif($item->categoryitem->cat_name == 'TACOS') {
-
-                   foreach ($optionsApi as $option) {
-                    $apiname = $option['designation'];
-                    $apiPrixUni = $option['PrixUni'];
-                   // $apiImage = $option['image'];
-                   $familleOptions = Famille::whereIn('name', ['SAUCES', 'VIANDES', 'BOISSONS'])->get();
-                   foreach ($familleOptions as $familleOption) {
-                        if ($option['IDFamilleOptions'] == $familleOption->id) {
-                            // Check if the ingredient already exists
-                            $existingIngredient = Ingredient::where('item_name', $apiname)
-                                ->where('menu_id', $item->id)
-                                ->where('category', $item->categoryitem->id)
-                                ->where('famille', $familleOption->id)
-                                ->first();
-    
-                            if (!$existingIngredient) {
-                                $store = new Ingredient();
-                                $store->item_name = $apiname;
-                                $store->menu_id = $item->id;
-                                $store->category = $item->categoryitem->id;
-                                $store->famille = $familleOption->id;
-    
-                                if ($familleOption->type == "simple") {
-                                    $store->type = 0;
-                                    $store->price = 0.00;
-                                } else {
-                                    $store->type = 1;
-                                    $store->price = number_format($apiPrixUni, 2, ".", ".");
-                                }
-    
-                                $store->save();
-                            }
-                        }
-                    }
-                }
-
-
-
             }
-            elseif($item->categoryitem->cat_name == '1ER PIZZA'){
-                foreach ($optionsApi as $option) {
-                    $apiname = $option['designation'];
-                    $apiPrixUni = $option['PrixUni'];
-                   // $apiImage = $option['image'];
-                   $familleOptions = Famille::whereIn('name', ['SUUPLIMENTS PIZZA' , 'BOISSONS'])->get();
-                   foreach ($familleOptions as $familleOption) {
-                        if ($option['IDFamilleOptions'] == $familleOption->id) {
-                            // Check if the ingredient already exists
-                            $existingIngredient = Ingredient::where('item_name', $apiname)
-                                ->where('menu_id', $item->id)
-                                ->where('category', $item->categoryitem->id)
-                                ->where('famille', $familleOption->id)
-                                ->first();
-    
-                            if (!$existingIngredient) {
-                                $store = new Ingredient();
-                                $store->item_name = $apiname;
-                                $store->menu_id = $item->id;
-                                $store->category = $item->categoryitem->id;
-                                $store->famille = $familleOption->id;
-    
-                                if ($familleOption->type == "simple") {
-                                    $store->type = 0;
-                                    $store->price = 0.00;
-                                } else {
-                                    $store->type = 1;
-                                    $store->price = number_format($apiPrixUni, 2, ".", ".");
-                                }
-    
-                                $store->save();
-                            }
-                        }
-                    }
-                }
-
-
-
-
-            }
-            Session::flash('alert-class', 'alert-success');
-            return redirect("menuingredients");
         }
-        return redirect("menuingredients");
 
+        Session::flash('alert-class', 'alert-success');
+        return redirect("menuingredients");
     }
-    
+    return redirect("menuingredients");
 }
 }
