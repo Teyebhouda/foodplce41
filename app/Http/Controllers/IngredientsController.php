@@ -127,6 +127,9 @@ class IngredientsController extends Controller {
             'PANINIS' => ['SAUCES', 'VIANDES', 'BOISSONS'],
             'SANDWICHS' => ['SAUCES', 'VIANDES', 'BOISSONS'],
             'TACOS' => ['SAUCES', 'VIANDES', 'BOISSONS'],
+            'SALADES' => ['LEGUMES', 'BOISSONS'],
+            'PLATS' => ['SUPPLIMENTS VIANDES PLATS', 'BOISSONS'],
+            'MENU ENFANT' => ['LEGUMES', 'BOISSONS'],
             '1ER PIZZA' => ['SUUPLIMENTS PIZZA', 'BOISSONS']
         ];
 
@@ -147,7 +150,7 @@ class IngredientsController extends Controller {
                     foreach ($familleOptions as $familleOption) {
                         if ($option['IDFamilleOptions'] == $familleOption->id) {
                             $existingIngredient = Ingredient::where('item_name', $apiname)
-                                
+                            ->where('menu_id', $item->id)
                                 ->where('category', $item->categoryitem->id)
                                 ->where('famille', $familleOption->id)
                                 ->first();
