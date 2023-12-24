@@ -68,7 +68,7 @@
                         <h3>{{__('messages.FI')}}</h3>
                         <form>
                            <?php $i=0; $currentFamille = null;?>
-                           @foreach($menu_interdient1 as $mi)         @if($mi->type == 0 && $mi->familleoption)
+                           @foreach($menu_interdient as $mi)         @if($mi->type == 0 && $mi->familleoption)
  @if($currentFamille != $mi->familleoption)
                 @php
                     $currentFamille = $mi->familleoption;
@@ -92,7 +92,7 @@
                         <h3>{{__('messages.PI')}}</h3>
                         <form>
 <?php $currentFamille = null;?>
-                           @foreach($menu_interdient1 as $mi)  @if($mi->type == 1 && $mi->familleoption)
+                           @foreach($menu_interdient as $mi)  @if($mi->type == 1 && $mi->familleoption)
  @if($currentFamille != $mi->familleoption)
                 @php
                     $currentFamille = $mi->familleoption;
@@ -101,6 +101,9 @@
             @endif
                            <p>
                               <input type="checkbox" id="checkbox-{{$i}}" class="checkbox-custom" name="interdient" value="{{$mi->id}}" onclick="addprice('{{$mi->price}}','{{$i}}')">
+                              <label for="checkbox-{{$i}}" class="checkbox-custom-label">
+                              {{$mi->item_name}}
+                              </label>
                               <label for="checkbox-{{$i}}" class="checkbox-custom-label">
                               {{$mi->item_name}}
                               </label>

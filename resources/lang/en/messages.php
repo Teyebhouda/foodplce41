@@ -78,7 +78,7 @@
     'tweet'=>'Tweet',
     'ingredients'=>"Ingrédients",
     'FI'=>"Gratuits",
-    'PI'=>"Payer",
+    'PI'=>"Payants",
     'addcart'=>'Ajouter au panier',
     'nocart'=>"Panier vide",
     'realted_pro'=>"Produits connexes",
