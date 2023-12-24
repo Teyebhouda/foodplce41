@@ -124,13 +124,17 @@ class IngredientsController extends Controller {
 
         $categoriesToCheck = [
             'BURGERS' => ['SAUCES', 'BOISSONS', 'LEGUMES'],
-            'PANINIS' => ['SAUCES', 'VIANDES', 'BOISSONS'],
-            'SANDWICHS' => ['SAUCES', 'VIANDES', 'BOISSONS'],
+            'PANINIS' => ['SAUCES', 'BOISSONS', 'LEGUMES'],
+            'SANDWICHS' => ['SAUCES', 'BOISSONS', 'LEGUMES'],
             'TACOS' => ['SAUCES', 'VIANDES', 'BOISSONS'],
             'SALADES' => ['LEGUMES', 'BOISSONS'],
-            'PLATS' => ['SUPPLIMENTS VIANDES PLATS', 'BOISSONS'],
+            'PLATS' => [ 'BOISSONS'],
+            'BARQUETTES' => [ 'BOISSONS'],
+            'DESSERTS' => [ 'BOISSONS'],
+            'SIGNATURE' => [ 'BOISSONS'],
+            'TEX MEX' => [ 'BOISSONS'],
             'MENU ENFANT' => ['LEGUMES', 'BOISSONS'],
-            '1ER PIZZA' => ['SUUPLIMENTS PIZZA', 'BOISSONS']
+            '1ER PIZZA' => ['SUUPLIMENTS PIZZA','SUPPLIMENTS VIANDES PLATS', 'BOISSONS']
         ];
 
         $items = Item::where('is_deleted', '0')->get();

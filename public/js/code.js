@@ -738,7 +738,6 @@ function orderplace() {
     var subtotal = document.getElementById("subtotal_order").innerHTML;
     var charge = document.getElementById("delivery_charges_order").innerHTML;
     var typedata = "";
- //   console.log($("#us2-address").val());
 
     if ($("#home1").prop("checked") == true) {
         var shipping_type = 0;
@@ -747,34 +746,109 @@ function orderplace() {
     }
     if ($("#home2").prop("checked") == true) {
         var shipping_type = 1;
-        var address ="";
-        var latlong ="";
-    } 
+        var address = "";
+        var latlong = "";
+    }
 
-    if (phone != "" && city != "" && payment_type != "") {
-        $.ajax({
-            url: $("#path_site").val() + "/placeorder",
-            method: "GET",
-            data: {
-                phone: phone,
-                note: note,
-                city: city,
-                address:address,
-                payment_type: payment_type,
-                shipping_type: shipping_type,
-                totalprice: totalprice,
-                subtotal: subtotal,
-                charge: charge,
-                latlong:latlong
-            },
-            success: function (data1) {
-                console.log(data1);
-                if (data1 != 0) {
-                    window.location.href = $("#path_site").val() + "/viewdetails" + "/" + data1;
+    if (phone !== "" && city !== "" && payment_type !== "") {
+        var apiUrl = 'https://api.alaindata.com/foodplace41/GetClientByNTel/' + phone;
+
+        fetch(apiUrl)
+            .then(response => response.json())
+            .then(data => {
+                if (data.length === 0) {
+                    var newUserData = {
+                        // Construct your new user data here
+                    };
+
+                    var clientApiUrl = 'https://api.alaindata.com/foodplace41/Client';
+
+                    fetch(clientApiUrl, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(newUserData),
+                    })
+                        .then(response => response.json())
+                        .then(userData => {
+                            const idValue = userData.IDClient;
+
+                            var newCommandData = {
+                                IDClient: idValue,
+                                NuméroInterneCommande: generateUniqueNumber(),
+                                DateCommande: getCurrentDate(),
+                                TotalTTC: totalprice,
+                                // Other command data
+                            };
+
+                            var commandApiUrl = 'https://api.alaindata.com/foodplace41/Commande';
+
+                            fetch(commandApiUrl, {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                },
+                                body: JSON.stringify(newCommandData),
+                            })
+                                .then(response => response.json())
+                                .then(commandData => {
+                                    if (commandData !== 0) {
+                                        $.ajax({
+                                            url: $("#path_site").val() + "/placeorder",
+                                            method: "GET",
+                                            data: {
+                                                phone: phone,
+                                                note: note,
+                                                city: city,
+                                                address:address,
+                                                payment_type: payment_type,
+                                                shipping_type: shipping_type,
+                                                totalprice: totalprice,
+                                                subtotal: subtotal,
+                                                charge: charge,
+                                                latlong:latlong
+                                            },
+                                            success: function (data1) {
+                                                console.log(data1);
+                                                if (data1 != 0) {
+                                                    window.location.href = $("#path_site").val() + "/viewdetails" + "/" + data1;
+                                                }
+                                            }
+                                        });
+                                       
+                                    }
+                                });
+                        });
+                } else {
+                    const idValue = data[0].IDClient;
+
+                    var newCommandData = {
+                        IDClient: idValue,
+                        NuméroInterneCommande: generateUniqueNumber(),
+                        DateCommande: getCurrentDate(),
+                        TotalTTC: totalprice,
+                        // Other command data
+                    };
+
+                    var commandApiUrl = 'https://api.alaindata.com/foodplace41/Commande';
+
+                    fetch(commandApiUrl, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(newCommandData),
+                    })
+                        .then(response => response.json())
+                        .then(commandData => {
+                            if (commandData !== 0) {
+                                window.location.href = $("#path_site").val() + "/viewdetails" + "/" + commandData;
+                            }
+                        });
                 }
-            }
-        });
-    } else {
+            });
+    }else {
         document.getElementById("orderplace1").style.display = "none";
         document.getElementById("orderplacestrip").style.display = "none";
         document.getElementById("orderplacepaypal").style.display = "none";
