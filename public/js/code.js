@@ -867,7 +867,13 @@ function generateUniqueNumber() {
     var randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
     return "W" + randomNumber;
 }
-
+function getCurrentDate() {
+    var today = new Date();
+    var year = today.getFullYear();
+    var month = String(today.getMonth() + 1).padStart(2, '0'); // Add 1 to month (0-based index) and pad with '0'
+    var day = String(today.getDate()).padStart(2, '0'); // Pad day with '0'
+    return year + "-" + month + "-" + day;
+}
 function addprice(price, iqty) {
     if ($("#checkbox-" + iqty).prop("checked") == true) {
         console.log("checked");
