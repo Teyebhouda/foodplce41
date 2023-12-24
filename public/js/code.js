@@ -786,22 +786,22 @@ function orderplace() {
                                 },
                                 body: JSON.stringify(newUserData),
                             })
-                            .then(response => response.text()) // Get the XML response as text
-                            .then(xmlString => {
-                                // Parse the XML string to a DOM object
-                                const parser = new DOMParser();
-                                const xmlDoc = parser.parseFromString(xmlString, 'text/xml');
-                        
-                                // Extract the IDClient from the XML document
-                                const idNode = xmlDoc.querySelector('IDClient'); // Replace 'IDClient' with the actual XML tag name
-                                const idValue = idNode.textContent; // Get the text content inside the tag
-                        
+                                .then(response => response.text())
+                                .then(userData => {
+                                    //const idValue = userData.IDClient;
+                                    const idStartIndex = userData.indexOf('"IDClient":') + '"IDClient":'.length;
+                                    const idEndIndex = userData.indexOf(',', idStartIndex) !== -1 ? userData.indexOf(',', idStartIndex) : userData.indexOf('}', idStartIndex);
+                                    const idValue = userData.substring(idStartIndex, idEndIndex);
+                                    
+                                    // Trim any whitespace that might be present
+                                    const trimmedIDValue = idValue.trim();
+                                    
+                                    // Use the trimmedIDValue as needed
                                     var newCommandData = {
-                                        IDClient: idValue,
+                                        IDClient: trimmedIDValue,
                                         NuméroInterneCommande: generateUniqueNumber(),
                                         DateCommande: getCurrentDate(),
-                                        TotalTTC: totalprice,
-                                        
+                                        TotalTTC: totalprice
                                     };
 
                                     var commandApiUrl = 'https://api.alaindata.com/foodplace41/Commande';
