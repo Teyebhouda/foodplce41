@@ -241,30 +241,37 @@ function rtl_slick() {
 
 function addtocart() {
     var item_id = $("#menu_name").val();
-    var item=$("#item_id").val();
+    var item = $("#item_id").val();
     var qty = $("#number").val();
     var price = $('#origin_price').val();
-    var favorite = [];
+    var ingredients = [];
+    
+    // Collecting values from checkboxes
     $.each($("input[name='interdient']:checked"), function () {
-        favorite.push($(this).val());
+        ingredients.push($(this).val());
     });
-    var totalint = favorite.toString();
+
+    // Collecting value from selected radio buttons per family
+    $('input[type="radio"]:checked').each(function () {
+        ingredients.push($(this).val());
+    });
+
+    var totalIngredients = ingredients.toString();
+
     $.ajax({
         url: $("#path_site").val() + "/addcartitem",
         method: "GET",
         data: {
             id: item_id,
             qty: qty,
-            totalint: totalint,
+            totalint: totalIngredients,
             price: price
         },
         success: function (data) {
-
             document.getElementById("totalcart").innerHTML = data;
             window.location.href = $("#path_site").val() + "/detailitem" + '/' + item;
         }
     });
-
 }
 
 function increaseValue() {
