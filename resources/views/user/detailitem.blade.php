@@ -68,18 +68,17 @@
                         <h3>{{__('messages.FI')}}</h3>
                         <form>
                         @php
-            $currentFamille = null; // Initialize variable to track current famille
+            $currentFamille1 = null; // Initialize variable to track current famille
         @endphp
-                           <?php $i=0;?>
-                           @foreach($menu_interdient1 as $mi) @if($mi->type==0 && $mi->familleoption)
-                           
-                           @if($currentFamille != $mi->famille)
+                        @foreach($menu_interdient1 as $mi)
+            @if($mi->type==1 && $mi->famille)
+                @if($currentFamille1 != $mi->familleoption)
                     @php
-                        $currentFamille = $mi->familleoption;
-                        
+                        $currentFamille1 = $mi->familleoption;
                     @endphp
-                    <h4>{{$currentFamille->name}}</h4> {{-- Assuming 'name' is the field for the famille name --}}
+                    <h4>{{$currentFamille1->name}}</h4> {{-- Assuming 'name' is the field for the famille name --}}
                 @endif
+                  
                            <p>
                               <input type="checkbox" id="checkbox-{{$i}}" class="checkbox-custom" name="interdient" value="{{$mi->id}}">
                               <label for="checkbox-{{$i}}" class="checkbox-custom-label">
