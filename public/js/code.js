@@ -887,7 +887,9 @@ function orderplace() {
 function getUserDataFromModel(phone) {
     return new Promise((resolve, reject) => {
         $.ajax({
-            url: $("#path_site").val() + "/getuserphone/" + phone,
+         
+
+            url: $("#path_site").val() + "/getuserphone" + "/" + phone,
             method: "GET",
             data: {
                 phone: phone
