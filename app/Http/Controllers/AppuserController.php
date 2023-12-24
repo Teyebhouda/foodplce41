@@ -333,6 +333,7 @@ class AppuserController extends Controller {
 
    public function getuserphone($phone)
     {
+        dd($phone);
         try {
             // Fetch user data based on the phone number ($cpwd)
             $userData = AppUser::where('phone', $phone)->first();
