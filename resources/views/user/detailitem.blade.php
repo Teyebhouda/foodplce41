@@ -87,7 +87,7 @@
                             @endif
 
                             <p>
-                                <input type="radio" id="checkbox-{{$i}}" class="checkbox-custom" name="interdient" value="{{$mi->id}}">
+                                <input type="radio" id="checkbox-{{$i}}" class="checkbox-custom" name="interdient" value="{{$mi->id}}" {{$i === 0 ? 'checked' : ''}}>
                                 <label for="checkbox-{{$i}}" class="checkbox-custom-label">
                                     {{$mi->item_name}}
                                 </label>
