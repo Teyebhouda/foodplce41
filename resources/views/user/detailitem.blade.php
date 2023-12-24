@@ -88,12 +88,19 @@
                                              <h4>{{$currentFamille->name}}</h4>
                                          @endif
              
-                                         <p>
+                                         <!-- <p>
                                              <input type="radio" id="checkbox-{{$i}}" class="checkbox-custom" name="interdient{{$currentFamilleId}}" value="{{$mi->id}}" {{ $familyCounter === 0 ? 'checked' : '' }}>
                                              <label for="checkbox-{{$i}}" class="checkbox-custom-label">
                                                  {{$mi->item_name}}
                                              </label>
-                                         </p>
+                                         </p> -->
+                                         <p>
+                                <input type="checkbox" id="checkbox-{{$i}}" class="checkbox-custom" name="interdient" value="{{$mi->id}}" >
+                                <label for="checkbox-{{$i}}" class="checkbox-custom-label">
+                                    {{$mi->item_name}} 
+                                </label>
+                            </p>
+
                                          <?php $i++; $familyCounter++; ?>
                                      @endif
                                  @endforeach
