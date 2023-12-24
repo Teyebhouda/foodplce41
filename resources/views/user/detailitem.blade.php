@@ -87,7 +87,7 @@
                             @endif
 
                             <p>
-                                <input type="checkbox" id="checkbox-{{$i}}" class="checkbox-custom" name="interdient" value="{{$mi->id}}">
+                                <input type="radio" id="checkbox-{{$i}}" class="checkbox-custom" name="interdient" value="{{$mi->id}}">
                                 <label for="checkbox-{{$i}}" class="checkbox-custom-label">
                                     {{$mi->item_name}}
                                 </label>
