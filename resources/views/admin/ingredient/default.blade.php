@@ -33,6 +33,8 @@
                </div>
                @endif
                <button  class="btn btn-primary btn-flat m-b-30 m-t-30" data-toggle="modal" data-target="#myModal">{{__('messages.add')}}  {{__('messages.Ingredients_Item')}}</button>
+               <a href="{{ route('ingredients.Synchronize') }}" class="btn btn-success">
+                  <i data-feather="refresh-cw"></i>Synchroniser les ingredients</a>
                <div class="table-responsive dtdiv">
                   <table id="itemtab" class="table table-striped dttablewidth">
                      <thead>

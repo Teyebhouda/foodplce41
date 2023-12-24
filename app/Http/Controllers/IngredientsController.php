@@ -8,9 +8,12 @@ use Sentinel;
 use Session;
 use DataTables;
 use App\Ingredient;
+use App\Famille;
 use App\Category;
 use App\Item;
 use Hash;
+use GuzzleHttp\Client; 
+
 class IngredientsController extends Controller {
   
     
@@ -110,8 +113,58 @@ class IngredientsController extends Controller {
        return redirect("menuingredients");
     }
 
-
-  
+    public function SynchronizeIngredients()
+    {
+        $apiUrl = env('API_foodplace_URL');
+              
+        $client = new Client();
+    
+        //$response = $client->get($apiUrl . '/LigneFamilleOptions');
+        $response = $client->get('https://api.alaindata.com/foodplace41/LigneFamilleOptions');
+    
+        if ($response->getStatusCode() === 200) {
+            $optionsApi = json_decode($response->getBody(), true);
+    
+            $items = Item::where('is_deleted', '0')->get();
+            $familleOptions = Famille::get();
+    
+            foreach ($items as $item) {
+                foreach ($optionsApi as $option) {
+                    $apiname = $option['designation'];
+                    $apiPrixUni = $option['PrixUni'];
+                   // $apiImage = $option['image'];
+    
+                    foreach ($familleOptions as $familleOption) {
+                        if ($option['IdFamilleOption'] == $familleOption->id) {
+                            // Check if the ingredient already exists
+                            $existingIngredient = Ingredient::where('item_name', $apiname)
+                                ->where('menu_id', $item->id)
+                                ->where('category', $item->categoryitem->id)
+                                ->where('famille', $familleOption->id)
+                                ->first();
+    
+                            if (!$existingIngredient) {
+                                $store = new Ingredient();
+                                $store->item_name = $apiname;
+                                $store->menu_id = $item->id;
+                                $store->category = $item->categoryitem->id;
+                                $store->famille = $familleOption->id;
+    
+                                if ($familleOption->type == "simple") {
+                                    $store->type = 0;
+                                    $store->price = 0.00;
+                                } else {
+                                    $store->type = 1;
+                                    $store->price = number_format($apiPrixUni, 2, ".", ".");
+                                }
+    
+                                $store->save();
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
 }
-
-

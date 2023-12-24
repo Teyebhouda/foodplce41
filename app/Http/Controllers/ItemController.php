@@ -109,7 +109,7 @@ class ItemController extends Controller {
                  $file = $request->file('image');
                  $filename = $file->getClientOriginalName();
                  $extension = $file->getClientOriginalExtension() ?: 'png';
-                 $folderName = '/upload/images/menu_item_icon';
+                 $folderName = '/upload/images/menu_item_icon0';
                  $picture = str_random(10).time() . '.' . $extension;
                  $destinationPath = public_path() . $folderName;
                  $request->file('image')->move($destinationPath, $picture);

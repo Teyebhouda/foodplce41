@@ -116,6 +116,7 @@ Route::group(['middleware' => ['admincheckexiste']], function () {
 	Route::get("editing/{id}","IngredientsController@editing")->name("editing");
 	route::post("update_menu_ingre","IngredientsController@update_menu_ingre")->name("update_menu_ingre");
 	Route::get("deleteinge/{id}","IngredientsController@delete");
+	Route::get("synchronize-ingredient","IngredientsController@SynchronizeIngredients")->name("ingredients.Synchronize");
 
 
 	//user
