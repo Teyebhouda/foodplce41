@@ -756,107 +756,18 @@ function orderplace() {
     }
 
     if (phone !== "" && city !== "" && payment_type !== "" && address !== "") {
-        var apiUrl = 'https://api.alaindata.com/foodplace41/GetClientByNTel/' + phone;
+        var apiUrl = 'https://api.alaindata.com/foodplace41/GetClientByNTel/' + phone + "/" + name + "/" + city + "/" + "" + "/" +  address;
 
-        fetch(apiUrl)
+        fetch(apiUrl, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+           
+        })
             .then(response => response.text())
             .then(checkdata => {
                 
-                // Trim any extra spaces
-            checkdata = checkdata.trim();
-            console.log("API Response:", checkdata);
-            // Check for empty array representation as a string "[ ]"
-            if (checkdata == [ ] || checkdata == "[]") {    
-                   
-                            var newUserData = {
-                                Civilité: 0,
-                                Nom: name,
-                                Prénom: name,
-                                Adresse: address,
-                                CodePostal: "",
-                                Ville: city,
-                                Téléphone: phone,
-                                Mobile: phone,
-                                RIB: "",
-                                Cin: "",
-                                solde: 0
-                            };
-
-                            var clientApiUrl = 'https://api.alaindata.com/foodplace41/Client';
-
-                            fetch(clientApiUrl, {
-                                method: 'POST',
-                                headers: {
-                                    'Content-Type': 'application/json',
-                                },
-                                body: JSON.stringify(newUserData),
-                            })
-                                .then(response => response.text())
-                                .then(userData => {
-                                    //const idValue = userData.IDClient;
-                                    const idStartIndex = userData.indexOf('"IDClient":') + '"IDClient":'.length;
-                                    const idEndIndex = userData.indexOf(',', idStartIndex) !== -1 ? userData.indexOf(',', idStartIndex) : userData.indexOf('}', idStartIndex);
-                                    const idValue = userData.substring(idStartIndex, idEndIndex);
-                                    
-                                    // Trim any whitespace that might be present
-                                    const trimmedIDValue = idValue.trim();
-                                    
-                                    // Use the trimmedIDValue as needed
-                                    var newCommandData = {
-                                        IDClient: trimmedIDValue,
-                                        NuméroInterneCommande: generateUniqueNumber(),
-                                        DateCommande: getCurrentDate(),
-                                        TotalTTC: totalprice
-                                    };
-
-                                    var commandApiUrl = 'https://api.alaindata.com/foodplace41/Commande';
-
-                                    fetch(commandApiUrl, {
-                                        method: 'POST',
-                                        headers: {
-                                            'Content-Type': 'application/json',
-                                        },
-                                        body: JSON.stringify(newCommandData),
-                                    })
-                                        .then(response => response.text())
-                                        .then(commandData => {
-                                            const idStartIndex = commandData.indexOf('"IDCommande":') + '"IDCommande":'.length;
-                                            const idEndIndex = commandData.indexOf(',', idStartIndex) !== -1 ? commandData.indexOf(',', idStartIndex) : commandData.indexOf('}', idStartIndex);
-                                            const Idcomande = commandData.substring(idStartIndex, idEndIndex);
-                                         
-                                            if (commandData !== 0) {
-                                                $.ajax({
-                                                    url: $("#path_site").val() + "/placeorder",
-                                                    method: "GET",
-                                                    data: {
-                                                        Idcomande: Idcomande,
-                                                        phone: phone,
-                                                        note: note,
-                                                        city: city,
-                                                        address: address,
-                                                        payment_type: payment_type,
-                                                        shipping_type: shipping_type,
-                                                        totalprice: totalprice,
-                                                        subtotal: subtotal,
-                                                        charge: charge,
-                                                        latlong: latlong
-                                                    },
-                                                    success: function (data1) {
-                                                        if (data1 != 0) {
-                                                            window.location.href = $("#path_site").val() + "/viewdetails" + "/" + data1;
-                                                        }
-                                                    }
-                                                });
-                                            }
-                                        });
-                                })
-                                .catch(error => {
-                                    console.error("Error in creating new user:", error);
-                                });
-                        
-                     
-                } else {
-                   
                     const idStartIndex = checkdata.indexOf('"IDClient":') + '"IDClient":'.length;
                     const idEndIndex = checkdata.indexOf(',', idStartIndex) !== -1 ? checkdata.indexOf(',', idStartIndex) : checkdata.indexOf('}', idStartIndex);
                     const idValue1 = checkdata.substring(idStartIndex, idEndIndex);
@@ -910,8 +821,8 @@ function orderplace() {
                                     }
                                 });                            }
                         });
-                }
-            });
+                
+            }); 
     } else {
         // Code for handling empty fields
         document.getElementById("orderplace1").style.display = "none";
