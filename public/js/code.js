@@ -761,11 +761,12 @@ function orderplace() {
         fetch(apiUrl)
             .then(response => response.text())
             .then(checkdata => {
-              // Trim any extra spaces
+                
+                // Trim any extra spaces
             checkdata = checkdata.trim();
-
+            console.log("API Response:", checkdata);
             // Check for empty array representation as a string "[ ]"
-            if (checkdata === "[ ]" || checkdata === "[]") {
+            if (checkdata === "[ ]" || checkdata === "[]") {    
                    
                             var newUserData = {
                                 Civilité: 0,
