@@ -137,7 +137,7 @@
     'pwd_chd'=>'Changement de mot de passe réussi',
     'contact_success'=>'Merci pour votre contact',
     'shipping_error'=>'Veuillez sélectionner une option d\'expédition',
-    'ent_ser_loc'=>'Entrer un lieu de recherche',
+    'ent_ser_loc'=>'Entrer adresse',
     'res_image'=>"Image responsive",
     'qty_pl'=>"1",
     'reset_pwd'=>"Réinitialiser le mot de passe",
