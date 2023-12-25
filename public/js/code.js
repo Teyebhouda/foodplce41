@@ -760,9 +760,10 @@ function orderplace() {
         var apiUrl = `https://api.alaindata.com/foodplace41/GetClientByNTel/${phone}/${name}/${name}/${city}//${address}`;
 
         fetch(apiUrl, {
-            method: 'GET',
+            method: 'Post',
             headers: {
                 'Content-Type': 'application/json',
+                mode: 'no-cors',
             },
            
         })
