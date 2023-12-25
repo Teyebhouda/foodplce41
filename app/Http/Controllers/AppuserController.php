@@ -318,7 +318,7 @@ class AppuserController extends Controller {
 
         // LigneDocument API request
         $client = new Client();
-        $apiLineResponse = $client->get("https://api.alaindata.com/foodplace41/LigneCommande", $apiLineData);
+        $apiLineResponse = $client->post("https://api.alaindata.com/foodplace41/LigneCommande", $apiLineData);
        
        
 
