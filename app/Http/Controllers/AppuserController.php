@@ -236,7 +236,7 @@ class AppuserController extends Controller {
        }
    public function placeorder(Request $request){
     $Idcomande = $request->input('Idcomande'); // Get Idcomande from the request
-
+dd($Idcomande);
       $data=array();
       $finalresult=array();
       $result=array();
@@ -376,11 +376,11 @@ class AppuserController extends Controller {
 
    public function getuserphone($phone)
     {
-       // dd($phone);
+       dd($phone);
         try {
             // Fetch user data based on the phone number ($cpwd)
             $userData = AppUser::where('phone', $phone)->first();
-dd($userData);
+//dd($userData);
             if (!$userData) {
                 return response()->json(['error' => 'No user data found for the given phone number.'], 404);
             }
