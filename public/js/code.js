@@ -776,17 +776,16 @@ function orderplace() {
             solde: 0
         };
 
-
-        var apiUrl = `https://api.alaindata.com/foodplace41/GetClientByNTel`;
+        var apiUrl = 'https://api.alaindata.com/foodplace41/GetClientByNTel';
 
         fetch(apiUrl, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                mode: 'no-cors',
             },
-            body: JSON.stringify(newUserData),
+            body: JSON.stringify(newCommandData),
         })
+       
             .then(response => response.text())
             .then(checkdata => {
                 
