@@ -650,8 +650,8 @@ function changebutton(val) {
             }
 
             if (shipping_type == 0 && $("#address_or").val() == "") {
-                $("#order_payment_type_4").prop("checked", false);
-                alert("{{__('messages.required_field')}}");
+               /* $("#order_payment_type_4").prop("checked", false);
+                alert("{{__('messages.required_field')}}"); */
             } else {
                 document.getElementById("orderplace1").style.display = "none";
                 document.getElementById("orderplacestrip").style.display = "block";
