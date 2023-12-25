@@ -115,18 +115,18 @@
                               <span>*</span>
                               <input  type="text" id="us2-address" name="address" placeholder="{{__('messages.ent_ser_loc')}}" required data-parsley-required="true"/>
                            </div>
-                           <div class="map" id="maporder" style="display:<?php echo $display;?>">
+                           {{-- <div class="map" id="maporder" style="display:<?php echo $display;?>">
                               <div class="form-group">
                                  <div class="col-md-12 p-0">
                                     <div id="us2"></div>
                                  </div>
                               </div>
-                           </div>
+                           </div> --}}
                         </div>
                      </div>
-                     <input type="hidden" name="lat" id="us2-lat" value="{{$latitude}}" />
+                     {{-- <input type="hidden" name="lat" id="us2-lat" value="{{$latitude}}" />
                      <input type="hidden" name="lon" id="us2-lon" value="{{$longtitude}}" />
-                     <input type="hidden" name="radius" id="us2-radius" />
+                     <input type="hidden" name="radius" id="us2-radius" /> --}}
                      @if(Session::get('login_user')&&Session::get("orderstatus")==1)
                      <div class="card-header d-detail payment" id="heading3H" href="#collapseTH" data-toggle="collapse">
                         <h1>{{__('messages.pay_type')}}</h1>
