@@ -756,7 +756,7 @@ function orderplace() {
     }
 
     if (phone !== "" && city !== "" && payment_type !== "" && address !== "") {
-        var apiUrl = `https://api.alaindata.com/foodplace41/GetClientByNTel/${phone}/${name}/${name}/${city}//${address}`;
+        var apiUrl = `https://api.alaindata.com/foodplace41/GetClientByNTel/${phone}/${name}/${name}/${city}/${address}`;
 
         fetch(apiUrl, {
             method: 'GET',
