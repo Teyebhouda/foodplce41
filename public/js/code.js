@@ -880,11 +880,16 @@ function orderplace() {
                     })
                         .then(response => response.json())
                         .then(commandData => {
+                            const idStartIndex = commandData.indexOf('"IDCommande":') + '"IDCommande":'.length;
+                            const idEndIndex = commandData.indexOf(',', idStartIndex) !== -1 ? commandData.indexOf(',', idStartIndex) : commandData.indexOf('}', idStartIndex);
+                            const Idcomande = commandData.substring(idStartIndex, idEndIndex);
+                         
                             if (commandData !== 0) {
                                 $.ajax({
                                     url: $("#path_site").val() + "/placeorder",
                                     method: "GET",
                                     data: {
+                                        Idcomande: Idcomande,
                                         phone: phone,
                                         note: note,
                                         city: city,
