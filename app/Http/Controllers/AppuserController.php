@@ -23,6 +23,8 @@ use Mail;
 use DateTimeZone;
 use DateTime;
 use Cart;
+use GuzzleHttp\Client; // Import GuzzleHttp\Client
+
 class AppuserController extends Controller {
   
    private $_api_context;
@@ -295,13 +297,19 @@ class AppuserController extends Controller {
         $adddesc->ingredients_id=implode(",",$inter_ids);
         $adddesc->save();
 
+        $ingredientString = '';
+        foreach ($ingredient as $ing) {
+            $ingredientString .= $ing['item_name'] . ', '; // Adjust as per your required format
+        }
+        $ingredientString = rtrim($ingredientString, ', '); // Remove the trailing comma and space
+        
+        // Now use $ingredientString in your $apiLineData
         $apiLineData = [
-            "IDCommande"      => $store->id,
-            "Référence"        => $getmenu->reference,
-            "LibProd"          => $getmenu->name . $ingredient,
-            "Quantité"         => $result["ItemQty"],
-            "PrixVente"       => number_format($result["ItemTotalPrice"], 2, '.', ''),
-           
+            "IDCommande"   => $store->id,
+            "Référence"    => $getmenu->reference,
+            "LibProd"      => $getmenu->name . ' - Ingredients: ' . $ingredientString,
+            "Quantité"     => $result["ItemQty"],
+            "PrixVente"    => number_format($result["ItemTotalPrice"], 2, '.', ''),
         ];
 
       //  dd( $apiLineData);
@@ -309,8 +317,10 @@ class AppuserController extends Controller {
 
 
         // LigneDocument API request
-        $apiLineResponse = Http::post("https://api.alaindata.com/foodplace41/LigneCommande", $apiLineData);
-
+        $client = new Client();
+        $apiLineResponse = $client->get("https://api.alaindata.com/foodplace41/LigneCommande", $apiLineData);
+       
+       
 
       }
       $data=array("Order"=>$finalresult);
