@@ -762,7 +762,7 @@ function orderplace() {
             .then(response => response.text())
             .then(checkdata => {
                 console.log("API Response:", checkdata.length);
-                if ((Array.isArray(checkdata) && checkdata.length === 0 ) || checkdata === "[ ]"  ) {
+                if ((Array.isArray(checkdata) && checkdata.length === 4 ) || checkdata === "[ ]"  ) {
                    
                    
                             var newUserData = {
