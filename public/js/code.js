@@ -768,7 +768,7 @@ function orderplace() {
         var apiUrl = `https://api.alaindata.com/foodplace41/GetClientByNTel`;
 
         fetch(apiUrl, {
-            method: 'GET',
+            method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
