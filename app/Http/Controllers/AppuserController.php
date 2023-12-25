@@ -294,6 +294,24 @@ class AppuserController extends Controller {
         $adddesc->item_amt=$result["ItemAmt"];
         $adddesc->ingredients_id=implode(",",$inter_ids);
         $adddesc->save();
+
+        $apiLineData = [
+            "IDCommande"      => $store->id,
+            "Référence"        => $getmenu->reference,
+            "LibProd"          => $getmenu->name . $ingredient,
+            "Quantité"         => $result["ItemQty"],
+            "PrixVente"       => number_format($result["ItemTotalPrice"], 2, '.', ''),
+           
+        ];
+
+      //  dd( $apiLineData);
+
+
+
+        // LigneDocument API request
+        $apiLineResponse = Http::post("https://api.alaindata.com/foodplace41/LigneCommande", $apiLineData);
+
+
       }
       $data=array("Order"=>$finalresult);
       $addresponse=new FoodOrder();
