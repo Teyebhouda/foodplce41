@@ -318,8 +318,21 @@ class AppuserController extends Controller {
 
         // LigneDocument API request
         $client = new Client();
-        $apiLineResponse = $client->post("https://api.alaindata.com/foodplace41/LigneCommande", $apiLineData);
-       
+        try {
+            // Make a POST request with the appropriate headers and JSON-encoded data
+            $apiLineResponse = $client->post("https://api.alaindata.com/foodplace41/LigneCommande", [
+                'headers' => [
+                    'Content-Type' => 'application/json', // Set the Content-Type header
+                ],
+                'json' => $apiLineData, // JSON-encode the data
+            ]);
+        
+            // Handle the response here
+        } catch (\GuzzleHttp\Exception\RequestException $e) {
+            // Handle exceptions, log errors, etc.
+            // Log an error if an exception occurs during the request
+            error_log("API request error: " . $e->getMessage());
+        }
        
 
       }
