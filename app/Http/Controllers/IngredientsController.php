@@ -134,7 +134,7 @@ class IngredientsController extends Controller {
             'SIGNATURE' => [ 'BOISSONS'],
             'TEX MEX' => [ 'BOISSONS'],
             'MENU ENFANT' => ['LEGUMES', 'BOISSONS'],
-            '1ER PIZZA' => ['SUUPLIMENTS PIZZA','SUPPLIMENTS VIANDES PLATS', 'BOISSONS']
+            '1ER PIZZA' => ['SUUPLIMENTS PIZZA','SUPPLIMENTS VIANDES PLATS', 'BOISSONS', 'PROMOTION PIZZA']
         ];
 
         $items = Item::where('is_deleted', '0')->get();

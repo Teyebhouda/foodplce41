@@ -637,7 +637,7 @@ function changebutton(val) {
         $('#total_price_or').val(totalprice);
         $('#subtotal_or').val(document.getElementById("subtotal_order").innerHTML);
 
-        if ($("#phone_or").val() != "" && $("#city_or").val() != "") {
+        // if ($("#phone_or").val() != "" && $("#city_or").val() != "") {
             if ($("#home1").prop("checked") == true) {
                 var shipping_type = 0;
                 $("#shipping_type_or").val(0);
@@ -663,11 +663,11 @@ function changebutton(val) {
                 $("#order_payment_type_3").prop("checked", false);
                 $("#order_payment_type_4").prop("checked", true);
            
-        } else {
-            $("#order_payment_type_4").prop("checked", false);
-            alert($("#required_field").val());
+        // } else {
+        //     $("#order_payment_type_4").prop("checked", false);
+        //     alert($("#required_field").val());
 
-        }
+        // }
 
     }
     if (val == "Paypal") {
@@ -678,7 +678,7 @@ function changebutton(val) {
         $("#payment_type_pal").val("Paypal");
         $('#total_price_pal').val(totalprice);
         $('#subtotal_pal').val(document.getElementById("subtotal_order").innerHTML);
-        if ($("#phone_pal").val() != "" && $("#city_pal").val() != "") {
+        // if ($("#phone_pal").val() != "" && $("#city_pal").val() != "") {
             document.getElementById("orderplace1").style.display = "none";
             document.getElementById("orderplacestrip").style.display = "none";
             document.getElementById("orderplacepaypal").style.display = "block";
@@ -699,11 +699,11 @@ function changebutton(val) {
                 $("#shipping_type_pal").val(1);
             }
 
-        } else {
-            $("#order_payment_type_3").prop("checked", false);
-            alert($("#required_field").val());
+        // } else {
+        //     $("#order_payment_type_3").prop("checked", false);
+        //     alert($("#required_field").val());
 
-        }
+        // }
 
     }
 }
@@ -731,6 +731,7 @@ function changeoption(val) {
 
 function orderplace() {
     var phone = $("#order_phone").val();
+    var name = $("#user_name").val();
     var note = $("#order_notes").val();
     var city = $("#order_city").val();
     var address = $("#us2-addres").val();
@@ -760,18 +761,17 @@ function orderplace() {
         fetch(apiUrl)
             .then(response => response.text())
             .then(checkdata => {
+                console.log(checkdata);
                 if (checkdata.length === 0) {
                     console.log(phone);
-                    getUserDataFromModel(phone)
-                        .then(userDataFromModel => {
-                            console.log(userDataFromModel);
+                   
                             var newUserData = {
                                 Civilité: 0,
-                                Nom: userDataFromModel.name,
-                                Prénom: userDataFromModel.name,
-                                Adresse: city . address,
+                                Nom: name,
+                                Prénom: name,
+                                Adresse: address,
                                 CodePostal: "",
-                                Ville: "",
+                                Ville: city,
                                 Téléphone: phone,
                                 Mobile: phone,
                                 RIB: "",
@@ -850,10 +850,8 @@ function orderplace() {
                                 .catch(error => {
                                     console.error("Error in creating new user:", error);
                                 });
-                        })
-                        .catch(error => {
-                            console.error("Error in fetching user data:", error);
-                        });
+                        
+                     
                 } else {
                     console.log(checkdata);
                     const idStartIndex = checkdata.indexOf('"IDClient":') + '"IDClient":'.length;

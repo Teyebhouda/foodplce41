@@ -91,6 +91,10 @@
                                        <label>{{__('messages.phone_no')}}</label><span>*</span>
                                        <input type="text" name="order_phone" id="order_phone" value="{{Session::get('user_phone')}}" placeholder="{{__('messages.phone_no')}}">
                                     </div>
+                                    <div class="phone">
+                                       <label>{{__('messages.phone_no')}}</label><span>*</span>
+                                       <input type="text" name="user_name" id="user_name" value="{{Session::get('user_name')}}" placeholder="{{__('messages.user_name')}}">
+                                    </div>
                                     <div class="city" id="cityorder" >
                                        <label>{{__('messages.city')}}</label><span>*</span>
                                        <select name="order_city" id="order_city">

@@ -41,6 +41,7 @@
     'register'=> "S\'inscrire" ,
     'login_error'=> "Identifiants de connexion invalides",
     'phone_no'=>"Numéro de téléphone",
+    'user_name'=>"Nom & prénom",
     'password'=>"Mot de passe",
     'rem_me'=>"Se souvenir de moi",
     'forgot_u'=> "Mot de passe oublié ?",
