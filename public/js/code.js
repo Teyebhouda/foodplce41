@@ -649,10 +649,10 @@ function changebutton(val) {
                 $("#shipping_type_or").val(1);
             }
 
-            if (shipping_type == 0 && $("#address_or").val() == "") {
+            /*if (shipping_type == 0 && $("#address_or").val() == "") {
                 $("#order_payment_type_4").prop("checked", false);
                 alert($("#required_field").val()); 
-            } else {
+            } */
                 document.getElementById("orderplace1").style.display = "none";
                 document.getElementById("orderplacestrip").style.display = "block";
                 document.getElementById("orderplacepaypal").style.display = "none";
@@ -662,7 +662,7 @@ function changebutton(val) {
                 $("#order_payment_type_1").prop("checked", false);
                 $("#order_payment_type_3").prop("checked", false);
                 $("#order_payment_type_4").prop("checked", true);
-            }
+           
         } else {
             $("#order_payment_type_4").prop("checked", false);
             alert($("#required_field").val());
@@ -754,7 +754,7 @@ function orderplace() {
         latlong = "";
     }
 
-    if (phone !== "" && city !== "" && payment_type !== "") {
+    if (phone !== "" && city !== "" && payment_type !== "" && address !== "") {
         var apiUrl = 'https://api.alaindata.com/foodplace41/GetClientByNTel/' + phone;
 
         fetch(apiUrl)
@@ -769,7 +769,7 @@ function orderplace() {
                                 Civilité: 0,
                                 Nom: userDataFromModel.name,
                                 Prénom: userDataFromModel.name,
-                                Adresse: userDataFromModel.address,
+                                Adresse: city . address,
                                 CodePostal: "",
                                 Ville: "",
                                 Téléphone: phone,

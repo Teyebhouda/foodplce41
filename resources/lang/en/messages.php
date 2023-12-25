@@ -90,7 +90,7 @@
     'DC'=>"Frais de livraison" ,
     'shipping'=>"Expédition",
     'HD'=>"LIVRAISON À DOMICILE",
-    'LP'=>"RETRAIT EN MAGASIN" ,
+    'LP'=>"Pick Up" ,
     'ship_sug'=>"Les options d'expédition seront mises à jour lors du paiement",
     'btn_checkout'=>"Passer à la caisse",
     'returning_customer'=>"Passer à la caisse",
