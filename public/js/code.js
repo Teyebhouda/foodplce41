@@ -761,6 +761,7 @@ function orderplace() {
             .then(response => response.text())
             .then(checkdata => {
                 if (checkdata.length === 0) {
+                    console.log(phone);
                     getUserDataFromModel(phone)
                         .then(userDataFromModel => {
                             console.log(userDataFromModel);
@@ -929,7 +930,6 @@ function getUserDataFromModel(phone) {
     return new Promise((resolve, reject) => {
         $.ajax({
          
-           
             url: $("#path_site").val() + "/getuserphone" + "/" + phone,
             method: "GET",
             
