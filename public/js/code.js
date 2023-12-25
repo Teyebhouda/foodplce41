@@ -762,7 +762,7 @@ function orderplace() {
             .then(response => response.text())
             .then(checkdata => {
                 console.log(checkdata);
-                if (checkdata.length === 0) {
+                if (checkdata != []) {
                     console.log(phone);
                    
                             var newUserData = {
