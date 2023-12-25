@@ -783,7 +783,7 @@ function orderplace() {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(newCommandData),
+            body: JSON.stringify(newUserData),
         })
        
             .then(response => response.text())
