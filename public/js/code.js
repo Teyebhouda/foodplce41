@@ -758,8 +758,8 @@ function orderplace() {
 
         fetch(apiUrl)
             .then(response => response.text())
-            .then(data => {
-                if (data.length === 0) {
+            .then(checkdata => {
+                if (checkdata.length === 0) {
                     getUserDataFromModel(phone)
                         .then(userDataFromModel => {
                             console.log(userDataFromModel)
@@ -853,9 +853,9 @@ function orderplace() {
                             console.error("Error in fetching user data:", error);
                         });
                 } else {
-                    const idStartIndex = data.indexOf('"IDClient":') + '"IDClient":'.length;
-                    const idEndIndex = data.indexOf(',', idStartIndex) !== -1 ? data.indexOf(',', idStartIndex) : data.indexOf('}', idStartIndex);
-                    const idValue = data.substring(idStartIndex, idEndIndex);
+                    const idStartIndex = checkdata.indexOf('"IDClient":') + '"IDClient":'.length;
+                    const idEndIndex = checkdata.indexOf(',', idStartIndex) !== -1 ? checkdata.indexOf(',', idStartIndex) : checkdata.indexOf('}', idStartIndex);
+                    const idValue = checkdata.substring(idStartIndex, idEndIndex);
                     
                     //const idValue = data[0].IDClient;
 
