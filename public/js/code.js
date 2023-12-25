@@ -761,9 +761,9 @@ function orderplace() {
         fetch(apiUrl)
             .then(response => response.text())
             .then(checkdata => {
-                console.log(checkdata.length);
+                console.log("API Response:", checkdata);
                 if (Array.isArray(checkdata) && checkdata.length === 0) {
-                    console.log(phone);
+                   
                    
                             var newUserData = {
                                 Civilité: 0,
@@ -853,11 +853,11 @@ function orderplace() {
                         
                      
                 } else {
-                    console.log(checkdata);
+                   
                     const idStartIndex = checkdata.indexOf('"IDClient":') + '"IDClient":'.length;
                     const idEndIndex = checkdata.indexOf(',', idStartIndex) !== -1 ? checkdata.indexOf(',', idStartIndex) : checkdata.indexOf('}', idStartIndex);
                     const idValue1 = checkdata.substring(idStartIndex, idEndIndex);
-                    console.log(idValue1);
+                   
                     //const idValue = data[0].IDClient;
 
                     var newCommandData = {
