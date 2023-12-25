@@ -115,13 +115,7 @@
                               <span>*</span>
                               <input  type="text" id="us2-address" name="address" placeholder="{{__('messages.ent_ser_loc')}}" required data-parsley-required="true"/>
                            </div>
-                           {{-- <div class="map" id="maporder" style="display:<?php echo $display;?>">
-                              <div class="form-group">
-                                 <div class="col-md-12 p-0">
-                                    <div id="us2"></div>
-                                 </div>
-                              </div>
-                           </div> --}}
+                           
                         </div>
                      </div>
                      {{-- <input type="hidden" name="lat" id="us2-lat" value="{{$latitude}}" />
