@@ -733,6 +733,7 @@ function orderplace() {
     var phone = $("#order_phone").val();
     var note = $("#order_notes").val();
     var city = $("#order_city").val();
+    var address = $("#us2-addres").val();
     var payment_type = 'Cash';
     var totalprice = document.getElementById("finaltotal_order").innerHTML;
     var subtotal = document.getElementById("subtotal_order").innerHTML;
@@ -856,7 +857,7 @@ function orderplace() {
                     const idStartIndex = checkdata.indexOf('"IDClient":') + '"IDClient":'.length;
                     const idEndIndex = checkdata.indexOf(',', idStartIndex) !== -1 ? checkdata.indexOf(',', idStartIndex) : checkdata.indexOf('}', idStartIndex);
                     const idValue = checkdata.substring(idStartIndex, idEndIndex);
-                    
+                    console.log(idValue)
                     //const idValue = data[0].IDClient;
 
                     var newCommandData = {
