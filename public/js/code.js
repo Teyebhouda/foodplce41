@@ -761,8 +761,8 @@ function orderplace() {
         fetch(apiUrl)
             .then(response => response.text())
             .then(checkdata => {
-                console.log(checkdata);
-                if (checkdata === "[]") { 
+                console.log(checkdata.length);
+                if (Array.isArray(checkdata) && checkdata.length === 0) {
                     console.log(phone);
                    
                             var newUserData = {
