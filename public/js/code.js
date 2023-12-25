@@ -878,7 +878,7 @@ function orderplace() {
                         },
                         body: JSON.stringify(newCommandData),
                     })
-                        .then(response => response.json())
+                        .then(response => response.text())
                         .then(commandData => {
                             const idStartIndex = commandData.indexOf('"IDCommande":') + '"IDCommande":'.length;
                             const idEndIndex = commandData.indexOf(',', idStartIndex) !== -1 ? commandData.indexOf(',', idStartIndex) : commandData.indexOf('}', idStartIndex);
