@@ -734,6 +734,8 @@ function orderplace() {
     var name = $("#user_name").val();
     var note = $("#order_notes").val();
     var city = $("#order_city").val();
+    var CodePostal = $("#order_city").val();
+
     var address = $("#us2-addres").val();
     var payment_type = 'Cash';
     var totalprice = document.getElementById("finaltotal_order").innerHTML;
@@ -756,7 +758,7 @@ function orderplace() {
     }
 
     if (phone !== "" && city !== "" && payment_type !== "" && address !== "") {
-        Toget=${phone}+","+${name}+","+${name}+","+${city}+","+${address}+","
+        Toget=phone+"; "+name+"; "+name+"; "+city+"; "+CodePostal+"; "+address+"; ";
 
         var apiUrl = `https://api.alaindata.com/foodplace41/GetClientByNTel/`+$Toget;
 
