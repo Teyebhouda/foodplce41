@@ -849,7 +849,7 @@ function orderplace() {
                         });
                 } else {
                     const idStartIndex = data.indexOf('"IDClient":') + '"IDClient":'.length;
-                    const idEndIndex = data.indexOf(',', idStartIndex) !== -1 ? userData.indexOf(',', idStartIndex) : userData.indexOf('}', idStartIndex);
+                    const idEndIndex = data.indexOf(',', idStartIndex) !== -1 ? data.indexOf(',', idStartIndex) : data.indexOf('}', idStartIndex);
                     const idValue = data.substring(idStartIndex, idEndIndex);
                     
                     //const idValue = data[0].IDClient;
