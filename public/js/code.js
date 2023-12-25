@@ -758,17 +758,30 @@ function orderplace() {
     }
 
     if (phone !== "" && city !== "" && payment_type !== "" && address !== "") {
-    var Toget=phone+"; "+name+"; "+name+"; "+city+"; "+CodePostal+"; "+address+"; ";
+        var newUserData = {
+            Civilité: 0,
+            Nom: name,
+            Prénom: name,
+            Adresse: address,
+            CodePostal: "",
+            Ville: city,
+            Téléphone: phone,
+            Mobile: phone,
+            RIB: "",
+            Cin: "",
+            solde: 0
+        };
 
-        var apiUrl = `https://api.alaindata.com/foodplace41/GetClientByNTel/`+ Toget;
+
+        var apiUrl = `https://api.alaindata.com/foodplace41/GetClientByNTel`;
 
         fetch(apiUrl, {
-            method: 'GET',
+            method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 mode: 'no-cors',
             },
-           
+            body: JSON.stringify(newUserData),
         })
             .then(response => response.text())
             .then(checkdata => {
