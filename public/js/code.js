@@ -762,7 +762,7 @@ function orderplace() {
             .then(response => response.text())
             .then(checkdata => {
                 console.log(checkdata);
-                if (checkdata != []) {
+                if (checkdata == [  ]) {
                     console.log(phone);
                    
                             var newUserData = {
@@ -924,26 +924,7 @@ function orderplace() {
     }
 }
 
-function getUserDataFromModel(phone) {
-    return new Promise((resolve, reject) => {
-        $.ajax({
-         
-            url: $("#path_site").val() + "/getuserphone" + "/" + phone,
-            method: "GET",
-            
-            success: function (data1) {
-                if (data1 !== null && data1.length > 0) {
-                    resolve(data1[0]);
-                } else {
-                    reject("No user data found for the given phone number.");
-                }
-            },
-            error: function (xhr, status, error) {
-                reject(error);
-            }
-        });
-    });
-}
+
 
 function generateUniqueNumber() {
     var min = 10000; // Minimum 5-digit number (inclusive)
