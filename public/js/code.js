@@ -763,7 +763,7 @@ function orderplace() {
                 if (checkdata.length === 0) {
                     getUserDataFromModel(phone)
                         .then(userDataFromModel => {
-                            console.log(userDataFromModel)
+                            console.log(userDataFromModel);
                             var newUserData = {
                                 Civilité: 0,
                                 Nom: userDataFromModel.name,
@@ -816,7 +816,7 @@ function orderplace() {
                                     })
                                         .then(response => response.text())
                                         .then(commandData => {
-                                            const idStartIndex = commandData.indexOf('"IDClient":') + '"IDClient":'.length;
+                                            const idStartIndex = commandData.indexOf('"IDCommande":') + '"IDCommande":'.length;
                                             const idEndIndex = commandData.indexOf(',', idStartIndex) !== -1 ? commandData.indexOf(',', idStartIndex) : commandData.indexOf('}', idStartIndex);
                                             const Idcomande = commandData.substring(idStartIndex, idEndIndex);
                                          
@@ -854,14 +854,15 @@ function orderplace() {
                             console.error("Error in fetching user data:", error);
                         });
                 } else {
+                    console.log(checkdata);
                     const idStartIndex = checkdata.indexOf('"IDClient":') + '"IDClient":'.length;
                     const idEndIndex = checkdata.indexOf(',', idStartIndex) !== -1 ? checkdata.indexOf(',', idStartIndex) : checkdata.indexOf('}', idStartIndex);
-                    const idValue = checkdata.substring(idStartIndex, idEndIndex);
-                    console.log(idValue)
+                    const idValue1 = checkdata.substring(idStartIndex, idEndIndex);
+                    console.log(idValue1);
                     //const idValue = data[0].IDClient;
 
                     var newCommandData = {
-                        IDClient: idValue,
+                        IDClient: idValue1,
                         NuméroInterneCommande: generateUniqueNumber(),
                         DateCommande: getCurrentDate(),
                         TotalTTC: totalprice,
