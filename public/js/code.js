@@ -813,14 +813,18 @@ function orderplace() {
                                         },
                                         body: JSON.stringify(newCommandData),
                                     })
-                                        .then(response => response.json())
+                                        .then(response => response.text())
                                         .then(commandData => {
+                                            const idStartIndex = commandData.indexOf('"IDClient":') + '"IDClient":'.length;
+                                            const idEndIndex = commandData.indexOf(',', idStartIndex) !== -1 ? commandData.indexOf(',', idStartIndex) : commandData.indexOf('}', idStartIndex);
+                                            const Idcomande = commandData.substring(idStartIndex, idEndIndex);
+                                         
                                             if (commandData !== 0) {
                                                 $.ajax({
                                                     url: $("#path_site").val() + "/placeorder",
                                                     method: "GET",
                                                     data: {
-                                                        Idcomande: commandData.Idcomande,
+                                                        Idcomande: Idcomande,
                                                         phone: phone,
                                                         note: note,
                                                         city: city,
