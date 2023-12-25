@@ -758,10 +758,14 @@ function orderplace() {
     }
 
     if (phone !== "" && city !== "" && payment_type !== "" && address !== "") {
+        var nameParts = name.split(" ");
+        var firstName = nameParts[0]; // First part is the first name
+        var lastName = nameParts.slice(1).join(" "); // Rest is the last name (if any)
+    
         var newUserData = {
             Civilité: 0,
-            Nom: name,
-            Prénom: name,
+            Nom: firstName,
+            Prénom: lastName,
             Adresse: address,
             CodePostal: "",
             Ville: city,
