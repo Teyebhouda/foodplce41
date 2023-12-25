@@ -820,6 +820,7 @@ function orderplace() {
                                                     url: $("#path_site").val() + "/placeorder",
                                                     method: "GET",
                                                     data: {
+                                                        Idcomande: commandData.Idcomande,
                                                         phone: phone,
                                                         note: note,
                                                         city: city,

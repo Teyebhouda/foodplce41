@@ -235,6 +235,8 @@ class AppuserController extends Controller {
               }
        }
    public function placeorder(Request $request){
+    $Idcomande = $request->input('Idcomande'); // Get Idcomande from the request
+
       $data=array();
       $finalresult=array();
       $result=array();
@@ -305,9 +307,9 @@ class AppuserController extends Controller {
         
         // Now use $ingredientString in your $apiLineData
         $apiLineData = [
-            "IDCommande"   => $store->id,
+            "IDCommande"   => $Idcomande,//here insert commande id
             "Référence"    => $getmenu->reference,
-            "LibProd"      => $getmenu->name . ' - Ingredients: ' . $ingredientString,
+            "LibProd"      => $getmenu->menu_name . ' - Ingredients: ' . $ingredientString,
             "Quantité"     => $result["ItemQty"],
             "PrixVente"    => number_format($result["ItemTotalPrice"], 2, '.', ''),
         ];
