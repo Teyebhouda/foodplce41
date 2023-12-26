@@ -317,18 +317,82 @@ class PaypalController extends Controller
                       $addresponse->desc=json_encode($data);
                       $addresponse->save();
                       
+//api handle ///////
+
+
+$ingredientString = '';
+foreach ($ingredient as $ing) {
+    $ingredientString .= $ing['item_name'] . ', '; // Adjust as per your required format
+}
+$ingredientString = rtrim($ingredientString, ', '); // Remove the trailing comma and space
+
+// Now use $ingredientString in your $apiLineData
+$apiLineData = [
+    "IDCommande"   => $apiLinecmd['IDCommande'],//here insert commande id
+    "Référence"    => $getmenu->reference,
+    "LibProd"      => $getmenu->menu_name . ' - Ingredients: ' . $ingredientString,
+    "Quantité"     => $result["ItemQty"],
+    "PrixVente"    => number_format($result["ItemTotalPrice"], 2, '.', ''),
+];
+
+//  dd( $apiLineData);
+
+
+
+// LigneDocument API request
+$client = new Client();
+try {
+    // Make a POST request with the appropriate headers and JSON-encoded data
+    $apiclientResponse = $client->post("https://api.alaindata.com/foodplace41/LigneCommande", [
+        'headers' => [
+            'Content-Type' => 'application/json', // Set the Content-Type header
+        ],
+        'json' => $apiLineData, // JSON-encode the data
+    ]);
+
+    // Handle the response here
+} catch (\GuzzleHttp\Exception\RequestException $e) {
+    // Handle exceptions, log errors, etc.
+    // Log an error if an exception occurs during the request
+    error_log("API request error: " . $e->getMessage());
+}
+
+
+
+
                 break;
             }
         }
-
+        if($store->shipping_type == 1){$shippingtype = "a domicile"; }else{$shippingtype = "pickup";}
+        $apiLineData = [
+          "IDCommande"   => $apiLinecmd['IDCommande'],//here insert commande id
+          "Référence"    => $getmenu->reference,
+          "LibProd" => "Transport Marchandise :"  . $shippingtype,
+          "Quantité"     => $result["ItemQty"],
+          "PrixVente"    => number_format($result["ItemTotalPrice"], 2, '.', ''),
+      ];
+  
+    
+    
+     
+          // Make a POST request with the appropriate headers and JSON-encoded data
+          $apiclientResponse = $client->post("https://api.alaindata.com/foodplace41/LigneCommande", [
+              'headers' => [
+                  'Content-Type' => 'application/json', // Set the Content-Type header
+              ],
+              'json' => $apiLineData, // JSON-encode the data
+          ]);
+      
+          // Handle the response here
     
         Session::put('paypal_payment_id', $payment->getId());
+        Session::put('IdCommande', $apiLinecmd['IDCommande']);
 
         if(isset($redirect_url)) {
      
             return Redirect::away($redirect_url);
         }
-         $order=Order::where("pay_pal_paymentId",$payment_id)->first();
+         $order=Order::where("pay_pal_paymentId",$payment->getId())->first();
          if(count($order)!=0){
             $order->delete();
          }
@@ -341,17 +405,52 @@ class PaypalController extends Controller
     {
 
 
-      
+        $client = new Client();
         $payment_id = Session::get('paypal_payment_id');
-      
+      $commandeid = Session::get('IdCommande');
         if (empty($request->get('PayerID')) || empty($request->get('token'))) {
             \Session::put('error','Payment failed');
              $order=Order::where("pay_pal_paymentId",$payment_id)->first();
+
+             $apiLineData = [
+                "IDCommande"   => $commandeid,//here insert commande id
+                "Référence"    => "123",
+                "LibProd" => "Moy Paiement  : Paypal" . "\n" . "NonPayé" ,
+                "Quantité"     => 1,
+                "PrixVente"    => 1,
+            ];
+    
+          
+            
+            try {
+                // Make a POST request with the appropriate headers and JSON-encoded data
+                $apiclientResponse = $client->post("https://api.alaindata.com/foodplace41/LigneCommande", [
+                    'headers' => [
+                        'Content-Type' => 'application/json', // Set the Content-Type header
+                    ],
+                    'json' => $apiLineData, // JSON-encode the data
+                ]);
+            
+                // Handle the response here
+            } catch (\GuzzleHttp\Exception\RequestException $e) {
+                // Handle exceptions, log errors, etc.
+                // Log an error if an exception occurs during the request
+                error_log("API request error: " . $e->getMessage());
+            }
+
+
              if(count($order)!=0){
                 $order->delete();
              }
              Session::flash('message',__('successerr.payment_fail')); 
              Session::flash('alert-class', 'alert-danger');
+
+
+
+
+
+
+
             return redirect('checkout');
         }
         $payment = Payment::get($payment_id, $this->_api_context);
@@ -368,6 +467,31 @@ class PaypalController extends Controller
              Cart::clear();
              Session::flash('message', __('messages.order_success')); 
              Session::flash('alert-class', 'alert-success');
+             $apiLineData = [
+                "IDCommande"   => $commandeid,//here insert commande id
+                "Référence"    => "123",
+                "LibProd" => "Moy Paiement  : Paypal" . "\n" . "Payé" ,
+                "Quantité"     => 1,
+                "PrixVente"    => 1,
+            ];
+    
+          
+            
+            try {
+                // Make a POST request with the appropriate headers and JSON-encoded data
+                $apiclientResponse = $client->post("https://api.alaindata.com/foodplace41/LigneCommande", [
+                    'headers' => [
+                        'Content-Type' => 'application/json', // Set the Content-Type header
+                    ],
+                    'json' => $apiLineData, // JSON-encode the data
+                ]);
+            
+                // Handle the response here
+            } catch (\GuzzleHttp\Exception\RequestException $e) {
+                // Handle exceptions, log errors, etc.
+                // Log an error if an exception occurs during the request
+                error_log("API request error: " . $e->getMessage());
+            }
              return redirect("viewdetails/".$order->id);
         }
          $order=Order::where("pay_pal_paymentId",$payment_id)->first();

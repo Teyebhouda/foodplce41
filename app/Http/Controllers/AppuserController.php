@@ -343,13 +343,12 @@ if($store->shipping_type == 1){$shippingtype = "a domicile" ;}else{$shippingtype
         "IDCommande"   => $apiLineResponse['IDCommande'],//here insert commande id
         "Référence"    => $getmenu->reference,
         "LibProd" => "Transport Marchandise :"  . $shippingtype,
-        "Quantité"     => $result["ItemQty"],
-        "PrixVente"    => number_format($result["ItemTotalPrice"], 2, '.', ''),
+        "Quantité"     => 1,
+                "PrixVente"    => 1,
     ];
 
   
-    $client = new Client();
-    try {
+ 
         // Make a POST request with the appropriate headers and JSON-encoded data
         $apiclientResponse = $client->post("https://api.alaindata.com/foodplace41/LigneCommande", [
             'headers' => [
@@ -359,12 +358,27 @@ if($store->shipping_type == 1){$shippingtype = "a domicile" ;}else{$shippingtype
         ]);
     
         // Handle the response here
-    } catch (\GuzzleHttp\Exception\RequestException $e) {
-        // Handle exceptions, log errors, etc.
-        // Log an error if an exception occurs during the request
-        error_log("API request error: " . $e->getMessage());
-    }
+   
 
+    $apiLineData = [
+        "IDCommande"   => $apiLineResponse['IDCommande'],//here insert commande id
+        "Référence"    => $getmenu->reference,
+        "LibProd" => "Moy Paiement  " . $store->payment_type  ,
+        "Quantité"     => 1,
+         "PrixVente"    => 1,
+    ];
+
+  
+ 
+   
+        // Make a POST request with the appropriate headers and JSON-encoded data
+        $apiclientResponse = $client->post("https://api.alaindata.com/foodplace41/LigneCommande", [
+            'headers' => [
+                'Content-Type' => 'application/json', // Set the Content-Type header
+            ],
+            'json' => $apiLineData, // JSON-encode the data
+        ]);
+   
 
       $data=array("Order"=>$finalresult);
       $addresponse=new FoodOrder();

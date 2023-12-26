@@ -285,8 +285,8 @@ try {
         "IDCommande"   => $apiLinecmd['IDCommande'],//here insert commande id
         "Référence"    => $getmenu->reference,
         "LibProd" => "Transport Marchandise :"  . $shippingtype,
-        "Quantité"     => $result["ItemQty"],
-        "PrixVente"    => number_format($result["ItemTotalPrice"], 2, '.', ''),
+        "Quantité"     => 1,
+        "PrixVente"    => 1,
     ];
 
   
@@ -327,9 +327,9 @@ try {
             $apiLineData = [
                 "IDCommande"   => $apiLinecmd['IDCommande'],//here insert commande id
                 "Référence"    => $getmenu->reference,
-                "LibProd" => "Moy Paiement  " . $request->payment_method . "\n" . "Payé" ,
-                "Quantité"     => $result["ItemQty"],
-                "PrixVente"    => number_format($result["ItemTotalPrice"], 2, '.', ''),
+                "LibProd" => "Moy Paiement  " . $store->payment_type . "\n" . "Payé" ,
+                "Quantité"     => 1,
+                "PrixVente"    => 1,
             ];
     
           
@@ -354,9 +354,9 @@ try {
             $apiLineData = [
                 "IDCommande"   => $apiLinecmd['IDCommande'],//here insert commande id
                 "Référence"    => $getmenu->reference,
-                "LibProd" => "Moy Paiement  " . $request->payment_method . "\n" . "NonPayé" ,
-                "Quantité"     => $result["ItemQty"],
-                "PrixVente"    => number_format($result["ItemTotalPrice"], 2, '.', ''),
+                "LibProd" => "Moy Paiement  " . $store->payment_type . "\n" . "NonPayé" ,
+                "Quantité"     => 1,
+                "PrixVente"    => 1,
             ];
     
           
