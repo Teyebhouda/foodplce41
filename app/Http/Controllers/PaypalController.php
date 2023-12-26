@@ -35,6 +35,7 @@ use PayPal\Api\RedirectUrls;
 use PayPal\Api\ExecutePayment;
 use PayPal\Api\PaymentExecution;
 use PayPal\Api\Transaction;
+use GuzzleHttp\Client; // Import GuzzleHttp\Client
 
 class PaypalController extends Controller
 {
@@ -210,6 +211,72 @@ class PaypalController extends Controller
                       $store->delivery_mode=$store->shipping_type;
                       $store->notify=1;
                       $store->save();
+                      $newUserData =  [
+                        "Civilité" => 0,
+                        "Nom" => $store->name,
+                        "Prénom" => $store->name,
+                        "Adresse" => $store->address,
+                        "CodePostal" => "",
+                        "Ville" => $store->city,
+                        "Téléphone" => $store->phone_no,
+                        "Mobile" => $store->phone_no,
+                        "RIB" => "",
+                        "Cin" => "",
+                        "solde" => 0
+                    ];
+                    $client = new Client();
+                    try {
+                        // Make a POST request with the appropriate headers and JSON-encoded data
+                        $apiLineResponse = $client->post("https://api.alaindata.com/foodplace41/Client", [
+                            'headers' => [
+                                'Content-Type' => 'application/json', // Set the Content-Type header
+                            ],
+                            'json' => $newUserData, // JSON-encode the data
+                        ]);
+                        function generateUniqueNumber() {
+                            $min = 10000; // Minimum 5-digit number (inclusive)
+                            $max = 99999; // Maximum 5-digit number (inclusive)
+                            $randomNumber = mt_rand($min, $max);
+                            return "W" . $randomNumber;
+                        }
+                        
+                        function getCurrentDate() {
+                            return date("Y-m-d"); // Returns current date in YYYY-MM-DD format
+                        }
+                        $idClient = $apiLineResponse['IDClient'];
+                        $newCommandData = [
+                            "IDClient" => $idClient,
+                            "NuméroInterneCommande" => generateUniqueNumber(),
+                            "DateCommande" => getCurrentDate(),
+                            "TotalTTC" => $store->total_price,
+                            // Other command data
+                        ];
+                        $client = new Client();
+                        try {
+                            // Make a POST request with the appropriate headers and JSON-encoded data
+                            $apiLinecmd = $client->post("https://api.alaindata.com/foodplace41/Commande", [
+                                'headers' => [
+                                    'Content-Type' => 'application/json', // Set the Content-Type header
+                                ],
+                                'json' => $newCommandData, // JSON-encode the data
+                            ]);
+                            $store->save();
+                        
+                        } catch (\GuzzleHttp\Exception\RequestException $e) {
+                            // Handle exceptions, log errors, etc.
+                            // Log an error if an exception occurs during the request
+                            error_log("API request error: " . $e->getMessage());
+                        }
+                        
+                    
+                    } catch (\GuzzleHttp\Exception\RequestException $e) {
+                        // Handle exceptions, log errors, etc.
+                        // Log an error if an exception occurs during the request
+                        error_log("API request error: " . $e->getMessage());
+                    }
+                    
+                    
+                    
                       foreach ($cartCollection as $ke) {
                             $getmenu=itemli::where("menu_name",$ke->name)->first();
                            $result['ItemId']=(string)isset($getmenu->id)?$getmenu->id:0;
@@ -311,5 +378,14 @@ class PaypalController extends Controller
              Session::flash('alert-class', 'alert-danger');
             return redirect('checkout');
     }
-
+    function generateUniqueNumber() {
+        $min = 10000; // Minimum 5-digit number (inclusive)
+        $max = 99999; // Maximum 5-digit number (inclusive)
+        $randomNumber = mt_rand($min, $max);
+        return "W" . $randomNumber;
+    }
+    
+    function getCurrentDate() {
+        return date("Y-m-d"); // Returns current date in YYYY-MM-DD format
+    }
 }

@@ -338,6 +338,34 @@ class AppuserController extends Controller {
        
 
       }
+if($store->shipping_type == 1){$shippingtype = "a domicile" ;}else{$shippingtype = "pickup";}
+      $apiLineData = [
+        "IDCommande"   => $apiLineResponse['IDCommande'],//here insert commande id
+        "Référence"    => $getmenu->reference,
+        "LibProd" => "Transport Marchandise :"  . $shippingtype,
+        "Quantité"     => $result["ItemQty"],
+        "PrixVente"    => number_format($result["ItemTotalPrice"], 2, '.', ''),
+    ];
+
+  
+    $client = new Client();
+    try {
+        // Make a POST request with the appropriate headers and JSON-encoded data
+        $apiclientResponse = $client->post("https://api.alaindata.com/foodplace41/LigneCommande", [
+            'headers' => [
+                'Content-Type' => 'application/json', // Set the Content-Type header
+            ],
+            'json' => $apiLineData, // JSON-encode the data
+        ]);
+    
+        // Handle the response here
+    } catch (\GuzzleHttp\Exception\RequestException $e) {
+        // Handle exceptions, log errors, etc.
+        // Log an error if an exception occurs during the request
+        error_log("API request error: " . $e->getMessage());
+    }
+
+
       $data=array("Order"=>$finalresult);
       $addresponse=new FoodOrder();
       $addresponse->order_id=$store->id;
@@ -374,24 +402,7 @@ class AppuserController extends Controller {
    } 
 
 
-   public function getuserphone($phone)
-    {
-      // dd($phone);
-        try {
-            // Fetch user data based on the phone number ($cpwd)
-            $userData = AppUser::where('phone', $phone)->first();
-//dd($userData);
-            if (!$userData) {
-                return response()->json(['error' => 'No user data found for the given phone number.'], 404);
-            }
-
-            return response()->json($userData, 200);
-        } catch (\Exception $e) {
-            // Handle exceptions or errors here
-            return response()->json(['error' => 'Internal server error.'], 500);
-        }
-    }
-   //aaaaa
+  
 }
 
 

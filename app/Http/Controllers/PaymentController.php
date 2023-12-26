@@ -21,6 +21,8 @@ use App\OrderResponse;
 use DateTimeZone;
 use DateTime;
 use App\Ingredient;
+use GuzzleHttp\Client; // Import GuzzleHttp\Client
+
 class PaymentController extends Controller
 {
 	public function stripe(){
@@ -129,7 +131,75 @@ static public function generate_timezone_list(){
       $store->phone_no=  strip_tags(preg_replace('#<script(.*?)>(.*?)</script>#is', '',$request->get("phone_or")));
       $store->delivery_mode=$store->shipping_type;
       $store->notify=1;
-      $store->save();
+    
+// api handle 
+$newUserData =  [
+    "Civilité" => 0,
+    "Nom" => $store->name,
+    "Prénom" => $store->name,
+    "Adresse" => $store->address,
+    "CodePostal" => "",
+    "Ville" => $store->city,
+    "Téléphone" => $store->phone_no,
+    "Mobile" => $store->phone_no,
+    "RIB" => "",
+    "Cin" => "",
+    "solde" => 0
+];
+$client = new Client();
+try {
+    // Make a POST request with the appropriate headers and JSON-encoded data
+    $apiLineResponse = $client->post("https://api.alaindata.com/foodplace41/Client", [
+        'headers' => [
+            'Content-Type' => 'application/json', // Set the Content-Type header
+        ],
+        'json' => $newUserData, // JSON-encode the data
+    ]);
+
+    $idClient = $apiLineResponse['IDClient'];
+    function generateUniqueNumber() {
+        $min = 10000; // Minimum 5-digit number (inclusive)
+        $max = 99999; // Maximum 5-digit number (inclusive)
+        $randomNumber = mt_rand($min, $max);
+        return "W" . $randomNumber;
+    }
+    
+    function getCurrentDate() {
+        return date("Y-m-d"); // Returns current date in YYYY-MM-DD format
+    }
+    $newCommandData = [
+        "IDClient" => $idClient,
+        "NuméroInterneCommande" => generateUniqueNumber(),
+        "DateCommande" => getCurrentDate(),
+        "TotalTTC" => $store->total_price,
+        // Other command data
+    ];
+    $client = new Client();
+    try {
+        // Make a POST request with the appropriate headers and JSON-encoded data
+        $apiLinecmd = $client->post("https://api.alaindata.com/foodplace41/Commande", [
+            'headers' => [
+                'Content-Type' => 'application/json', // Set the Content-Type header
+            ],
+            'json' => $newCommandData, // JSON-encode the data
+        ]);
+        $store->save();
+    
+    } catch (\GuzzleHttp\Exception\RequestException $e) {
+        // Handle exceptions, log errors, etc.
+        // Log an error if an exception occurs during the request
+        error_log("API request error: " . $e->getMessage());
+    }
+    
+
+} catch (\GuzzleHttp\Exception\RequestException $e) {
+    // Handle exceptions, log errors, etc.
+    // Log an error if an exception occurs during the request
+    error_log("API request error: " . $e->getMessage());
+}
+
+
+
       foreach ($cartCollection as $ke) {
            $getmenu=Item::where("menu_name",$ke->name)->first();
            $result['ItemId']=(string)isset($getmenu->id)?$getmenu->id:0;
@@ -163,7 +233,80 @@ static public function generate_timezone_list(){
         $adddesc->item_amt=$result["ItemAmt"];
         $adddesc->ingredients_id=implode(",",$inter_ids);
         $adddesc->save();
+
+//  handle api action 
+
+
+
+
+
+        $ingredientString = '';
+        foreach ($ingredient as $ing) {
+            $ingredientString .= $ing['item_name'] . ', '; // Adjust as per your required format
+        }
+        $ingredientString = rtrim($ingredientString, ', '); // Remove the trailing comma and space
+        
+        // Now use $ingredientString in your $apiLineData
+        $apiLineData = [
+            "IDCommande"   => $apiLinecmd['IDCommande'],//here insert commande id
+            "Référence"    => $getmenu->reference,
+            "LibProd"      => $getmenu->menu_name . ' - Ingredients: ' . $ingredientString,
+            "Quantité"     => $result["ItemQty"],
+            "PrixVente"    => number_format($result["ItemTotalPrice"], 2, '.', ''),
+        ];
+
+      //  dd( $apiLineData);
+
+
+
+        // LigneDocument API request
+        $client = new Client();
+        try {
+            // Make a POST request with the appropriate headers and JSON-encoded data
+            $apiclientResponse = $client->post("https://api.alaindata.com/foodplace41/LigneCommande", [
+                'headers' => [
+                    'Content-Type' => 'application/json', // Set the Content-Type header
+                ],
+                'json' => $apiLineData, // JSON-encode the data
+            ]);
+        
+            // Handle the response here
+        } catch (\GuzzleHttp\Exception\RequestException $e) {
+            // Handle exceptions, log errors, etc.
+            // Log an error if an exception occurs during the request
+            error_log("API request error: " . $e->getMessage());
+        }
+       
+
+
       }
+      if($store->shipping_type == 1){$shippingtype = "a domicile"; }else{$shippingtype = "pickup";}
+      $apiLineData = [
+        "IDCommande"   => $apiLinecmd['IDCommande'],//here insert commande id
+        "Référence"    => $getmenu->reference,
+        "LibProd" => "Transport Marchandise :"  . $shippingtype,
+        "Quantité"     => $result["ItemQty"],
+        "PrixVente"    => number_format($result["ItemTotalPrice"], 2, '.', ''),
+    ];
+
+  
+    $client = new Client();
+    try {
+        // Make a POST request with the appropriate headers and JSON-encoded data
+        $apiclientResponse = $client->post("https://api.alaindata.com/foodplace41/LigneCommande", [
+            'headers' => [
+                'Content-Type' => 'application/json', // Set the Content-Type header
+            ],
+            'json' => $apiLineData, // JSON-encode the data
+        ]);
+    
+        // Handle the response here
+    } catch (\GuzzleHttp\Exception\RequestException $e) {
+        // Handle exceptions, log errors, etc.
+        // Log an error if an exception occurs during the request
+        error_log("API request error: " . $e->getMessage());
+    }
+
       $data=array("Order"=>$finalresult);
       $addresponse=new FoodOrder();
       $addresponse->order_id=$store->id;
@@ -176,10 +319,65 @@ static public function generate_timezone_list(){
                     'description' => "Amount: ".$input['total_price_or'].' - '. $unique_id,
                     'source' => $request->stripeToken,                    
                     'amount' => (int)($input['total_price_or'] * 100), 
-                    'currency' => 'USD'
+                    'currency' => 'EUR'
                 ));
         $data=Order::find($store->id);
         $data->charges_id=$charge->id;
+        if ($charge->status === 'succeeded') {
+            $apiLineData = [
+                "IDCommande"   => $apiLinecmd['IDCommande'],//here insert commande id
+                "Référence"    => $getmenu->reference,
+                "LibProd" => "Moy Paiement  " . $request->payment_method . "\n" . "Payé" ,
+                "Quantité"     => $result["ItemQty"],
+                "PrixVente"    => number_format($result["ItemTotalPrice"], 2, '.', ''),
+            ];
+    
+          
+            $client = new Client();
+            try {
+                // Make a POST request with the appropriate headers and JSON-encoded data
+                $apiclientResponse = $client->post("https://api.alaindata.com/foodplace41/LigneCommande", [
+                    'headers' => [
+                        'Content-Type' => 'application/json', // Set the Content-Type header
+                    ],
+                    'json' => $apiLineData, // JSON-encode the data
+                ]);
+            
+                // Handle the response here
+            } catch (\GuzzleHttp\Exception\RequestException $e) {
+                // Handle exceptions, log errors, etc.
+                // Log an error if an exception occurs during the request
+                error_log("API request error: " . $e->getMessage());
+            }
+            echo "Payment successful!";
+        } else {
+            $apiLineData = [
+                "IDCommande"   => $apiLinecmd['IDCommande'],//here insert commande id
+                "Référence"    => $getmenu->reference,
+                "LibProd" => "Moy Paiement  " . $request->payment_method . "\n" . "NonPayé" ,
+                "Quantité"     => $result["ItemQty"],
+                "PrixVente"    => number_format($result["ItemTotalPrice"], 2, '.', ''),
+            ];
+    
+          
+            $client = new Client();
+            try {
+                // Make a POST request with the appropriate headers and JSON-encoded data
+                $apiclientResponse = $client->post("https://api.alaindata.com/foodplace41/LigneCommande", [
+                    'headers' => [
+                        'Content-Type' => 'application/json', // Set the Content-Type header
+                    ],
+                    'json' => $apiLineData, // JSON-encode the data
+                ]);
+            
+                // Handle the response here
+            } catch (\GuzzleHttp\Exception\RequestException $e) {
+                // Handle exceptions, log errors, etc.
+                // Log an error if an exception occurs during the request
+                error_log("API request error: " . $e->getMessage());
+            }
+            echo "Payment failed or pending.";
+        }
         $data->save();
       Cart::clear();
       Session::flash('message', __('messages.order_success')); 
@@ -188,4 +386,5 @@ static public function generate_timezone_list(){
        
        
     }
+   
 }
