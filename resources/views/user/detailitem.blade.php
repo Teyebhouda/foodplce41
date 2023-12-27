@@ -62,11 +62,11 @@
                <div class="detail-ingredients-heading">
                   <h2>{{__('messages.ingredients')}}</h2>
                </div>
-               <div class="row">
+              
                  
-                  <div class="col-lg-6 col-md-6">
-                     <div class="detail-ingredients-head detail-ingredients-head-1">
-                         <h3>{{__('messages.FI')}}</h3>
+                 
+                     <div class="detail-ingredients-head ">
+                         <!-- <h3>{{__('messages.FI')}}</h3> -->
                          <form>
                              <?php $i = 0; ?>
                              <?php $currentFamilles = collect(); ?>
@@ -106,12 +106,9 @@
                                  @endforeach
                              @endforeach
                          </form>
-                     </div>
-                 </div>
-                 
-    <div class="col-lg-6 col-md-6">
-        <div class="detail-ingredients-head">
-            <h3>{{__('messages.PI')}}</h3>
+                     
+                
+           
             <form>
                 <?php $currentFamilles = collect(); ?>
                 @foreach($menu_interdient1 as $mi)
@@ -143,9 +140,8 @@
                 @endforeach
             </form>
         </div>
-    </div>
-</div>
-</div>
+        </div>
+  
             <div class="detail-plus-button min-add-button">
                <div class="input-group">
                   <a data-decrease>

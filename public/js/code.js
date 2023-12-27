@@ -255,6 +255,9 @@ function addtocart() {
     $.each($("input[type='radio']:checked"), function () {
         ingredients.push($(this).val());
     });
+    if (ingredients.length === 0) {
+        ingredients.push(""); // or you can push any default value to indicate no selection
+    }
 
     var totalIngredients = ingredients.toString();
 

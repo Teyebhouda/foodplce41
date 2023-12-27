@@ -97,21 +97,21 @@
                                     if($order->order_status==0){
                                     	$status=__('messages.Order_Placed');
                                     }
-                                    if($order->order_status==1){
-                                    	$status=__('messages.Order_Placed');
-                                    }
-                                    if($order->order_status==2){
-                                    	$status=__('messages.reject');
-                                    }
-                                    if($order->order_status==3){
-                                    	$status=__('messages.out_of_delivery');
-                                    }
-                                    if($order->order_status==4){
-                                    	$status=__('messages.complete');
-                                    }
-                                    if($order->order_status==5){
-                                    	$status=__('messages.in_pick');
-                                    }
+                                    // if($order->order_status==1){
+                                    // 	$status=__('messages.Order_Placed');
+                                    // }
+                                    // if($order->order_status==2){
+                                    // 	$status=__('messages.reject');
+                                    // }
+                                    // if($order->order_status==3){
+                                    // 	$status=__('messages.out_of_delivery');
+                                    // }
+                                    // if($order->order_status==4){
+                                    // 	$status=__('messages.complete');
+                                    // }
+                                    // if($order->order_status==5){
+                                    // 	$status=__('messages.in_pick');
+                                    // }
                                     ?>
                                  <a href="#">{{$status}}</a>
                               </div>

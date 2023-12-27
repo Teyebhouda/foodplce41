@@ -89,11 +89,11 @@
                                  <form>
                                     <div class="phone">
                                        <label>{{__('messages.phone_no')}}</label><span>*</span>
-                                       <input type="text" name="order_phone" id="order_phone" value="{{Session::get('user_phone')}}" placeholder="{{__('messages.phone_no')}}">
+                                       <input type="text" name="order_phone" id="order_phone" value="{{Session::get('user_phone')}}" placeholder="{{__('messages.phone_no')}}" readonly>
                                     </div>
                                     <div class="phone">
-                                       <label>{{__('messages.phone_no')}}</label><span>*</span>
-                                       <input type="text" name="user_name" id="user_name" value="{{Session::get('user_name')}}" placeholder="{{__('messages.user_name')}}">
+                                       <label>{{__('messages.nom')}}</label><span>*</span>
+                                       <input type="text" name="user_name" id="user_name" value="{{Session::get('user_name')}}" placeholder="{{__('messages.user_name')}}" readonly>
                                     </div>
                                     <div class="city" id="cityorder" >
                                        <label>{{__('messages.city')}}</label><span>*</span>

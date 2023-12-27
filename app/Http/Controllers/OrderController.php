@@ -90,7 +90,7 @@ class OrderController extends Controller {
                $done=url("waitingforpickup",array('id'=>$user->id));
                $return="";
                if($user->order_status==0){//accept,reject,delete
-                  $return = '<a onclick="accept_record(' . "'" . $accept . "'" . ')" rel="tooltip" title="" class="btn btn-sm btn-success btnorder" data-original-title="Remove" >'.__('messages.accept').'</a><a onclick="reject_record(' . "'" . $reject . "'" . ')" rel="tooltip" title="" class="btn btn-sm btn-info" data-original-title btnorder="Remove" style="margin-top: 5px;margin-bottom: 5px;">'.__('messages.reject').'</a><a onclick="delete_record(' . "'" . $delete . "'" . ')" rel="tooltip" title="" class="btn btn-danger btn-md btnorder" data-original-title="Remove">'.__('messages.delete').'</a>';
+               //    $return = '<a onclick="accept_record(' . "'" . $accept . "'" . ')" rel="tooltip" title="" class="btn btn-sm btn-success btnorder" data-original-title="Remove" >'.__('messages.accept').'</a><a onclick="reject_record(' . "'" . $reject . "'" . ')" rel="tooltip" title="" class="btn btn-sm btn-info" data-original-title btnorder="Remove" style="margin-top: 5px;margin-bottom: 5px;">'.__('messages.reject').'</a><a onclick="delete_record(' . "'" . $delete . "'" . ')" rel="tooltip" title="" class="btn btn-danger btn-md btnorder" data-original-title="Remove">'.__('messages.delete').'</a>';
                }
                elseif($user->order_status==1&&$user->delivery_mode=='0'){//assign order
                    $return='<a onclick="assign_order(' . "'" . $user->id . "'" . ')" rel="tooltip" title="" class="btn btn-sm btn-success" data-original-title="Remove" data-toggle="modal" data-target="#assignorder">'.__('messages.assign_order').'</a>';
