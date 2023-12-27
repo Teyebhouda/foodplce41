@@ -80,7 +80,7 @@
     'ingredients'=>"Ingrédients",
     'FI'=>"Gratuits",
     'PI'=>"Payants",
-    'addcart'=>'Ajouter au panier',
+    'addcart'=>'Commander',
     'nocart'=>"Panier vide",
     'realted_pro'=>"Produits connexes",
     'product'=>'Produit',
