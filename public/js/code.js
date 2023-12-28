@@ -883,46 +883,41 @@ function getCurrentDate() {
 
 
 function addprice(price, iqty) {
-    var isChecked = $("#radio-" + iqty).prop("checked");
-    var origin_price = parseFloat($("#origin_price").val());
-    var currentQuantity = parseFloat($('#number').val());
-
-    if (isChecked) {
-        console.log("radio checked");
-        var menu_new_price = origin_price + parseFloat(price);
+    if ($("#checkbox-" + iqty).prop("checked") == true) {
+        console.log("checked");
+        var origin_price = $("#origin_price").val();
+        var menu_new_price = parseFloat(origin_price) + parseFloat(price);
         $("#origin_price").val(menu_new_price.toFixed(2));
-
-        var pricedata = menu_new_price * currentQuantity;
+        var pricedata = menu_new_price * parseFloat($('#number').val());
         document.getElementById("price").innerHTML = pricedata.toFixed(2);
         console.log(menu_new_price);
-    } else {
-        console.log("radio unchecked");
-        // Handle the scenario when the radio button is unchecked, if necessary
-        // For instance, you might reset the price to its initial value or do nothing.
-    }
-}
-function addCheckboxPrice(price, iqty) {
-    var isChecked = $("#checkbox-" + iqty).prop("checked");
-    var origin_price = parseFloat($("#origin_price").val());
-    var currentQuantity = parseFloat($('#number').val());
-
-    if (isChecked) {
-        console.log("checkbox checked");
-        var menu_new_price = origin_price + parseFloat(price);
+    } else if ($("#checkbox-" + iqty).prop("checked") == false) {
+        console.log("unchecked");
+        var origin_price = $("#origin_price").val();
+        var menu_new_price = parseFloat(origin_price) - parseFloat(price);
         $("#origin_price").val(menu_new_price.toFixed(2));
-
-        var pricedata = menu_new_price * currentQuantity;
-        document.getElementById("price").innerHTML = pricedata.toFixed(2);
-        console.log(menu_new_price);
-    } else {
-        console.log("checkbox unchecked");
-        var menu_new_price = origin_price - parseFloat(price);
-        $("#origin_price").val(menu_new_price.toFixed(2));
-
-        var pricedata = menu_new_price * currentQuantity;
+        var pricedata = menu_new_price * parseFloat($('#number').val());
         document.getElementById("price").innerHTML = pricedata.toFixed(2);
         console.log(menu_new_price);
     }
+    $("input[type='radio']:checked").each(function () {
+        var price = $(this).data('price'); // Consider using data attributes to store the price value
+        var origin_price = parseFloat($("#origin_price").val());
+        var currentQuantity = parseFloat($('#number').val());
+        var isChecked = $(this).prop("checked");
+    
+        if (isChecked) {
+            console.log("checked");
+            var menu_new_price = origin_price + parseFloat(price);
+            $("#origin_price").val(menu_new_price.toFixed(2));
+    
+            var pricedata = menu_new_price * currentQuantity;
+            document.getElementById("price").innerHTML = pricedata.toFixed(2);
+            console.log(menu_new_price);
+        }
+    });
+
+
 }
 
 if($('#us2').length){
