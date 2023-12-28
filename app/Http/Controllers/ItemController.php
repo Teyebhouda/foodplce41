@@ -202,10 +202,10 @@ if ($apiPhoto != null) {
 
          foreach($categories as $category){
            
-           // dd($apiFamille);
+            if($apiFamille != "2EME PIZZA" && $apiFamille != "3EME PIZZA"){         // dd($apiFamille);
 if($category->cat_name == $apiFamille )
 { 
-    if($apiFamille != "2EME PIZZA" && $apiFamille != "3EME PIZZA"){
+   
 $productcategory=$category->id;
 }
 }
