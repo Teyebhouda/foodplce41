@@ -915,7 +915,7 @@ $("input[type='radio']").on('change', function() {
         var roundedPrice = Math.round(menu_new_price * 100) / 100; // Round to two decimal places
         $("#origin_price").val(roundedPrice.toFixed(2));
 
-        var pricedata = roundedPrice * currentQuantity;
+        var pricedata = roundedPrice * parseFloat($('#number').val());;
         document.getElementById("price").innerHTML = pricedata.toFixed(2);
         console.log(roundedPrice.toFixed(2));
     }
