@@ -203,7 +203,7 @@ if ($apiPhoto != null) {
          foreach($categories as $category){
             if($apiFamille == "2EME PIZZA"){
 
-                dd($apiFamille);
+                dd($apiFamille, $category->cat_name);
             }
            // dd($apiFamille);
 if($category->cat_name == $apiFamille )
