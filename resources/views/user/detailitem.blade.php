@@ -67,7 +67,7 @@
                  
                      <div class="detail-ingredients-head ">
                          <!-- <h3>{{__('messages.FI')}}</h3> -->
-                         <form>
+                         <form name="form" id="form">
                              <?php $i = 0; ?>
                              <?php $currentFamilles = collect(); ?>
                              @foreach($menu_interdient1 as $mi)
