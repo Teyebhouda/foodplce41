@@ -86,7 +86,7 @@
                                              @php
                                                  $currentFamille = $mi->familleoption;
                                              @endphp
-                                          @if($currentFamille->name == "SUUPLIMENTS PIZZA")
+                                          @if($currentFamille->name === "SUPLIMENTS PIZZA")
                                           <h4>SUPLIMENTS</h4>
                                       @else
                                           <h4>{{$currentFamille->name}}</h4>
