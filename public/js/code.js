@@ -883,26 +883,26 @@ function getCurrentDate() {
 
 
 function addprice(price, iqty) {
-    if ($("#checkbox-" + iqty).prop("checked") == true) {
+    var origin_price = parseFloat($("#origin_price").val());
+    var currentQuantity = parseFloat($('#number').val());
+    var pricedata = origin_price * currentQuantity;
+
+    if ($("#checkbox-" + iqty).prop("checked")) {
         console.log("checked");
-        var origin_price = $("#origin_price").val();
-        var menu_new_price = parseFloat(origin_price) + parseFloat(price);
+        var menu_new_price = origin_price + parseFloat(price);
         $("#origin_price").val(menu_new_price.toFixed(2));
-        var pricedata = menu_new_price * parseFloat($('#number').val());
-        document.getElementById("price").innerHTML = pricedata.toFixed(2);
-        console.log(menu_new_price);
-    } else if ($("#checkbox-" + iqty).prop("checked") == false) {
+        pricedata = menu_new_price * currentQuantity;
+    } else {
         console.log("unchecked");
-        var origin_price = $("#origin_price").val();
-        var menu_new_price = parseFloat(origin_price) - parseFloat(price);
+        var menu_new_price = origin_price - parseFloat(price);
         $("#origin_price").val(menu_new_price.toFixed(2));
-        var pricedata = menu_new_price * parseFloat($('#number').val());
-        document.getElementById("price").innerHTML = pricedata.toFixed(2);
-        console.log(menu_new_price);
+        pricedata = menu_new_price * currentQuantity;
     }
 
-
+    document.getElementById("price").innerHTML = pricedata.toFixed(2);
+    console.log(menu_new_price);
 }
+
 if($('#us2').length){
   $('#us2').locationpicker({
     location: {
