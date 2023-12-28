@@ -362,7 +362,7 @@ if($store->shipping_type == 1){$shippingtype = "a domicile" ;}else{$shippingtype
    
 
     $apiLineData = [
-        "IDCommande"   => $apiLineResponse['IDCommande'],//here insert commande id
+        "IDCommande"   => $IDCommande,//here insert commande id
         "Référence"    => $getmenu->reference,
         "LibProd" => "Moy Paiement  " . $store->payment_type  ,
         "Quantité"     => 1,
