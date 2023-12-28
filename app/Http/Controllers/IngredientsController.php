@@ -166,7 +166,7 @@ class IngredientsController extends Controller {
                                 $store->category = $item->categoryitem->id;
                                 $store->famille = $familleOption->id;
                                 $store->type = $familleOption->type === 'simple' ? 0 : 1;
-                                $store->price = $store->type === 0 ? 0.00 : number_format($apiPrixUni, 2, ".", ".");
+                                $store->price =  number_format($apiPrixUni, 2, ".", ".");
                                 $store->save();
                             }
                         }
