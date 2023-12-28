@@ -89,9 +89,9 @@
                                          @endif
              
                                           <p>
-                                             <input type="radio" id="checkbox-{{$i}}" class="checkbox-custom" name="interdient{{$currentFamilleId}}" value="{{$mi->id}}" {{ $familyCounter === 0 ? 'checked' : '' }}>
+                                             <input type="radio" id="checkbox-{{$i}}" class="checkbox-custom" name="interdient{{$currentFamilleId}}" value="{{$mi->id}}" onchange="addprice('{{$mi->price}}','{{$i}}')" {{ $familyCounter === 0 ? 'checked' : '' }}>
                                              <label for="checkbox-{{$i}}" class="checkbox-custom-label">
-                                                 {{$mi->item_name}}
+                                                 {{$mi->item_name}} ({{$mi->price}} €)
                                              </label>
                                          </p> 
                                          {{-- <p>

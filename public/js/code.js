@@ -877,6 +877,10 @@ function getCurrentDate() {
     var day = String(today.getDate()).padStart(2, '0'); // Pad day with '0'
     return year + "-" + month + "-" + day;
 }
+
+
+
+
 function addprice(price, iqty) {
     if ($("#checkbox-" + iqty).prop("checked") == true) {
         console.log("checked");
