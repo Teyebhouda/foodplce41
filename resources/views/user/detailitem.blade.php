@@ -68,48 +68,44 @@
                      <div class="detail-ingredients-head ">
                          <!-- <h3>{{__('messages.FI')}}</h3> -->
                          <form>
-                           <?php
-                           $currentFamilles = collect();
-                           $i = 0;
-                           ?>
-                       
-                           @foreach($menu_interdient1 as $mi)
-                               @if($mi->familleoption)
-                                   <?php $currentFamilles->put($mi->familleoption->id, $mi->familleoption); ?>
-                               @endif
-                           @endforeach
-                       
-                           @foreach($currentFamilles as $currentFamille)
-                               <?php
-                               $simpleCounter = 0;
-                               $familyCounter = 0;
-                               ?>
-                       
-                               <h4>{{$currentFamille->name}}</h4>
-                       
-                               @foreach($menu_interdient1 as $mi)
-                                   @if($mi->familleoption->id === $currentFamille->id)
-                                       @if($mi->familleoption->type === "simple")
-                                           <p>
-                                               <input type="radio" id="radio-{{$i}}" class="radio-custom" name="interdient{{$currentFamille->id}}" value="{{$mi->id}}" {{ $simpleCounter === 0 ? 'checked' : '' }}>
-                                               <label for="radio-{{$i}}" class="radio-custom-label">
-                                                   {{$mi->item_name}}
-                                               </label>
-                                           </p>
-                                           <?php $simpleCounter++; ?>
-                                       @else
-                                           <p>
-                                               <input type="checkbox" id="checkbox-{{$i}}" class="checkbox-custom" name="interdient[]" value="{{$mi->id}}" onclick="addprice('{{$mi->price}}','{{$i}}')">
-                                               <label for="checkbox-{{$i}}" class="checkbox-custom-label">
-                                                   {{$mi->item_name}} ({{$mi->price}} €)
-                                               </label>
-                                           </p>
-                                       @endif
-                                       <?php $i++; $familyCounter++; ?>
-                                   @endif
-                               @endforeach
-                           @endforeach
-                       </form>
+                             <?php $i = 0; ?>
+                             <?php $currentFamilles = collect(); ?>
+                             @foreach($menu_interdient1 as $mi)
+                                 @if($mi->familleoption)
+                                     <?php $currentFamilles->push($mi->familleoption->id); ?>
+                                 @endif
+                             @endforeach
+             
+                             @foreach($currentFamilles->unique() as $currentFamilleId)
+                                 <?php $currentFamille = null; ?>
+                                 <?php $familyCounter = 0; ?>
+                                 @foreach($menu_interdient1 as $mi)
+                                     @if($mi->type == 0 && $mi->familleoption->type == "simple" && $mi->familleoption->id == $currentFamilleId)
+                                         @if($currentFamille != $mi->familleoption)
+                                             @php
+                                                 $currentFamille = $mi->familleoption;
+                                             @endphp
+                                             <h4>{{$currentFamille->name}}</h4>
+                                         @endif
+             
+                                          <p>
+                                             <input type="radio" id="checkbox-{{$i}}" class="checkbox-custom" name="interdient{{$currentFamilleId}}" value="{{$mi->id}}" {{ $familyCounter === 0 ? 'checked' : '' }}>
+                                             <label for="checkbox-{{$i}}" class="checkbox-custom-label">
+                                                 {{$mi->item_name}}
+                                             </label>
+                                         </p> 
+                                         {{-- <p>
+                                <input type="checkbox" id="checkbox-{{$i}}" class="checkbox-custom" name="interdient" value="{{$mi->id}}" >
+                                <label for="checkbox-{{$i}}" class="checkbox-custom-label">
+                                    {{$mi->item_name}} 
+                                </label>
+                            </p> --}}
+
+                                         <?php $i++; $familyCounter++; ?>
+                                     @endif
+                                 @endforeach
+                             @endforeach
+                         </form>
                      
                 
            
