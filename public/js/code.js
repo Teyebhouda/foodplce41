@@ -850,7 +850,7 @@ function orderplace() {
             }); 
     } else {
         // Code for handling empty fields
-        document.getElementById("orderplace1").style.display = "none";
+        document.getElementById("orderplace1").style.display = "none"
         document.getElementById("orderplacestrip").style.display = "none";
         document.getElementById("orderplacepaypal").style.display = "none";
         $("#pay1").removeClass('activepayment');
@@ -908,6 +908,7 @@ function addprice(price, iqty) {
     
         if (isChecked) {
             console.log("checked");
+            var origin_price = $("#origin_price").val();
             var menu_new_price = origin_price + parseFloat(price);
             $("#origin_price").val(menu_new_price.toFixed(2));
     
