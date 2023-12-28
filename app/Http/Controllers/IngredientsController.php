@@ -140,7 +140,10 @@ class IngredientsController extends Controller {
         $items = Item::where('is_deleted', '0')->get();
 
         foreach ($items as $item) {
-            $catName = $item->categoryitem->cat_name;
+            if (isset($item->categoryitem) && is_object($item->categoryitem)) {
+                $catName = $item->categoryitem->cat_name;
+                // Process $catName or perform actions here
+           
 
             if (isset($categoriesToCheck[$catName])) {
                 $desiredFamilles = $categoriesToCheck[$catName];
@@ -173,6 +176,7 @@ class IngredientsController extends Controller {
                     }
                 }
             }
+        }
         }
 
         Session::flash('alert-class', 'alert-success');
