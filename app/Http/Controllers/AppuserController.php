@@ -266,27 +266,27 @@ class AppuserController extends Controller {
       $store->notify=1;
       $store->save();
       foreach ($cartCollection as $ke) {
-        $getmenu=Item::where("menu_name",$ke->name)->first();
-        $result['ItemId']=(string)isset($getmenu->id)?$getmenu->id:0;
-        $result['ItemName']=(string)$ke->name;
-        $result['ItemQty']=(string)$ke->quantity;
-        $result['ItemAmt']=number_format($ke->price, 2, '.', '');
-        $totalamount=(float)$ke->quantity*(float)$ke->price;
-        $result['ItemTotalPrice']=number_format($totalamount, 2, '.', '');
-        $ingredient=array();
-        $inter_ids=array();
-        foreach ($ke->attributes[0] as $val) {
-                  $ls=array();
-                  $inter=Ingredient::find($val);
-                  $ls['id']=(string)$inter->id;
-                  $inter_ids[]=$inter->id;
-                  $ls['category']=(string)$inter->category;
-                  $ls['item_name']=(string)$inter->item_name;
-                  $ls['type']=(string)$inter->type;
-                  $ls['price']=(string)$inter->price;
-                  $ls['menu_id']=(string)$inter->menu_id;
-                  $ingredient[]=$ls;
-          }
+           $getmenu=Item::where("menu_name",$ke->name)->first();
+           $result['ItemId']=(string)isset($getmenu->id)?$getmenu->id:0;
+           $result['ItemName']=(string)$ke->name;
+           $result['ItemQty']=(string)$ke->quantity;
+           $result['ItemAmt']=(string)$ke->price;
+           $totalamount=(float)$ke->quantity*(float)$ke->price;
+           $result['ItemTotalPrice']=number_format($totalamount, 2, '.', '');
+           $ingredient=array();
+           $inter_ids=array();
+           foreach ($ke->attributes[0] as $val) {
+                     $ls=array();
+                     $inter=Ingredient::find($val);
+                     $ls['id']=(string)$inter->id;
+                     $inter_ids[]=$inter->id;
+                     $ls['category']=(string)$inter->category;
+                     $ls['item_name']=(string)$inter->item_name;
+                     $ls['type']=(string)$inter->type;
+                     $ls['price']=(string)$inter->price;
+                     $ls['menu_id']=(string)$inter->menu_id;
+                     $ingredient[]=$ls;
+             }
 
         $result['Ingredients']=$ingredient;
         $finalresult[]=$result;
