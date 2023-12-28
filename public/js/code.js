@@ -900,48 +900,28 @@ function addprice(price, iqty) {
         document.getElementById("price").innerHTML = pricedata.toFixed(2);
         console.log(menu_new_price);
     }
-   
-    $.each($("input[type='radio']:checked"), function () {
-        var previouslyCheckedPrice = 0; // Initialize previously checked price
-        
-        var price = $(this).data('price');
-        console.log(price);
-        var origin_price = parseFloat($("#origin_price").val());
-        var currentQuantity = parseFloat($('#number').val());
-       
-    
-        var isChecked = $(this).prop("checked");
-    
-       
-            console.log("checked");
-            var parsedPrice = parseFloat(price); // Ensure price is parsed as a float
-            var menu_new_price = origin_price + parsedPrice;
-            var roundedPrice = Math.round(menu_new_price * 100) / 100; // Round to two decimal places
-            $("#origin_price").val(roundedPrice.toFixed(2));
-    
-            var pricedata = roundedPrice * currentQuantity;
-            if (previouslyCheckedPrice !== 0) {
-                // Subtract the previously checked price
-                var parsedPrice = parseFloat(price); // Ensure price is parsed as a float
-            var menu_new_price = origin_price - parsedPrice;
-            var roundedPrice = Math.round(menu_new_price * 100) / 100; // Round to two decimal places
-            $("#origin_price").val(roundedPrice.toFixed(2));
-    
-            var pricedata = roundedPrice * currentQuantity;
-           
-            }
-            document.getElementById("price").innerHTML = pricedata.toFixed(2);
-            console.log(roundedPrice.toFixed(2));
-            previouslyCheckedPrice = parsedPrice; 
-    });  
+   $("input[type='radio']:checked").each(function () {
+    var price = $(this).data('price');
+    console.log(price);
+    var origin_price = parseFloat($("#origin_price").val());
+    var currentQuantity = parseFloat($('#number').val());
+    var isChecked = $(this).prop("checked");
+
+    // if (isChecked) {
+    //     console.log("checked");
+    //     var parsedPrice = parseFloat(price); // Ensure price is parsed as a float
+    //     var menu_new_price = origin_price + parsedPrice;
+    //     var roundedPrice = Math.round(menu_new_price * 100) / 100; // Round to two decimal places
+    //     $("#origin_price").val(roundedPrice.toFixed(2));
+
+    //     var pricedata = roundedPrice * currentQuantity;
+    //     document.getElementById("price").innerHTML = pricedata.toFixed(2);
+    //     console.log(roundedPrice.toFixed(2));
+    // }
+});
+
 
 }
-
-
-
-
-
-
 
 if($('#us2').length){
   $('#us2').locationpicker({
