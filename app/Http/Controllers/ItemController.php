@@ -202,13 +202,18 @@ if ($apiPhoto != null) {
 
          foreach($categories as $category){
            
-                    dd($categories);
+                 //   dd($categories);
 if($category->cat_name == $apiFamille )
 { 
    
 $productcategory=$category->id;
 
 }
+
+else{
+    $productcategory == 0;
+}
+
 //dd($productcategory);
 
          }
