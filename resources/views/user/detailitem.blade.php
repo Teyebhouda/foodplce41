@@ -116,7 +116,7 @@
                         </p>
                                          <?php $i++; $familyCounter++; ?>
                                      @endif
-                                
+                                     @endforeach
                              @endforeach
                          </form>
                      
