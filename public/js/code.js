@@ -906,6 +906,10 @@ function addprice(price, iqty) {
 }
 
 $("input[type='radio']").on('change', function() {
+    var price = $(this).data('price');
+    console.log(price);
+    var origin_price = parseFloat($("#origin_price").val());
+    var currentQuantity = parseFloat($('#number').val());
     var isChecked = $(this).prop("checked");
 
     if (isChecked) {
@@ -915,7 +919,7 @@ $("input[type='radio']").on('change', function() {
         var roundedPrice = Math.round(menu_new_price * 100) / 100; // Round to two decimal places
         $("#origin_price").val(roundedPrice.toFixed(2));
 
-        var pricedata = roundedPrice * parseFloat($('#number').val());;
+        var pricedata = roundedPrice * currentQuantity;
         document.getElementById("price").innerHTML = pricedata.toFixed(2);
         console.log(roundedPrice.toFixed(2));
     }
