@@ -900,14 +900,21 @@ function addprice(price, iqty) {
         document.getElementById("price").innerHTML = pricedata.toFixed(2);
         console.log(menu_new_price);
     }
-    $("#form").each($("input[type='radio']:checked"), function () {
-        var origin_price = $("#origin_price").val();
-        console.log(price);
-        var menu_new_price = parseFloat(origin_price) + parseFloat(price);
-        $("#origin_price").val(menu_new_price.toFixed(2));
-        var pricedata = menu_new_price * parseFloat($('#number').val());
-        document.getElementById("price").innerHTML = pricedata.toFixed(2);
-        console.log(menu_new_price);
+    $("input[type='radio']:checked").each(function () {
+        var price = $(this).data('price'); // Consider using data attributes to store the price value
+        var origin_price = parseFloat($("#origin_price").val());
+        var currentQuantity = parseFloat($('#number').val());
+        var isChecked = $(this).prop("checked");
+    
+        if (isChecked) {
+            console.log("checked");
+            var menu_new_price = origin_price + parseFloat(price);
+            $("#origin_price").val(menu_new_price.toFixed(2));
+    
+            var pricedata = menu_new_price * currentQuantity;
+            document.getElementById("price").innerHTML = pricedata.toFixed(2);
+            console.log(menu_new_price);
+        }
     });
 
 
