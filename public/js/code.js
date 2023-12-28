@@ -902,22 +902,21 @@ function addprice(price, iqty) {
     }
     $("input[type='radio']:checked").each(function () {
         var price = $(this).data('price');
-        console.log(price) ;// Consider using data attributes to store the price value
+        console.log(price);
         var origin_price = parseFloat($("#origin_price").val());
         var currentQuantity = parseFloat($('#number').val());
         var isChecked = $(this).prop("checked");
     
         if (isChecked) {
             console.log("checked");
-            var origin_price = $("#origin_price").val();
-            console.log(origin_price) ;
-            var menu_new_price = origin_price + parseFloat(price);
-            console.log(menu_new_price) ;
-            $("#origin_price").val(menu_new_price.toFixed(2));
+            var parsedPrice = parseFloat(price); // Ensure price is parsed as a float
+            var menu_new_price = origin_price + parsedPrice;
+            var roundedPrice = Math.round(menu_new_price * 100) / 100; // Round to two decimal places
+            $("#origin_price").val(roundedPrice.toFixed(2));
     
-            var pricedata = menu_new_price * currentQuantity;
+            var pricedata = roundedPrice * currentQuantity;
             document.getElementById("price").innerHTML = pricedata.toFixed(2);
-            console.log(menu_new_price);
+            console.log(roundedPrice.toFixed(2));
         }
     });
 
