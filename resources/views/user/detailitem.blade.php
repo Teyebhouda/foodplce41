@@ -80,6 +80,7 @@
                                  <?php $currentFamille = null; ?>
                                  <?php $familyCounter = 0; ?>
                                  @foreach($menu_interdient1 as $mi)
+                                 
                                      @if($mi->type == 0 && $mi->familleoption->type == "simple" && $mi->familleoption->id == $currentFamilleId)
                                          @if($currentFamille != $mi->familleoption)
                                              @php

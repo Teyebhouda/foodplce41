@@ -123,10 +123,10 @@ class IngredientsController extends Controller {
         $optionsApi = json_decode($response->getBody(), true);
 
         $categoriesToCheck = [
-            'BURGERS' => ['SAUCES', 'BOISSONS', 'LEGUMES'],
-            'PANINIS' => ['SAUCES', 'BOISSONS', 'LEGUMES'],
-            'SANDWICHS' => ['SAUCES', 'BOISSONS', 'LEGUMES'],
-            'TACOS' => ['SAUCES', 'VIANDES', 'BOISSONS'],
+            'BURGERS' => ['SUUPLIMENTS PIZZA','SUPPLIMENTS VIANDES PLATS','SAUCES', 'BOISSONS', 'LEGUMES'],
+            'PANINIS' => ['SUUPLIMENTS PIZZA','SUPPLIMENTS VIANDES PLATS','SAUCES', 'BOISSONS', 'LEGUMES'],
+            'SANDWICHS' => ['SUUPLIMENTS PIZZA','SUPPLIMENTS VIANDES PLATS','SAUCES', 'BOISSONS', 'LEGUMES'],
+            'TACOS' => ['SUUPLIMENTS PIZZA','SUPPLIMENTS VIANDES PLATS','SAUCES', 'VIANDES', 'BOISSONS'],
             'SALADES' => ['LEGUMES', 'BOISSONS'],
             'PLATS' => [ 'BOISSONS'],
             'BARQUETTES' => [ 'BOISSONS'],
