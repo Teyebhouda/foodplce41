@@ -260,6 +260,11 @@ class PaypalController extends Controller
                                 ],
                                 'json' => $newCommandData, // JSON-encode the data
                             ]);
+                            $responseData = json_decode($apiLinecmd->getBody(), true);
+
+                            // Access the 'IDCommande' from the decoded response data
+                            $IDCommande = $responseData['IDCommande'];
+                        
                             $store->save();
                         
                         } catch (\GuzzleHttp\Exception\RequestException $e) {
@@ -328,7 +333,7 @@ $ingredientString = rtrim($ingredientString, ', '); // Remove the trailing comma
 
 // Now use $ingredientString in your $apiLineData
 $apiLineData = [
-    "IDCommande"   => $apiLinecmd['IDCommande'],//here insert commande id
+    "IDCommande"   => $IDCommande,//here insert commande id
     "Référence"    => $getmenu->reference,
     "LibProd"      => $getmenu->menu_name . ' - Ingredients: ' . $ingredientString,
     "Quantité"     => $result["ItemQty"],
@@ -365,7 +370,7 @@ try {
         }
         if($store->shipping_type == 1){$shippingtype = "a domicile"; }else{$shippingtype = "pickup";}
         $apiLineData = [
-          "IDCommande"   => $apiLinecmd['IDCommande'],//here insert commande id
+          "IDCommande"   => $IDCommande,//here insert commande id
           "Référence"    => $getmenu->reference,
           "LibProd" => "Transport Marchandise :"  . $shippingtype,
           "Quantité"     => $result["ItemQty"],
@@ -386,7 +391,7 @@ try {
           // Handle the response here
     
         Session::put('paypal_payment_id', $payment->getId());
-        Session::put('IdCommande', $apiLinecmd['IDCommande']);
+        Session::put('IdCommande', $IDCommande);
 
         if(isset($redirect_url)) {
      
@@ -485,6 +490,7 @@ try {
                     ],
                     'json' => $apiLineData, // JSON-encode the data
                 ]);
+                
             
                 // Handle the response here
             } catch (\GuzzleHttp\Exception\RequestException $e) {

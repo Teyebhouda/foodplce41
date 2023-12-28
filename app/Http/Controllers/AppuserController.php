@@ -328,8 +328,7 @@ class AppuserController extends Controller {
                 ],
                 'json' => $apiLineData, // JSON-encode the data
             ]);
-            $responseData = json_decode($apiLineResponse->getBody(), true);
-            $IDCommande = $responseData['IDCommande'];
+        
             // Handle the response here
         } catch (\GuzzleHttp\Exception\RequestException $e) {
             // Handle exceptions, log errors, etc.
@@ -341,7 +340,7 @@ class AppuserController extends Controller {
       }
 if($store->shipping_type == 1){$shippingtype = "a domicile" ;}else{$shippingtype = "pickup";}
       $apiLineData = [
-        "IDCommande"   => $IDCommande,//here insert commande id
+        "IDCommande"   => $Idcomande,//here insert commande id
         "Référence"    => $getmenu->reference,
         "LibProd" => "Transport Marchandise :"  . $shippingtype,
         "Quantité"     => 1,
@@ -362,7 +361,7 @@ if($store->shipping_type == 1){$shippingtype = "a domicile" ;}else{$shippingtype
    
 
     $apiLineData = [
-        "IDCommande"   => $IDCommande,//here insert commande id
+        "IDCommande"   => $Idcomande,//here insert commande id
         "Référence"    => $getmenu->reference,
         "LibProd" => "Moy Paiement  " . $store->payment_type  ,
         "Quantité"     => 1,

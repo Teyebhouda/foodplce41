@@ -183,6 +183,13 @@ try {
             ],
             'json' => $newCommandData, // JSON-encode the data
         ]);
+
+
+        $responseData = json_decode($apiLinecmd->getBody(), true);
+
+        // Access the 'IDCommande' from the decoded response data
+        $IDCommande = $responseData['IDCommande'];
+    
         $store->save();
     
     } catch (\GuzzleHttp\Exception\RequestException $e) {
@@ -248,7 +255,7 @@ try {
         
         // Now use $ingredientString in your $apiLineData
         $apiLineData = [
-            "IDCommande"   => $apiLinecmd['IDCommande'],//here insert commande id
+            "IDCommande"   => $IDCommande,//here insert commande id
             "Référence"    => $getmenu->reference,
             "LibProd"      => $getmenu->menu_name . ' - Ingredients: ' . $ingredientString,
             "Quantité"     => $result["ItemQty"],
@@ -269,7 +276,7 @@ try {
                 ],
                 'json' => $apiLineData, // JSON-encode the data
             ]);
-        
+          
             // Handle the response here
         } catch (\GuzzleHttp\Exception\RequestException $e) {
             // Handle exceptions, log errors, etc.
@@ -282,7 +289,7 @@ try {
       }
       if($store->shipping_type == 1){$shippingtype = "a domicile"; }else{$shippingtype = "pickup";}
       $apiLineData = [
-        "IDCommande"   => $apiLinecmd['IDCommande'],//here insert commande id
+        "IDCommande"   => $IDCommande,//here insert commande id
         "Référence"    => $getmenu->reference,
         "LibProd" => "Transport Marchandise :"  . $shippingtype,
         "Quantité"     => 1,
@@ -325,7 +332,7 @@ try {
         $data->charges_id=$charge->id;
         if ($charge->status === 'succeeded') {
             $apiLineData = [
-                "IDCommande"   => $apiLinecmd['IDCommande'],//here insert commande id
+                "IDCommande"   => $IDCommande,//here insert commande id
                 "Référence"    => $getmenu->reference,
                 "LibProd" => "Moy Paiement  " . $store->payment_type . "\n" . "Payé" ,
                 "Quantité"     => 1,
@@ -352,7 +359,7 @@ try {
             echo "Payment successful!";
         } else {
             $apiLineData = [
-                "IDCommande"   => $apiLinecmd['IDCommande'],//here insert commande id
+                "IDCommande"   => $IDCommande,//here insert commande id
                 "Référence"    => $getmenu->reference,
                 "LibProd" => "Moy Paiement  " . $store->payment_type . "\n" . "NonPayé" ,
                 "Quantité"     => 1,
