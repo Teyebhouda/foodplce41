@@ -882,12 +882,10 @@ function getCurrentDate() {
 
 
 
-function addprice(price, iqty, previousItemPrice) {
+function addprice(price, iqty) {
     if ($("#checkbox-" + iqty).prop("checked") == true) {
         console.log("checked");
         var origin_price = $("#origin_price").val();
-        var menu_new_price = parseFloat(origin_price) - parseFloat(previousItemPrice);
-
         var menu_new_price = parseFloat(origin_price) + parseFloat(price);
         $("#origin_price").val(menu_new_price.toFixed(2));
         var pricedata = menu_new_price * parseFloat($('#number').val());
