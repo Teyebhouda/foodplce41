@@ -87,12 +87,12 @@
                                                  <h4>{{$currentFamille->name}}</h4>
                                              @endif
                                              <p>
-                                                 <input type="radio" id="checkbox-{{$i}}" class="checkbox-custom" name="interdient{{$currentFamilleId}}" value="{{$mi->id}}" {{ $familyCounter === 0 ? 'checked' : '' }}>
+                                                 <input type="radio" id="checkbox-{{$i}}" class="checkbox-custom" name="interdient{{$currentFamilleId}}" value="{{$mi->id}}" {{ $familyCounter === 0 ? 'checked' : '' }} onclick="addprice('{{$mi->price}}','{{$i}}')">
                                                  <label for="checkbox-{{$i}}" class="checkbox-custom-label">
                                                      {{$mi->item_name}}
                                                  </label>
                                              </p> 
-                                             <?php $i++; $familyCounter++; ?>
+                                            
                                          @else
                                              @if($currentFamille != $mi->familleoption)
                                                  @php $currentFamille = $mi->familleoption; @endphp
