@@ -81,7 +81,7 @@
                        
                            @foreach($currentFamilles as $currentFamille)
                                <?php
-                               $simpleFound = false;
+                               $simpleCounter = 0;
                                $familyCounter = 0;
                                ?>
                        
@@ -89,31 +89,23 @@
                        
                                @foreach($menu_interdient1 as $mi)
                                    @if($mi->familleoption->id === $currentFamille->id)
-                                       @if($mi->familleoption->type === "simple" && !$simpleFound)
-                                           <?php $simpleFound = true; ?>
-                       
+                                       @if($mi->familleoption->type === "simple")
                                            <p>
-                                               <input type="radio" id="radio-{{$i}}" class="radio-custom" name="interdient{{$currentFamille->id}}" value="{{$mi->id}}" {{ $familyCounter === 0 ? 'checked' : '' }}>
+                                               <input type="radio" id="radio-{{$i}}" class="radio-custom" name="interdient{{$currentFamille->id}}" value="{{$mi->id}}" {{ $simpleCounter === 0 ? 'checked' : '' }}>
                                                <label for="radio-{{$i}}" class="radio-custom-label">
                                                    {{$mi->item_name}}
                                                </label>
                                            </p>
-                       
-                                           <?php $i++; ?>
-                                       @endif
-                       
-                                       @if($mi->familleoption->type !== "simple")
+                                           <?php $simpleCounter++; ?>
+                                       @else
                                            <p>
                                                <input type="checkbox" id="checkbox-{{$i}}" class="checkbox-custom" name="interdient[]" value="{{$mi->id}}" onclick="addprice('{{$mi->price}}','{{$i}}')">
                                                <label for="checkbox-{{$i}}" class="checkbox-custom-label">
                                                    {{$mi->item_name}} ({{$mi->price}} €)
                                                </label>
                                            </p>
-                       
-                                           <?php $i++; ?>
                                        @endif
-                       
-                                       <?php $familyCounter++; ?>
+                                       <?php $i++; $familyCounter++; ?>
                                    @endif
                                @endforeach
                            @endforeach
