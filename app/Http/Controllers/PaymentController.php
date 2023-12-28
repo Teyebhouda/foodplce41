@@ -155,8 +155,11 @@ try {
         ],
         'json' => $newUserData, // JSON-encode the data
     ]);
+    $responseData = json_decode($apiLineResponse->getBody(), true);
 
-    $idClient = $apiLineResponse['IDClient'];
+    // Access the 'IDCommande' from the decoded response data
+    $idClient = $responseData['IDClient'];
+   
     function generateUniqueNumber() {
         $min = 10000; // Minimum 5-digit number (inclusive)
         $max = 99999; // Maximum 5-digit number (inclusive)
