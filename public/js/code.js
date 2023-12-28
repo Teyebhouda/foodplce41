@@ -902,6 +902,7 @@ function addprice(price, iqty) {
     }
     $.each($("input[type='radio']:checked"), function () {
         var origin_price = $("#origin_price").val();
+        console.log(price);
         var menu_new_price = parseFloat(origin_price) + parseFloat(price);
         $("#origin_price").val(menu_new_price.toFixed(2));
         var pricedata = menu_new_price * parseFloat($('#number').val());
