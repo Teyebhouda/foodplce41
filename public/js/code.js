@@ -761,7 +761,7 @@ function orderplace() {
         latlong = "";
     }
 
-    if (phone !== "" && city !== "" && payment_type !== "" && address !== "") {
+    if (phone !== "" && city !== "" && payment_type !== "" ) {
         var nameParts = name.split(" ");
         var firstName = nameParts[0]; // First part is the first name
         var lastName = nameParts.slice(1).join(" "); // Rest is the last name (if any)

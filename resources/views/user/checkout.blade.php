@@ -117,7 +117,7 @@
                            <div class="col-md-12 p-0" style="display:<?php echo $display;?>" id="addressorder">
                               <label>{{__('messages.search_loc')}}</label>
                               <span>*</span>
-                              <input  type="text" id="us2-address" name="address" placeholder="{{__('messages.ent_ser_loc')}}" required data-parsley-required="true"/>
+                              <input  type="text" id="us2-address" name="address" placeholder="{{__('messages.ent_ser_loc')}}" <?php echo ($shipping == 0 ? 'required' : '');?>/>
                            </div>
                            
                         </div>
