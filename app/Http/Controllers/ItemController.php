@@ -199,24 +199,13 @@ if ($apiPhoto != null) {
 } else {
     $img_url = ''; // Handle the case where no image is present
 }
-
-         foreach($categories as $category){
-           
-                 //   dd($categories);
-if($category->cat_name == $apiFamille )
-{ 
-   
-$productcategory=$category->id;
-
+$productcategory = 0;
+foreach ($categories as $category) {
+    if ($category->cat_name == $apiFamille) {
+        $productcategory = $category->id;
+        break; // Exit the loop once a match is found
+    }
 }
-
-else{
-    $productcategory == 0;
-}
-
-//dd($productcategory);
-
-         }
                 $store=new Item();
                 $store->category=$productcategory;
                 //$store->description=$request->get("description");
