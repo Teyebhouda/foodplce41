@@ -134,7 +134,7 @@
                             @endif
 
                             <p>
-                                <input type="checkbox" id="checkbox-{{$i}}" class="checkbox-custom" name="interdient" value="{{$mi->id}}" onclick="addprice('{{$mi->price}}','{{$i}}')">
+                                <input type="checkbox" id="checkbox-{{$i}}" class="checkbox-custom" name="interdient" value="{{$mi->id}}" onchange="addprice('{{$mi->price}}','{{$i}}')">
                                 <label for="checkbox-{{$i}}" class="checkbox-custom-label">
                                     {{$mi->item_name}} ({{$mi->price}} €)
                                 </label>
