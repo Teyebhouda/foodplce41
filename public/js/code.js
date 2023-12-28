@@ -883,24 +883,33 @@ function getCurrentDate() {
 
 
 function addprice(price, iqty) {
-    var origin_price = parseFloat($("#origin_price").val());
-    var currentQuantity = parseFloat($('#number').val());
-    var pricedata = origin_price * currentQuantity;
-
-    if ($("#checkbox-" + iqty).prop("checked")) {
+    if ($("#checkbox-" + iqty).prop("checked") == true) {
         console.log("checked");
-        var menu_new_price = origin_price + parseFloat(price);
+        var origin_price = $("#origin_price").val();
+        var menu_new_price = parseFloat(origin_price) + parseFloat(price);
         $("#origin_price").val(menu_new_price.toFixed(2));
-        pricedata = menu_new_price * currentQuantity;
-    } else {
+        var pricedata = menu_new_price * parseFloat($('#number').val());
+        document.getElementById("price").innerHTML = pricedata.toFixed(2);
+        console.log(menu_new_price);
+    } else if ($("#checkbox-" + iqty).prop("checked") == false) {
         console.log("unchecked");
-        var menu_new_price = origin_price - parseFloat(price);
+        var origin_price = $("#origin_price").val();
+        var menu_new_price = parseFloat(origin_price) - parseFloat(price);
         $("#origin_price").val(menu_new_price.toFixed(2));
-        pricedata = menu_new_price * currentQuantity;
+        var pricedata = menu_new_price * parseFloat($('#number').val());
+        document.getElementById("price").innerHTML = pricedata.toFixed(2);
+        console.log(menu_new_price);
     }
+    $.each($("input[type='radio']:checked"), function () {
+        var origin_price = $("#origin_price").val();
+        var menu_new_price = parseFloat(origin_price) + parseFloat(price);
+        $("#origin_price").val(menu_new_price.toFixed(2));
+        var pricedata = menu_new_price * parseFloat($('#number').val());
+        document.getElementById("price").innerHTML = pricedata.toFixed(2);
+        console.log(menu_new_price);
+    });
 
-    document.getElementById("price").innerHTML = pricedata.toFixed(2);
-    console.log(menu_new_price);
+
 }
 
 if($('#us2').length){
