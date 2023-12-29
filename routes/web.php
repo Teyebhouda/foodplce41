@@ -145,6 +145,15 @@ Route::group(['middleware' => ['admincheckexiste']], function () {
 	Route::post("update_city","CityController@update_city");
 	Route::get("deletecity/{id}","CityController@delete");
 
+
+	//postal
+	Route::get("postal","postalController@showpostal");
+	Route::get("postaldatatable","postalController@postaldatatable");
+	Route::post("add_postal","postalController@addpostal");
+	Route::get("editpostal/{id}","postalController@editpostal");
+	Route::post("update_postal","postalController@update_postal");
+	Route::get("deletepostal/{id}","postalController@delete");
+
 	//notification
 	Route::get("sendnotification","NotificationController@index");
 	Route::get("notificationdatatable","NotificationController@notificationdatatable")->name("notificationdatatable");

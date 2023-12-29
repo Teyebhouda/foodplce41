@@ -114,6 +114,15 @@
                                  </div>
                               </div>
                            </div>
+                           <div class="postalcode" id="postalorder" >
+                              <label>{{__('messages.postalcode')}}</label><span>*</span>
+                              <select name="order_postal" id="order_postal">
+                                 <option value="">{{__('messages.sel_postal')}}</option>
+                                 @foreach($postal as $ci)
+                                 <option value="{{$ci->postal_name}}">{{$ci->postal_name}}</option>
+                                 @endforeach
+                              </select>
+                           </div>
                            <div class="col-md-12 p-0" style="display:<?php echo $display;?>" id="addressorder">
                               <label>{{__('messages.search_loc')}}</label>
                               <span>*</span>

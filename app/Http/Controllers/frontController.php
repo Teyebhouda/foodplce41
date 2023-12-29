@@ -18,6 +18,7 @@ use App\Setting;
 use App\Order;
 use App\Contact;
 use App\City;
+use App\Postal;
 use App\OrderResponse;
 use Share;
 class frontController extends Controller {
@@ -219,6 +220,7 @@ class frontController extends Controller {
          $inter=Ingredient::all();
          $setting=Setting::find(1);
          $city=City::where("is_deleted",'0')->get();
+         $postal=Postal::where("is_deleted",'0')->get();
          $ip = $_SERVER['REMOTE_ADDR'];
         
          $lat=21.2284231;

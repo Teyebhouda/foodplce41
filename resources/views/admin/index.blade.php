@@ -72,6 +72,9 @@
                      <a href="{{url('city')}}"> <i class="menu-icon fa fa-user"></i>{{__('messages.city')}} </a>
                   </li> 
                   <li class="active">
+                     <a href="{{url('postalcode')}}"> <i class="menu-icon fa fa-user"></i>{{__('messages.postal')}} </a>
+                  </li> 
+                  <li class="active">
                      <a href="{{url('contactusls')}}"> <i class="menu-icon fa fa-address-book"></i>{{__('messages.contact_us')}} </a>
                   </li>
                    @if(Session::get("is_web")=='0'||Session::get("is_web")=='2')

@@ -102,6 +102,8 @@
     'billing_detail'=>"détails de facturation",
     'city'=>"Ville",
     'sel_city'=>"Sélectionner une ville",
+    'postal'=>"code postal",
+    'sel_postal'=>"Sélectionner un code postal",
     'AI'=> "Informations supplémentaires",
     'order_note'=>"Notes de commande (facultatif)",
     'order_place'=>"Notes ici. Par exemple : ajouter une saucisse rouge",
