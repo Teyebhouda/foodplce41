@@ -129,7 +129,7 @@ class PaypalController extends Controller
         $item_1 = new Item();
 
         $item_1->setName(__('messages.site_name')) 
-            ->setCurrency('USD')
+            ->setCurrency('EUR')
             ->setQuantity(1)
             ->setPrice($request->get('total_price_pal')); 
 
@@ -137,7 +137,7 @@ class PaypalController extends Controller
         $item_list->setItems(array($item_1));
 
         $amount = new Amount();
-        $amount->setCurrency('USD')
+        $amount->setCurrency('EUR')
             ->setTotal($request->get('total_price_pal'));
 
         $transaction = new Transaction();
@@ -378,8 +378,8 @@ try {
           "IDCommande"   => $IDCommande,//here insert commande id
           "Référence"    => $getmenu->reference,
           "LibProd" => "Transport Marchandise :"  . $shippingtype,
-          "Quantité"     => $result["ItemQty"],
-          "PrixVente"    => number_format($result["ItemTotalPrice"], 2, '.', ''),
+          "Quantité"     => 1,
+          "PrixVente"    => 1,
       ];
   
     
