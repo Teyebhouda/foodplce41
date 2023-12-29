@@ -114,7 +114,7 @@
                                  </div>
                               </div>
                            </div>
-                           <div class="postalcode" id="postalorder" >
+                           <div class="city" id="postalorder" >
                               <label>{{__('messages.postal')}}</label><span>*</span>
                               <select name="order_postal" id="order_postal">
                                  <option value="">{{__('messages.sel_postal')}}</option>
