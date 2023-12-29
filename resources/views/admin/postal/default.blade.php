@@ -35,7 +35,7 @@
                <button  class="btn btn-primary btn-flat m-b-30 m-t-30" data-toggle="modal" data-target="#myModal">{{__('messages.add')}}{{__('messages.postal')}}</button>
                
                <div class="table-responsive dtdiv">
-                  <table id="menutb" class="table table-striped dttablewidth">
+                  <table id="myPostalTable" class="table table-striped dttablewidth">
                      <thead>
                         <tr>
                            <th>{{__('messages.id')}}</th>

@@ -60,7 +60,7 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
-    $('#myCityTable').DataTable({
+    $('#myPostalTable').DataTable({
         processing: true,
         serverSide: true,
         ajax: $("#path_admin").val()+'/postaldatatable',
