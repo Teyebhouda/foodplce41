@@ -58,6 +58,21 @@ $(document).ready(function () {
        
     });
 });
+
+$(document).ready(function () {
+    $('#myCityTable').DataTable({
+        processing: true,
+        serverSide: true,
+        ajax: $("#path_admin").val()+'/postaldatatable',
+        columns: [
+            {data: 'id'    , name: 'id'},
+            {data: 'name'  , name: 'name'},
+            {data: 'city'  , name: 'city'},
+            {data: 'action', name:'action'}
+        ],
+       
+    });
+});
 function editcity(id){
    $.ajax( {
          url: $("#path_admin").val()+"/editcity"+"/"+id,
