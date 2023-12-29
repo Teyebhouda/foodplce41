@@ -224,9 +224,10 @@ class frontController extends Controller {
          $ip = $_SERVER['REMOTE_ADDR'];
         
          $lat=21.2284231;
+         
          $long=72.896816;
          $item=Item::with('categoryitem')->where("is_deleted",'0')->get();
-         return view("user.checkout")->with("category",$category)->with("allmenu",$allmenu)->with("menu_interdient",$inter)->with("items",$item)->with("shipping",$request->get("delivery_option"))->with("delivery_charges",$setting->delivery_charges)->with("city",$city)->with('latitude',$lat)->with("longtitude",$long)->with("setting",$setting);
+         return view("user.checkout")->with("category",$category)->with("allmenu",$allmenu)->with("menu_interdient",$inter)->with("items",$item)->with("shipping",$request->get("delivery_option"))->with("delivery_charges",$setting->delivery_charges)->with("city",$city)->with('latitude',$lat)->with("longtitude",$long)->with("setting",$setting)->with("postal",$postal);
      }
      else{
            Session::flash('message', __('messages.shipping_error')); 
