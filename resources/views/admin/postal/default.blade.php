@@ -67,7 +67,7 @@
                   {{csrf_field()}}
                   <div class="form-group">
                      <label>{{__('messages.sel_city')}}</label>
-                     <select class="form-control" name="category" required>
+                     <select class="form-control" name="city" required>
                         <option value="">{{__('messages.sel_city')}}</option>
                         @foreach($city as $c)
                         <option value="{{$c->id}}">{{$c->city_name}}</option>
@@ -117,7 +117,7 @@
                   <input type="hidden" name="real_image" id="real_image">
                   <div class="form-group">
                      <label>{{__('messages.select_cat')}}</label>
-                     <select class="form-control" name="category" id="category" required>
+                     <select class="form-control" name="city" id="city" required>
                         <option value="">{{__('messages.select_city')}}</option>
                         @foreach($city as $c)
                         <option value="{{$c->id}}">{{$c->city_name}}</option>
