@@ -94,7 +94,7 @@
                                          @endif
              
                                           <p>
-                                             <input type="radio" id="radio-{{$i}}" class="checkbox-custom" name="interdient{{$currentFamilleId}}" value="{{$mi->id}}" onchange="addprice('{{$mi->price}}','{{$i}}')"  {{ $currentFamille->name !== 'BOISSONS' && $familyCounter === 0 ? 'checked' : '' }}>
+                                          <input type="radio" id="radio-{{$i}}" class="checkbox-custom" name="interdient{{$currentFamilleId}}" value="{{$mi->id}}" data-price="{{$mi->price}}" onchange="addprice('{{$mi->price}}','{{$i}}')" {{ $currentFamille->name !== 'BOISSONS' && $familyCounter === 0 ? 'checked' : '' }}>
                                              <label for="radio-{{$i}}" class="checkbox-custom-label">
                                                  {{$mi->item_name}} ({{$mi->price}} €)
                                              </label>
@@ -134,7 +134,7 @@
                             @endif
 
                             <p>
-                                <input type="checkbox" id="checkbox-{{$i}}" class="checkbox-custom" name="interdient" value="{{$mi->id}}" onclick="addprice('{{$mi->price}}','{{$i}}')">
+                                <input type="checkbox" id="checkbox-{{$i}}" class="checkbox-custom" name="interdient" value="{{$mi->id}}" onchange="addprice('{{$mi->price}}','{{$i}}')">
                                 <label for="checkbox-{{$i}}" class="checkbox-custom-label">
                                     {{$mi->item_name}} ({{$mi->price}} €)
                                 </label>
