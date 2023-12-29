@@ -23,12 +23,12 @@ class postalController extends Controller {
       Session::flash('alert-class', 'alert-success');
       return redirect("postal");
     }
-    public function index(){
+    public function showpostal(){
         $city=City::where('is_deleted','0')->get();
         return view("admin.postal.default")->with("city",$city);
     }
 
-    public function itemdatatable()
+    public function postaldatatable()
     {
 
        
@@ -58,7 +58,7 @@ class postalController extends Controller {
             ->make(true);
     }
 
-   public function add_menu_item(Request $request){
+   public function addpostal(Request $request){
          
 
            $store=new Postal();
@@ -74,11 +74,11 @@ class postalController extends Controller {
    }
    
 
-   public function edititem($id){
+   public function editpostal($id){
      $data=Postal::with('citypostal')->find($id);
      return $data;
    }
-   public function update_menu_item(Request $request){
+   public function update_postal(Request $request){
         
 
            $store=Postal::find($request->get("id"));
