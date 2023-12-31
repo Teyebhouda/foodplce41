@@ -148,7 +148,7 @@ Route::group(['middleware' => ['admincheckexiste']], function () {
 
 	//postal
 	Route::get("postal","postalController@showpostal");
-	Route::get("postaldatatable","postalController@postaldatatable11")->name("postaldatatable");
+	Route::get("postaldatatable","postalController@postaldatatable")->name("postaldatatable");
 
 	//Route::get("postaldatatable","postalController@postaldatatable");
 	Route::post("add_postal","postalController@addpostal");
