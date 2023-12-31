@@ -31,7 +31,7 @@ class postalController extends Controller {
     public function postaldatatable()
     {
 
-       
+       dd("aerzeretrdt");
         $item =Postal::with('citypostal')->orderBy('id','DESC')->where("is_deleted",'0')->get();
 dd($item);
         return DataTables::of($item)
@@ -44,8 +44,7 @@ dd($item);
            
               ->editColumn('city', function ($item) {
                   if($item->citypostal){
-                     return $item->citypostal->city_name;
-                     // return $item->postal_name;
+                      return $item->citypostal->city_name;
                   }
                 
             })
