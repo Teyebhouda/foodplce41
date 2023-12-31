@@ -124,6 +124,7 @@
   $('#order_city').on('change', function() {
     var selectedCityId = $(this).val();
     var postalOptionsEncoded = $('#order_city option:selected').data('postals');
+    console.log(postalOptionsEncoded)
     var postalOptions;
 
     try {
