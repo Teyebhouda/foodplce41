@@ -718,7 +718,7 @@ function changeoption(val) {
     if (val == 0) {
         document.getElementById("home1").checked = true;
         document.getElementById("home2").checked = false;
-        document.getElementById("maporder").style.display = "block";
+       // document.getElementById("maporder").style.display = "block";
         document.getElementById("addressorder").style.display = "block";
         document.getElementById("dcorder").style.display = "block";
         document.getElementById("finaltotal_order").innerHTML = parseFloat(subtotal) + parseFloat(discharges);
@@ -726,7 +726,7 @@ function changeoption(val) {
     if (val == 1) {
         document.getElementById("home2").checked = true;
         document.getElementById("home1").checked = false;
-        document.getElementById("maporder").style.display = "none";
+      //  document.getElementById("maporder").style.display = "none";
         document.getElementById("addressorder").style.display = "none";
         document.getElementById("dcorder").style.display = "none";
         document.getElementById("finaltotal_order").innerHTML = parseFloat(subtotal);
@@ -736,9 +736,10 @@ function changeoption(val) {
 function orderplace() {
     var phone = $("#order_phone").val();
     var name = $("#user_name").val();
+    var user_address = $("#user_address").val();
     var note = $("#order_notes").val();
     var city = $("#order_city").val();
-    var CodePostal = $("#order_city").val();
+    var CodePostal = $("#order_postal").val();
 
     var address = $("#us2-addres").val();
     var payment_type = 'Cash';
@@ -770,7 +771,7 @@ function orderplace() {
             Civilité: 0,
             Nom: firstName,
             Prénom: lastName,
-            Adresse: address,
+            Adresse: user_address,
             CodePostal: "",
             Ville: city,
             Téléphone: phone,
@@ -831,7 +832,7 @@ function orderplace() {
                                         phone: phone,
                                         note: note,
                                         city: city,
-                                        address: address,
+                                        address: address + ' ' + CodePostal,
                                         payment_type: payment_type,
                                         shipping_type: shipping_type,
                                         totalprice: totalprice,

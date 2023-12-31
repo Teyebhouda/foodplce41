@@ -42,6 +42,7 @@ class AppuserController extends Controller {
                 	$store->mob_number=$request->get("phone");
                		$store->password=md5($request->get("password"));
                		$store->email=$request->get("email");
+                     $store->address=$request->get("address");
                		$store->create_at=date('Y-m-d');
                		$store->save();
                		return 1;
@@ -100,6 +101,7 @@ class AppuserController extends Controller {
         	Session::put("login_user",$getdata->id);
           Session::put("user_phone",$request->get("phone"));
           Session::put("user_name",$getdata->name);
+          Session::put("user_address",$getdata->address);
           Session::put("user_email",$getdata->email);
           Session::put("user_photo",$getdata->profile_pic);
         	return 1;

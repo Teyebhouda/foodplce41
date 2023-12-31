@@ -107,7 +107,7 @@
     'AI'=> "Informations supplémentaires",
     'order_note'=>"Notes de commande (facultatif)",
     'order_place'=>"Notes ici. Par exemple : ajouter une saucisse rouge",
-    'search_loc'=>'Adresse complète',
+    'search_loc'=>'Adresse ',
     'pay_type'=>'Type de paiement',
     'pay_type_1'=>'Paiement à la livraison',
     'pay_type_2'=>'Paiement par carte à la livraison',

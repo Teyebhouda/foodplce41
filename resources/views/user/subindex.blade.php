@@ -125,6 +125,9 @@
                                  <input type="text" required name="email" id="modal-text" placeholder="{{__('messages.email')}}">
                               <label>{{__('messages.phone_no')}} <span>*</span></label>
                               <input type="text" required name="phone_reg" id="modal-text" placeholder="{{__('messages.phone_no')}}">
+                              <label>{{__('messages.address')}} <span>*</span></label>
+                              <input type="text" required name="address" id="modal-text" placeholder="{{__('messages.address')}}">
+                             
                               <label>{{__('messages.password')}}<span>*</span></label>
                               <input type="password" required name="password_reg" id="modal-text" placeholder="{{__('messages.password')}}">
                               <label>{{__('messages.confirm_pwd')}}<span>*</span></label>
