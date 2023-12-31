@@ -121,25 +121,32 @@
    </select>
 </div>
 <script>
-   $(document).ready(function() {
-      $('#order_city').on('change', function() {
-         var selectedCity = $(this).val();
-         var postalOptions = $('#order_city option:selected').data('postals');
+  $('#order_city').on('change', function() {
+    var selectedCityId = $(this).val();
+    var postalOptionsEncoded = $('#order_city option:selected').data('postals');
+    var postalOptions;
 
-         $('#order_postal').empty(); // Clear previous options
+    try {
+        postalOptions = JSON.parse($('<textarea />').html(postalOptionsEncoded).text());
+    } catch (e) {
+        console.error('Error parsing JSON:', e);
+        return;
+    }
 
-         if (postalOptions) {
-            var options = '<option value="">{{__('messages.sel_postal')}}</option>';
-            postalOptions.forEach(function(postal) {
-               options += '<option value="' + postal.postal_name + '">' + postal.postal_name + '</option>';
-            });
-            $('#order_postal').html(options);
-         }
-      });
+    $('#order_postal').empty(); // Clear previous options
 
-      // Trigger change event on page load if a city is pre-selected
-      $('#order_city').trigger('change');
-   });
+    if (postalOptions && Array.isArray(postalOptions)) {
+        var options = '<option value="">{{__('messages.sel_postal')}}</option>';
+        postalOptions.forEach(function(postal) {
+            options += '<option value="' + postal.id + '">' + postal.postal_name + '</option>';
+        });
+        $('#order_postal').html(options);
+    }
+});
+
+// Trigger change event on page load if a city is pre-selected
+$('#order_city').trigger('change');
+
 </script>
 
                            <div class="col-md-12 p-0" style="display:<?php echo $display;?>" id="addressorder">
