@@ -28,7 +28,7 @@ class postalController extends Controller {
         return view("admin.postal.default")->with("city",$city);
     }
 
-    public function postaldatatable()
+    public function postaldatatable11()
     {
 
        dd("aerzeretrdt");
