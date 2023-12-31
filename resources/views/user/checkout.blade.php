@@ -121,27 +121,24 @@
    </select>
 </div>
 <script>
-  $('#order_city').on('change', function() {
-    var selectedCityId = $(this).val();
-    var postalOptionsEncoded = $('#order_city option:selected').data('postals');
-    console.log(postalOptionsEncoded)
-    var postalOptions;
-
-    try {
-        postalOptions = JSON.parse($('<textarea />').html(postalOptionsEncoded).text());
-    } catch (e) {
-        console.error('Error parsing JSON:', e);
-        return;
-    }
-
+ $('#order_city').on('change', function() {
+    var selectedOption = $(this).find('option:selected');
+    var postalOptionsEncoded = selectedOption.attr('data-postals');
+    
     $('#order_postal').empty(); // Clear previous options
 
-    if (postalOptions && Array.isArray(postalOptions)) {
-        var options = '<option value="">{{__('messages.sel_postal')}}</option>';
-        postalOptions.forEach(function(postal) {
-            options += '<option value="' + postal.id + '">' + postal.postal_name + '</option>';
-        });
-        $('#order_postal').html(options);
+    if (postalOptionsEncoded) {
+        var postalOptions = JSON.parse($('<textarea />').html(postalOptionsEncoded).text());
+
+        if (Array.isArray(postalOptions)) {
+            var options = '<option value="">Sélectionner un code postal</option>';
+            
+            postalOptions.forEach(function(postal) {
+                options += '<option value="' + postal.postal_name + '">' + postal.postal_name + '</option>';
+            });
+
+            $('#order_postal').html(options);
+        }
     }
 });
 
