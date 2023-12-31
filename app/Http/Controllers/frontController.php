@@ -219,7 +219,8 @@ class frontController extends Controller {
          $allmenu=Item::all();
          $inter=Ingredient::all();
          $setting=Setting::find(1);
-         $city=City::where("is_deleted",'0')->get();
+         $city = City::where("is_deleted", '0')->with('postals')->get();
+
          $postal=Postal::where("is_deleted",'0')->get();
          $ip = $_SERVER['REMOTE_ADDR'];
         

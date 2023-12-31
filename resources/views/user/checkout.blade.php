@@ -95,15 +95,15 @@
                                        <label>{{__('messages.nom')}}</label><span>*</span>
                                        <input type="text" name="user_name" id="user_name" value="{{Session::get('user_name')}}" placeholder="{{__('messages.user_name')}}" readonly>
                                     </div>
-                                    <div class="city" id="cityorder" >
-                                       <label>{{__('messages.city')}}</label><span>*</span>
-                                       <select name="order_city" id="order_city">
-                                          <option value="">{{__('messages.sel_city')}}</option>
-                                          @foreach($city as $ci)
-                                          <option value="{{$ci->city_name}}">{{$ci->city_name}}</option>
-                                          @endforeach
-                                       </select>
-                                    </div>
+                                    <div class="city" id="cityorder">
+   <label>{{__('messages.city')}}</label><span>*</span>
+   <select name="order_city" id="order_city">
+      <option value="">{{__('messages.sel_city')}}</option>
+      @foreach($city as $ci)
+      <option value="{{$ci->city_name}}" data-postals="{{ json_encode($ci->postals) }}">{{$ci->city_name}}</option>
+      @endforeach
+   </select>
+</div>
                                  </form>
                               </div>
                               <div class="col-md-6 additional">
@@ -114,15 +114,34 @@
                                  </div>
                               </div>
                            </div>
-                           <div class="city" id="postalorder" >
-                              <label>{{__('messages.postal')}}</label><span>*</span>
-                              <select name="order_postal" id="order_postal">
-                                 <option value="">{{__('messages.sel_postal')}}</option>
-                                 @foreach($postal as $ci)
-                                 <option value="{{$ci->postal_name}}">{{$ci->postal_name}}</option>
-                                 @endforeach
-                              </select>
-                           </div>
+                           <div class="city" id="postalorder">
+   <label>{{__('messages.postal')}}</label><span>*</span>
+   <select name="order_postal" id="order_postal">
+      <option value="">{{__('messages.sel_postal')}}</option>
+   </select>
+</div>
+<script>
+   $(document).ready(function() {
+      $('#order_city').on('change', function() {
+         var selectedCity = $(this).val();
+         var postalOptions = $('#order_city option:selected').data('postals');
+
+         $('#order_postal').empty(); // Clear previous options
+
+         if (postalOptions) {
+            var options = '<option value="">{{__('messages.sel_postal')}}</option>';
+            postalOptions.forEach(function(postal) {
+               options += '<option value="' + postal.postal_name + '">' + postal.postal_name + '</option>';
+            });
+            $('#order_postal').html(options);
+         }
+      });
+
+      // Trigger change event on page load if a city is pre-selected
+      $('#order_city').trigger('change');
+   });
+</script>
+
                            <div class="col-md-12 p-0" style="display:<?php echo $display;?>" id="addressorder">
                               <label>{{__('messages.search_loc')}}</label>
                               <span>*</span>
