@@ -28,12 +28,12 @@ class postalController extends Controller {
         return view("admin.postal.default")->with("city",$city);
     }
 
-    public function postaldatatable11()
+    public function postaldatatable()
     {
 
-      
+       
         $item =Postal::with('citypostal')->orderBy('id','DESC')->where("is_deleted",'0')->get();
-dd($item);
+
         return DataTables::of($item)
             ->editColumn('id', function ($item) {
                 return $item->id;
