@@ -728,6 +728,8 @@ function changeoption(val) {
         document.getElementById("home1").checked = false;
       //  document.getElementById("maporder").style.display = "none";
         document.getElementById("addressorder").style.display = "none";
+        document.getElementById("postalorder").style.display = "none";
+
         document.getElementById("dcorder").style.display = "none";
         document.getElementById("finaltotal_order").innerHTML = parseFloat(subtotal);
     }
