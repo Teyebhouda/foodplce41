@@ -44,7 +44,8 @@ dd($item);
            
               ->editColumn('city', function ($item) {
                   if($item->citypostal){
-                      return $item->citypostal->city_name;
+                      //return $item->citypostal->city_name;
+                      return $item->postal_name;
                   }
                 
             })
