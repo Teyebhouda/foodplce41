@@ -293,7 +293,7 @@ try {
       if($store->shipping_type == 1){$shippingtype = "pickup"; }else{$shippingtype = "a domicile";}
       $apiLineData = [
         "IDCommande"   => $IDCommande,//here insert commande id
-        "Référence"    => $getmenu->reference,
+        "Référence"    => "",
         "LibProd" => "Transport Marchandise :"  . $shippingtype,
         "Quantité"     => 1,
         "PrixVente"    => 1,
@@ -336,7 +336,7 @@ try {
         if ($charge->status === 'succeeded') {
             $apiLineData = [
                 "IDCommande"   => $IDCommande,//here insert commande id
-                "Référence"    => $getmenu->reference,
+                "Référence"    => "",
                 "LibProd" => "Moy Paiement  " . $store->payment_type . "\n" . "Payé" ,
                 "Quantité"     => 1,
                 "PrixVente"    => 1,
@@ -363,7 +363,7 @@ try {
         } else {
             $apiLineData = [
                 "IDCommande"   => $IDCommande,//here insert commande id
-                "Référence"    => $getmenu->reference,
+                "Référence"    => "",
                 "LibProd" => "Moy Paiement  " . $store->payment_type . "\n" . "NonPayé" ,
                 "Quantité"     => 1,
                 "PrixVente"    => 1,

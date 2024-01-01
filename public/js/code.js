@@ -717,6 +717,7 @@ function changebutton(val) {
 function changeoption(val) {
     var subtotal = $("#subtotalorder").val();
     var discharges = $("#delivery_charges").val();
+    var deliveryTimeContainer = document.getElementById('delivery-time-container');
     if (val == 0) {
         document.getElementById("home1").checked = true;
         document.getElementById("home2").checked = false;
@@ -724,8 +725,12 @@ function changeoption(val) {
         document.getElementById("addressorder").style.display = "block";
         document.getElementById("dcorder").style.display = "block";
         document.getElementById("finaltotal_order").innerHTML = parseFloat(subtotal) + parseFloat(discharges);
+        
+        deliveryTimeContainer.style.display = 'none';
+       
     }
     if (val == 1) {
+       
         document.getElementById("home2").checked = true;
         document.getElementById("home1").checked = false;
       //  document.getElementById("maporder").style.display = "none";
@@ -734,8 +739,36 @@ function changeoption(val) {
 
         document.getElementById("dcorder").style.display = "none";
         document.getElementById("finaltotal_order").innerHTML = parseFloat(subtotal);
+        deliveryTimeContainer.style.display = 'block';
+       
+
+       
+           
+            
+          
+            }
+    
+                const now = new Date();
+                    const currentHour = now.getHours();
+                    const currentMinute = now.getMinutes();
+        
+                    for (let hour = currentHour; hour <= 23; hour++) {
+                        for (let minute = 0; minute <= 45; minute += 15) {
+        
+                            const formattedHour = hour.toString().padStart(2, '0');
+                            const formattedMinute = minute.toString().padStart(2, '0');
+                            
+                            const option = document.createElement('option');
+                            option.value = `${formattedHour}:${formattedMinute}`;
+                            option.text = `${formattedHour}:${formattedMinute}`;
+        
+                            document.getElementById('delivery_time').appendChild(option);
+                        }
+                    }
+
+        
     }
-}
+
 
 function orderplace() {
     var phone = $("#order_phone").val();

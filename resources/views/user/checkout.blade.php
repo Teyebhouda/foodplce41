@@ -156,7 +156,16 @@ $('#order_city').trigger('change');
                               <span>*</span>
                               <input  type="text" id="us2-address" name="address" placeholder="{{__('messages.ent_ser_loc')}}" <?php echo ($shipping == 0 ? 'required' : '');?>/>
                            </div>
-                           
+
+
+                           <div id="delivery-time-container" style="display: none;">
+                              <label for="delivery_time">Choisissez l'heure de livraison :</label>
+                              <select id="delivery_time" name="delivery_time" class="form-control" >
+                                  <option value="" disabled selected>Sélectionnez une heure</option>
+                              </select>
+                          </div>
+                      
+                       
                         </div>
                      </div>
                      {{-- <input type="hidden" name="lat" id="us2-lat" value="{{$latitude}}" />
