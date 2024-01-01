@@ -361,6 +361,7 @@ function registeruser() {
      });
     var name = $("input[name='name']").val();
     var phone = $("input[name='phone_reg']").val();
+    var address = $("input[name='address']").val();
     var password = $("input[name='password_reg']").val();
     var email = $("input[name='email']").val();
     var conn = $("input[name='con_password_reg']").val();
@@ -371,6 +372,7 @@ function registeruser() {
             data: {
                 name: name,
                 phone: phone,
+                address: address,
                 password: password,
                 email:email
             },
