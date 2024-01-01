@@ -125,15 +125,13 @@
                                        @if($currentFamille != $mi->familleoption)
                                            @php
                                                $currentFamille = $mi->familleoption;
+                                               $maxSelections = ($currentFamille->name == 'BOISSONS') ? 'data-max="1"' : '';
                                            @endphp
                                            <h4>{{$currentFamille->name}}</h4>
                                        @endif
                        
                                        <p>
-                                           <?php
-                                               $checkboxId = 'checkbox-' . $i;
-                                               $maxSelections = ($currentFamille->name == 'BOISSONS') ? 1 : ''; // Set max selections for "BOISSONS"
-                                           ?>
+                                           <?php $checkboxId = 'checkbox-' . $i; ?>
                                            <input type="checkbox" id="{{$checkboxId}}" class="checkbox-custom" name="interdient" value="{{$mi->id}}" onchange="addprice('{{$mi->price}}','{{$i}}')" {{$maxSelections}}>
                                            <label for="{{$checkboxId}}" class="checkbox-custom-label">
                                                {{$mi->item_name}} ({{$mi->price}} €)
@@ -144,6 +142,22 @@
                                @endforeach
                            @endforeach
                        </form>
+                       
+                       <script>
+                           // JavaScript logic to limit checkbox selection for "BOISSONS"
+                           const checkboxes = document.querySelectorAll('.checkbox-custom');
+                       
+                           checkboxes.forEach((checkbox) => {
+                               checkbox.addEventListener('change', (event) => {
+                                   const checkedCheckboxes = document.querySelectorAll('.checkbox-custom:checked');
+                                   const maxAllowed = parseInt(event.target.getAttribute('data-max'));
+                       
+                                   if (event.target.checked && checkedCheckboxes.length > maxAllowed) {
+                                       event.target.checked = false; // Prevent more than allowed selections
+                                   }
+                               });
+                           });
+                       </script>
                        
         </div>
         </div>
@@ -237,17 +251,5 @@
    </div>
 </div>
 </div>
-<script>
-   // JavaScript logic to limit checkbox selection for "BOISSONS"
-   const checkboxes = document.querySelectorAll('.checkbox-custom');
 
-   checkboxes.forEach((checkbox) => {
-       checkbox.addEventListener('change', (event) => {
-           const checkedCheckboxes = document.querySelectorAll('.checkbox-custom:checked');
-           if (event.target.checked && checkedCheckboxes.length > 1 && event.target.parentElement.querySelector('h4').textContent === 'BOISSONS') {
-               event.target.checked = false; // Prevent more than one selection for "BOISSONS"
-           }
-       });
-   });
-</script>
 @stop
