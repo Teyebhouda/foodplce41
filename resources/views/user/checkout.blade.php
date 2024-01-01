@@ -158,7 +158,7 @@ $('#order_city').trigger('change');
                            </div>
 
 
-                           <div id="delivery-time-container" style="display: none;">
+                           <div class="city" id="delivery-time-container" style="display: none;">
                               <label for="delivery_time">Choisissez l'heure de livraison :</label>
                               <select id="delivery_time" name="delivery_time" class="form-control" >
                                   <option value="" disabled selected>Sélectionnez une heure</option>
