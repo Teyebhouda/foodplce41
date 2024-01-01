@@ -132,7 +132,7 @@
                        
                                        <p>
                                            <?php $checkboxId = 'checkbox-' . $i; ?>
-                                           <input type="checkbox" id="{{$checkboxId}}" class="checkbox-custom" name="interdient" value="{{$mi->id}}" onchange="addprice('{{$mi->price}}','{{$i}}')" {{$maxSelections}}>
+                                           <input type="checkbox" id="{{$checkboxId}}" class="checkbox-custom" name="{{$currentFamille->name}}" value="{{$mi->id}}" onchange="addprice('{{$mi->price}}','{{$i}}','{{$currentFamille->name}}')" {{$maxSelections}}>
                                            <label for="{{$checkboxId}}" class="checkbox-custom-label">
                                                {{$mi->item_name}} ({{$mi->price}} €)
                                            </label>
@@ -143,22 +143,7 @@
                            @endforeach
                        </form>
                        
-                       <script>
-                           // JavaScript logic to limit checkbox selection for "BOISSONS"
-                           const checkboxes = document.querySelectorAll('.checkbox-custom');
-                       
-                           checkboxes.forEach((checkbox) => {
-                               checkbox.addEventListener('change', (event) => {
-                                   const checkedCheckboxes = document.querySelectorAll('.checkbox-custom:checked');
-                                   const maxAllowed = parseInt(event.target.getAttribute('data-max'));
-                       
-                                   if (event.target.checked && checkedCheckboxes.length > maxAllowed) {
-                                       event.target.checked = false; // Prevent more than allowed selections
-                                   }
-                               });
-                           });
-                       </script>
-                       
+                     
         </div>
         </div>
   

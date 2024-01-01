@@ -926,7 +926,8 @@ function getCurrentDate() {
 
 
 
-function addprice(price, iqty) {
+function addprice(price, iqty ,family) {
+    createCheckboxChangeHandler(family);
     if ($("#checkbox-" + iqty).prop("checked") == true) {
         console.log("checked");
         var origin_price = $("#origin_price").val();
@@ -966,6 +967,31 @@ function addprice(price, iqty) {
 
 
 }
+
+
+
+
+function createCheckboxChangeHandler(familleOption) {
+    if(familleOption =="BOISSONS")
+    {
+    return function() {
+         // Get all checkboxes in this specific familleOption group
+         var checkboxes = $('input[name="' + familleOption + '"]');
+         
+         // Get the number of checkboxes selected in this group
+         var selectedCount = checkboxes.filter(':checked').length;
+          if (selectedCount >= 1) {
+             // Uncheck and disable checkboxes if the limit is exceeded
+             checkboxes.filter(':not(:checked)').prop('disabled', true);
+         } else {
+             // Enable all checkboxes within the group if the limit is not exceeded
+             checkboxes.prop('disabled', false);
+         }
+     };
+    }
+ }
+
+
 
 if($('#us2').length){
   $('#us2').locationpicker({
