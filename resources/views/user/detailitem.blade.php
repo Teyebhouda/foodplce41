@@ -71,7 +71,7 @@
                              <?php $i = 0; ?>
                              <?php $currentFamilles = collect(); ?>
                              @foreach($menu_interdient1 as $mi)
-                                 @if($mi->familleoption)
+                                 @if($mi->familleoption->type == "simple")
                                      <?php $currentFamilles->push($mi->familleoption->id); ?>
                                  @endif
                              @endforeach
@@ -81,7 +81,7 @@
                                  <?php $familyCounter = 0; ?>
                                  @foreach($menu_interdient1 as $mi)
                                  
-                                     @if($mi->type == 0 && $mi->familleoption->type == "simple" && $mi->familleoption->id == $currentFamilleId)
+                                     @if($mi->familleoption->type == "simple" && $mi->familleoption->id == $currentFamilleId)
                                          @if($currentFamille != $mi->familleoption)
                                              @php
                                                  $currentFamille = $mi->familleoption;
@@ -113,7 +113,7 @@
                          <form>
                            <?php $currentFamilles = collect(); ?>
                            @foreach($menu_interdient1 as $mi)
-                               @if($mi->familleoption)
+                               @if($mi->familleoption->type == "multiple")
                                    <?php $currentFamilles->push($mi->familleoption->id); ?>
                                @endif
                            @endforeach
@@ -121,7 +121,7 @@
                            @foreach($currentFamilles->unique() as $currentFamilleId)
                                <?php $currentFamille = null; ?>
                                @foreach($menu_interdient1 as $mi)
-                                   @if($mi->type == 1 && $mi->familleoption && $mi->familleoption->id == $currentFamilleId)
+                                   @if($mi->familleoption->type == "multiple" && $mi->familleoption->id == $currentFamilleId)
                                        @if($currentFamille != $mi->familleoption)
                                            @php
                                                $currentFamille = $mi->familleoption;
