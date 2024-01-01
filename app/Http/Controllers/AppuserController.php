@@ -44,6 +44,7 @@ class AppuserController extends Controller {
                		$store->email=$request->get("email");
                      $store->address=$request->get("address");
                		$store->create_at=date('Y-m-d');
+                    dd($store);
                		$store->save();
                		return 1;
            	   }
