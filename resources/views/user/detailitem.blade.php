@@ -86,15 +86,11 @@
                                              @php
                                                  $currentFamille = $mi->familleoption;
                                              @endphp
-                                          @if($currentFamille->name === "SUPLIMENTS PIZZA")
-                                          <h4>SUPLIMENTS</h4>
-                                      @else
-                                          <h4>{{$currentFamille->name}}</h4>
-                                      @endif
+                                         
                                          @endif
              
                                           <p>
-                                          <input type="radio" id="radio-{{$i}}" class="checkbox-custom" name="interdient{{$currentFamilleId}}" value="{{$mi->id}}" data-price="{{$mi->price}}" onchange="addprice('{{$mi->price}}','{{$i}}')" {{ $currentFamille->name !== 'BOISSONS' && $familyCounter === 0 ? 'checked' : '' }}>
+                                          <input type="radio" id="radio-{{$i}}" class="checkbox-custom" name="interdient{{$currentFamilleId}}" value="{{$mi->id}}" data-price="{{$mi->price}}"  {{ $currentFamille->name !== 'BOISSONS' && $familyCounter === 0 ? 'checked' : '' }}>
                                              <label for="radio-{{$i}}" class="checkbox-custom-label">
                                                  {{$mi->item_name}} ({{$mi->price}} €)
                                              </label>
