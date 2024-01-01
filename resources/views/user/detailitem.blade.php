@@ -128,7 +128,7 @@
                                                $maxSelections = ($currentFamille->name == 'BOISSONS') ? 'data-max="1"' : '';
                                            @endphp
                                            <h4>{{$currentFamille->name}}</h4>
-                                           <p id="boissonsMessage" style="color: red;"></p>
+                                          
 
                                        @endif
                        
