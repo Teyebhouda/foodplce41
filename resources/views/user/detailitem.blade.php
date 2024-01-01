@@ -110,36 +110,41 @@
                      
                 
            
-            <form>
-                <?php $currentFamilles = collect(); ?>
-                @foreach($menu_interdient1 as $mi)
-                    @if($mi->type == 1 && $mi->familleoption)
-                        <?php $currentFamilles->push($mi->familleoption->id); ?>
-                    @endif
-                @endforeach
-
-                @foreach($currentFamilles->unique() as $currentFamilleId)
-                    <?php $currentFamille = null; ?>
-                    @foreach($menu_interdient1 as $mi)
-                        @if($mi->type == 1 && $mi->familleoption && $mi->familleoption->id == $currentFamilleId)
-                            @if($currentFamille != $mi->familleoption)
-                                @php
-                                    $currentFamille = $mi->familleoption;
-                                @endphp
-                                <h4>{{$currentFamille->name}}</h4>
-                            @endif
-
-                            <p>
-                                <input type="checkbox" id="checkbox-{{$i}}" class="checkbox-custom" name="interdient" value="{{$mi->id}}" onchange="addprice('{{$mi->price}}','{{$i}}')">
-                                <label for="checkbox-{{$i}}" class="checkbox-custom-label">
-                                    {{$mi->item_name}} ({{$mi->price}} €)
-                                </label>
-                            </p>
-                            <?php $i++; ?>
-                        @endif
-                    @endforeach
-                @endforeach
-            </form>
+                         <form>
+                           <?php $currentFamilles = collect(); ?>
+                           @foreach($menu_interdient1 as $mi)
+                               @if($mi->type == 1 && $mi->familleoption)
+                                   <?php $currentFamilles->push($mi->familleoption->id); ?>
+                               @endif
+                           @endforeach
+                       
+                           @foreach($currentFamilles->unique() as $currentFamilleId)
+                               <?php $currentFamille = null; ?>
+                               @foreach($menu_interdient1 as $mi)
+                                   @if($mi->type == 1 && $mi->familleoption && $mi->familleoption->id == $currentFamilleId)
+                                       @if($currentFamille != $mi->familleoption)
+                                           @php
+                                               $currentFamille = $mi->familleoption;
+                                           @endphp
+                                           <h4>{{$currentFamille->name}}</h4>
+                                       @endif
+                       
+                                       <p>
+                                           <?php
+                                               $checkboxId = 'checkbox-' . $i;
+                                               $maxSelections = ($currentFamille->name == 'BOISSONS') ? 1 : ''; // Set max selections for "BOISSONS"
+                                           ?>
+                                           <input type="checkbox" id="{{$checkboxId}}" class="checkbox-custom" name="interdient" value="{{$mi->id}}" onchange="addprice('{{$mi->price}}','{{$i}}')" {{$maxSelections}}>
+                                           <label for="{{$checkboxId}}" class="checkbox-custom-label">
+                                               {{$mi->item_name}} ({{$mi->price}} €)
+                                           </label>
+                                       </p>
+                                       <?php $i++; ?>
+                                   @endif
+                               @endforeach
+                           @endforeach
+                       </form>
+                       
         </div>
         </div>
   
@@ -232,24 +237,17 @@
    </div>
 </div>
 </div>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-    $(document).ready(function () {
-        // Add change event listener to radio buttons
-        $('input[type=radio]').change(function () {
-            // Get the selected radio button's data-price attribute
-            var newPrice = parseFloat($(this).data('price'));
-            
-            // Update the displayed price
-           // $('#price').text(newPrice.toFixed(2)); // Assuming the price is a float number
-            var origin_price = $("#origin_price").val();
-        var menu_new_price = parseFloat(origin_price) + newPrice;
-        $("#origin_price").val(menu_new_price.toFixed(2));
-        var pricedata = menu_new_price * parseFloat($('#number').val());
-        document.getElementById("price").innerHTML = pricedata.toFixed(2);
-        console.log(menu_new_price);
-            // You may want to update other elements or perform additional actions here based on the selected option
-        });
-    });
+   // JavaScript logic to limit checkbox selection for "BOISSONS"
+   const checkboxes = document.querySelectorAll('.checkbox-custom');
+
+   checkboxes.forEach((checkbox) => {
+       checkbox.addEventListener('change', (event) => {
+           const checkedCheckboxes = document.querySelectorAll('.checkbox-custom:checked');
+           if (event.target.checked && checkedCheckboxes.length > 1 && event.target.parentElement.querySelector('h4').textContent === 'BOISSONS') {
+               event.target.checked = false; // Prevent more than one selection for "BOISSONS"
+           }
+       });
+   });
 </script>
 @stop
