@@ -927,7 +927,15 @@ function getCurrentDate() {
 
 
 function addprice(price, iqty ,family) {
-    createCheckboxChangeHandler(family);
+    console.log(family);
+    if (family === "BOISSONS") {
+        var isChecked = $('input[name="' + family + '"]:checked').length > 0;
+        if (isChecked) {
+            $('input[name="' + family + '"]:not(:checked)').prop('disabled', true);
+        } else {
+            $('input[name="' + family + '"]').prop('disabled', false);
+        }
+    }
     if ($("#checkbox-" + iqty).prop("checked") == true) {
         console.log("checked");
         var origin_price = $("#origin_price").val();
