@@ -376,7 +376,7 @@ try {
         if($store->shipping_type == 0){$shippingtype = "a domicile"; }else{$shippingtype = "pickup";}
         $apiLineData = [
           "IDCommande"   => $IDCommande,//here insert commande id
-          "Référence"    => $getmenu->reference,
+          "Référence"    =>"",
           "LibProd" => "Transport Marchandise :"  . $shippingtype,
           "Quantité"     => 1,
           "PrixVente"    => 1,
@@ -394,7 +394,34 @@ try {
           ]);
       
           // Handle the response here
-    
+          $apiLineData = [
+            "IDCommande"   => $IDCommande,//here insert commande id
+            "Référence"    => "",
+            "LibProd" => "Moy Paiement  : Paypal" . "\n" . "NonPayé" ,
+            "Quantité"     => 1,
+            "PrixVente"    => now()->format('Y-m-d H:i:s'),
+        ];
+
+      
+        
+        try {
+            // Make a POST request with the appropriate headers and JSON-encoded data
+            $apiclientResponse = $client->post("https://api.alaindata.com/foodplace41/LigneCommande", [
+                'headers' => [
+                    'Content-Type' => 'application/json', // Set the Content-Type header
+                ],
+                'json' => $apiLineData, // JSON-encode the data
+            ]);
+        
+            // Handle the response here
+        } catch (\GuzzleHttp\Exception\RequestException $e) {
+            // Handle exceptions, log errors, etc.
+            // Log an error if an exception occurs during the request
+            error_log("API request error: " . $e->getMessage());
+        }
+
+
+
         Session::put('paypal_payment_id', $payment->getId());
         Session::put('IdCommande', $IDCommande);
 
@@ -411,6 +438,10 @@ try {
             return redirect('checkout');
     }
 
+
+
+
+
     public function getPaymentStatus(Request $request)
     {
 
@@ -422,31 +453,7 @@ try {
             \Session::put('error','Payment failed');
              $order=Order::where("pay_pal_paymentId",$payment_id)->first();
 
-             $apiLineData = [
-                "IDCommande"   => $commandeid,//here insert commande id
-                "Référence"    => "123",
-                "LibProd" => "Moy Paiement  : Paypal" . "\n" . "NonPayé" ,
-                "Quantité"     => 1,
-                "PrixVente"    => 1,
-            ];
-    
-          
-            
-            try {
-                // Make a POST request with the appropriate headers and JSON-encoded data
-                $apiclientResponse = $client->post("https://api.alaindata.com/foodplace41/LigneCommande", [
-                    'headers' => [
-                        'Content-Type' => 'application/json', // Set the Content-Type header
-                    ],
-                    'json' => $apiLineData, // JSON-encode the data
-                ]);
-            
-                // Handle the response here
-            } catch (\GuzzleHttp\Exception\RequestException $e) {
-                // Handle exceptions, log errors, etc.
-                // Log an error if an exception occurs during the request
-                error_log("API request error: " . $e->getMessage());
-            }
+           
 
 
              if(count($order)!=0){
@@ -482,7 +489,7 @@ try {
                 "Référence"    => "123",
                 "LibProd" => "Moy Paiement  : Paypal" . "\n" . "Payé" ,
                 "Quantité"     => 1,
-                "PrixVente"    => 1,
+                "PrixVente"    => now()->format('Y-m-d H:i:s'),
             ];
     
           
