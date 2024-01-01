@@ -932,8 +932,16 @@ function addprice(price, iqty ,family) {
         var isChecked = $('input[name="' + family + '"]:checked').length > 0;
         if (isChecked) {
             $('input[name="' + family + '"]:not(:checked)').prop('disabled', true);
+            var messageElement = document.getElementById("boissonsMessage");
+            if (messageElement) {
+                messageElement.innerHTML = "Choisissez au maximum 1 élément pour la famille BOISSONS";
+        
         } else {
             $('input[name="' + family + '"]').prop('disabled', false);
+            var messageElement = document.getElementById("boissonsMessage");
+            if (messageElement) {
+                messageElement.innerHTML = ""; // Clear the message if no checkboxes are checked
+            }
         }
     }
     if ($("#checkbox-" + iqty).prop("checked") == true) {
