@@ -128,8 +128,10 @@
                                                $maxSelections = ($currentFamille->name == 'BOISSONS') ? 'data-max="1"' : '';
                                            @endphp
                                            <h4>{{$currentFamille->name}}</h4>
-                                          
+                                          @if($currentFamille->name == 'BOISSONS')
 
+<p id="boissonsMessage" >Choisissez au maximum 1</p>
+@endif
                                        @endif
                        
                                        <p>
