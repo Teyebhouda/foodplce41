@@ -183,6 +183,9 @@
                                  <span class="requiredfield">*</span>
                                  </label>
                                  <input type="text" required name="phone_reg" id="modal-text" placeholder="{{__('messages.phone_no')}}">
+                                 <label>{{__('messages.address')}} <span>*</span></label>
+                              <input type="text" required name="address" id="modal-text" placeholder="{{__('messages.address')}}">
+                             
                                  <label class="for_button_value">
                                  {{__('messages.password')}}
                                  <span class="requiredfield">*</span>
