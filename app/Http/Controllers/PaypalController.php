@@ -373,7 +373,7 @@ try {
                 break;
             }
         }
-        if($store->shipping_type == 1){$shippingtype = "a domicile"; }else{$shippingtype = "pickup";}
+        if($store->shipping_type == 0){$shippingtype = "a domicile"; }else{$shippingtype = "pickup";}
         $apiLineData = [
           "IDCommande"   => $IDCommande,//here insert commande id
           "Référence"    => $getmenu->reference,
