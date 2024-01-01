@@ -723,6 +723,7 @@ function changeoption(val) {
         document.getElementById("home2").checked = false;
        // document.getElementById("maporder").style.display = "block";
         document.getElementById("addressorder").style.display = "block";
+        document.getElementById("postalorder").style.display = "block";
         document.getElementById("dcorder").style.display = "block";
         document.getElementById("finaltotal_order").innerHTML = parseFloat(subtotal) + parseFloat(discharges);
         
@@ -735,6 +736,7 @@ function changeoption(val) {
         document.getElementById("home1").checked = false;
       //  document.getElementById("maporder").style.display = "none";
         document.getElementById("addressorder").style.display = "none";
+        
         document.getElementById("postalorder").style.display = "none";
 
         document.getElementById("dcorder").style.display = "none";
