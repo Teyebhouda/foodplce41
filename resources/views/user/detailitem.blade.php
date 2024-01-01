@@ -232,4 +232,19 @@
    </div>
 </div>
 </div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // Add change event listener to radio buttons
+        $('input[type=radio]').change(function () {
+            // Get the selected radio button's data-price attribute
+            var newPrice = parseFloat($(this).data('price'));
+            
+            // Update the displayed price
+            $('#price').text(newPrice.toFixed(2)); // Assuming the price is a float number
+
+            // You may want to update other elements or perform additional actions here based on the selected option
+        });
+    });
+</script>
 @stop
