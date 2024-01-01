@@ -58,7 +58,7 @@
                }
                
                ?>
-            <li class="{{$class3}}">
+            <!-- <li class="{{$class3}}">
                <div class="pro-rou">
                   <div class="round-{{$divclass3}}">
                      <?php if($order->dispatched_date_time!=""){?>
@@ -114,7 +114,7 @@
                      @endif
                   </p>
                </div>
-            </li>
+            </li> -->
          </ul>
       </div>
       <div class="item-main">
