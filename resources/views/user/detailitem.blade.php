@@ -113,7 +113,7 @@
                          <form>
                            <?php $currentFamilles = collect(); ?>
                            @foreach($menu_interdient1 as $mi)
-                               @if($mi->type == 1 && $mi->familleoption)
+                               @if($mi->familleoption)
                                    <?php $currentFamilles->push($mi->familleoption->id); ?>
                                @endif
                            @endforeach
