@@ -241,8 +241,13 @@
             var newPrice = parseFloat($(this).data('price'));
             
             // Update the displayed price
-            $('#price').text(newPrice.toFixed(2)); // Assuming the price is a float number
-
+           // $('#price').text(newPrice.toFixed(2)); // Assuming the price is a float number
+            var origin_price = $("#origin_price").val();
+        var menu_new_price = parseFloat(origin_price) + newPrice;
+        $("#origin_price").val(menu_new_price.toFixed(2));
+        var pricedata = menu_new_price * parseFloat($('#number').val());
+        document.getElementById("price").innerHTML = pricedata.toFixed(2);
+        console.log(menu_new_price);
             // You may want to update other elements or perform additional actions here based on the selected option
         });
     });
