@@ -342,10 +342,16 @@ class AppuserController extends Controller {
 
       }
 if($store->shipping_type == 0){$shippingtype = "a domicile" ;}else{$shippingtype = "pickup";}
+$libProdText = "Transport Marchandise: " . $shippingtype;
+
+if ($store->shipping_type == 1) {
+    // Assuming $deliveryTime holds the actual delivery time value
+    $libProdText .= " " . $request->input('delivery_time');
+}
       $apiLineData = [
         "IDCommande"   => $Idcomande,//here insert commande id
         "Référence"    => $getmenu->reference,
-        "LibProd" => "Transport Marchandise :"  . $shippingtype,
+        "LibProd" => $libProdText,
         "Quantité"     => 1,
                 "PrixVente"    => 1,
     ];

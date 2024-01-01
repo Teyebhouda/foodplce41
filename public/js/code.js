@@ -778,7 +778,7 @@ function orderplace() {
     var user_address = $("#user_address").val();
     var note = $("#order_notes").val();
     var city = $("#order_city").val();
-    var CodePostal = $("#order_postal").val();
+    
 
     var address = $("#us2-addres").val();
     var payment_type = 'Cash';
@@ -786,19 +786,22 @@ function orderplace() {
     var subtotal = document.getElementById("subtotal_order").innerHTML;
     var charge = document.getElementById("delivery_charges_order").innerHTML;
     var typedata = "";
-
-    var shipping_type, address, latlong;
+var delivery_time = "";
+var CodePostal = "";
+    var shipping_type, address, latlong, CodePostal;
 
     if ($("#home1").prop("checked") == true) {
         shipping_type = 0;
         address = $("#us2-address").val();
         latlong = $("#us2-lat").val() + "," + $("#us2-lon").val();
+        CodePostal = $("#order_postal").val();
     }
 
     if ($("#home2").prop("checked") == true) {
         shipping_type = 1;
         address = "";
         latlong = "";
+        delivery_time = $("#delivery_time").val();
     }
 
     if (phone !== "" && city !== "" && payment_type !== "" ) {
@@ -877,7 +880,8 @@ function orderplace() {
                                         totalprice: totalprice,
                                         subtotal: subtotal,
                                         charge: charge,
-                                        latlong: latlong
+                                        latlong: latlong,
+                                       delivery_time: delivery_time 
                                     },
                                     success: function (data1) {
                                         if (data1 != 0) {

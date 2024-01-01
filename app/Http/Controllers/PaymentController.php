@@ -291,10 +291,16 @@ try {
 
       }
       if($store->shipping_type == 1){$shippingtype = "pickup"; }else{$shippingtype = "a domicile";}
+      $libProdText = "Transport Marchandise: " . $shippingtype;
+
+      if ($store->shipping_type == 1) {
+          // Assuming $deliveryTime holds the actual delivery time value
+          $libProdText .= " " . $request->get('delivery_time');
+      }
       $apiLineData = [
         "IDCommande"   => $IDCommande,//here insert commande id
         "Référence"    => "",
-        "LibProd" => "Transport Marchandise :"  . $shippingtype,
+        "LibProd" => $libProdText,
         "Quantité"     => 1,
         "PrixVente"    => 1,
     ];
