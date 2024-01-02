@@ -795,6 +795,9 @@ var CodePostal = "";
         address = $("#us2-address").val();
         latlong = $("#us2-lat").val() + "," + $("#us2-lon").val();
         CodePostal = $("#order_postal").val();
+        if (phone !== "" && city !== "" && payment_type !== "" && CodePostal !== "" && address !== "" ) {
+            alert($("#required_field").val());
+        }
     }
 
     if ($("#home2").prop("checked") == true) {
@@ -802,9 +805,12 @@ var CodePostal = "";
         address = "";
         latlong = "";
         delivery_time = $("#delivery_time").val();
+        if (phone !== "" && city !== "" && payment_type !== "" && delivery_time !== ""  ) {
+            alert($("#required_field").val());
+        }
     }
 
-    if (phone !== "" && city !== "" && payment_type !== "" ) {
+    if (phone !== "" && city !== "" && payment_type !== "" && shipping_type !== 0 && shipping_type !== 1 ) {
         var nameParts = name.split(" ");
         var firstName = nameParts[0]; // First part is the first name
         var lastName = nameParts.slice(1).join(" "); // Rest is the last name (if any)
