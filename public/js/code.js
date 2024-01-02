@@ -652,9 +652,9 @@ function changebutton(val) {
         
         if ($("#home1").prop("checked") == true) {
             shipping_type = 0;
-            // address = $("#us2-address").val();
+             address = $("#us2-address").val();
             // latlong = $("#us2-lat").val() + "," + $("#us2-lon").val();
-             //CodePostal = $("#order_postal").val();
+             CodePostal = $("#order_postal").val();
     
     
             if (phone !== "" && city !== ""  && CodePostal !== "" && address !== "" ) {
