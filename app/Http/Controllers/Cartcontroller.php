@@ -26,26 +26,15 @@ class Cartcontroller extends Controller {
        return redirect("/");
     }
     public function addcartitem(Request $request){
-      $totalint = $request->get("totalint");
-
-      if($totalint === ""){
-          // Handle the case where no options are selected
-          // For example, set $total as an empty array
-          $total = [];
-      } else {
-          // Process $totalint as an array of ingredient IDs
-          $total = explode(",", $totalint);
-          $totalPrices = [];
-  
-          foreach ($total as $k) {
-              $dt = Ingredient::find($k);
-  
-              // Check if $dt is null before accessing its properties
-              if($dt !== null) {
-                  $totalPrices[] = $dt->price;
-              }
-          }
-      }
+    	$totalint=array();
+    	if($request->get("totalint")!=""){
+    		$totalint=explode(",",$request->get("totalint")); 
+        foreach ($totalint as $k) {
+            $dt=Ingredient::find($k);
+            $total[]=$dt->price;
+        }
+    	}	
+    	
     	$id=rand(10,100);
     	$item_data=Item::where("menu_name",$request->get("id"))->first();
     	$qty=$request->get("qty");
