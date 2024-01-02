@@ -619,6 +619,11 @@ function minusqty(id, iqty) {
 
 
 function changebutton(val) {
+    var phone = $("#order_phone").val();
+    var city = $("#order_city").val();
+    
+
+    var address = $("#us2-addres").val();
     if (val == "Cash" || val == "by Card") {
         document.getElementById("orderplace1").style.display = "block";
         document.getElementById("orderplacestrip").style.display = "none";
@@ -645,7 +650,7 @@ function changebutton(val) {
         
         if ($("#home1").prop("checked") == true) {
             shipping_type = 0;
-            address = $("#us2-address").val();
+            // address = $("#us2-address").val();
             latlong = $("#us2-lat").val() + "," + $("#us2-lon").val();
             CodePostal = $("#order_postal").val();
     
