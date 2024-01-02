@@ -621,7 +621,9 @@ function minusqty(id, iqty) {
 function changebutton(val) {
     var phone = $("#order_phone").val();
     var city = $("#order_city").val();
-    
+      address = $("#us2-address").val();
+    CodePostal = $("#order_postal").val();
+    delivery_time = $("#delivery_time").val();
 
     var address = $("#us2-addres").val();
     if (val == "Cash" || val == "by Card") {
@@ -652,7 +654,7 @@ function changebutton(val) {
             shipping_type = 0;
             // address = $("#us2-address").val();
             // latlong = $("#us2-lat").val() + "," + $("#us2-lon").val();
-             CodePostal = $("#order_postal").val();
+             //CodePostal = $("#order_postal").val();
     
     
             if (phone !== "" && city !== "" && payment_type !== "" && CodePostal !== "" && address !== "" ) {
@@ -690,7 +692,7 @@ function changebutton(val) {
             shipping_type = 1;
             address = "";
             latlong = "";
-            delivery_time = $("#delivery_time").val();
+          
             if (phone !== "" && city !== "" && payment_type !== "" && delivery_time !== ""  ) {
                 if ($("#home1").prop("checked") == true) {
                     var shipping_type = 0;
