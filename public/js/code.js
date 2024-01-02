@@ -657,7 +657,7 @@ function changebutton(val) {
              //CodePostal = $("#order_postal").val();
     
     
-            if (phone !== "" && city !== "" && payment_type !== "" && CodePostal !== "" && address !== "" ) {
+            if (phone !== "" && city !== ""  && CodePostal !== "" && address !== "" ) {
              if ($("#home1").prop("checked") == true) {
                 var shipping_type = 0;
                 $("#shipping_type_or").val(0);
@@ -693,7 +693,7 @@ function changebutton(val) {
             address = "";
             latlong = "";
           
-            if (phone !== "" && city !== "" && payment_type !== "" && delivery_time !== ""  ) {
+            if (phone !== "" && city !== ""  && delivery_time !== ""  ) {
                 if ($("#home1").prop("checked") == true) {
                     var shipping_type = 0;
                     $("#shipping_type_or").val(0);
