@@ -795,122 +795,227 @@ var CodePostal = "";
         address = $("#us2-address").val();
         latlong = $("#us2-lat").val() + "," + $("#us2-lon").val();
         CodePostal = $("#order_postal").val();
+
+
         if (phone !== "" && city !== "" && payment_type !== "" && CodePostal !== "" && address !== "" ) {
+        
+            var nameParts = name.split(" ");
+            var firstName = nameParts[0]; // First part is the first name
+            var lastName = nameParts.slice(1).join(" "); // Rest is the last name (if any)
+        
+            var newUserData = {
+                Civilité: 0,
+                Nom: firstName,
+                Prénom: lastName,
+                Adresse: user_address,
+                CodePostal: "",
+                Ville: city,
+                Téléphone: phone,
+                Mobile: phone,
+                RIB: "",
+                Cin: "",
+                solde: 0
+            };
+    
+            var apiUrl = 'https://api.alaindata.com/foodplace41/Client';
+    
+            fetch(apiUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(newUserData),
+            })
+           
+                .then(response => response.text())
+                .then(checkdata => {
+                    
+                        const idStartIndex = checkdata.indexOf('"IDClient":') + '"IDClient":'.length;
+                        const idEndIndex = checkdata.indexOf(',', idStartIndex) !== -1 ? checkdata.indexOf(',', idStartIndex) : checkdata.indexOf('}', idStartIndex);
+                        const idValue1 = checkdata.substring(idStartIndex, idEndIndex);
+                       
+                        //const idValue = data[0].IDClient;
+    
+                        var newCommandData = {
+                            IDClient: idValue1,
+                            NuméroInterneCommande: generateUniqueNumber(),
+                            DateCommande: getCurrentDate(),
+                            TotalTTC: totalprice,
+                            // Other command data
+                        };
+    
+                        var commandApiUrl = 'https://api.alaindata.com/foodplace41/Commande';
+    
+                        fetch(commandApiUrl, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify(newCommandData),
+                        })
+                            .then(response => response.text())
+                            .then(commandData => {
+                                const idStartIndex = commandData.indexOf('"IDCommande":') + '"IDCommande":'.length;
+                                const idEndIndex = commandData.indexOf(',', idStartIndex) !== -1 ? commandData.indexOf(',', idStartIndex) : commandData.indexOf('}', idStartIndex);
+                                const Idcomande = commandData.substring(idStartIndex, idEndIndex);
+                             
+                                if (commandData !== 0) {
+                                    $.ajax({
+                                        url: $("#path_site").val() + "/placeorder",
+                                        method: "GET",
+                                        data: {
+                                            Idcomande: Idcomande,
+                                            phone: phone,
+                                            note: note,
+                                            city: city,
+                                            address: address + ' ' + CodePostal,
+                                            payment_type: payment_type,
+                                            shipping_type: shipping_type,
+                                            totalprice: totalprice,
+                                            subtotal: subtotal,
+                                            charge: charge,
+                                            latlong: latlong,
+                                           delivery_time: delivery_time 
+                                        },
+                                        success: function (data1) {
+                                            if (data1 != 0) {
+                                                window.location.href = $("#path_site").val() + "/viewdetails" + "/" + data1;
+                                            }
+                                        }
+                                    });                            }
+                            });
+                    
+                }); 
+        } else {
+            // Code for handling empty fields
+            document.getElementById("orderplace1").style.display = "none"
+            document.getElementById("orderplacestrip").style.display = "none";
+            document.getElementById("orderplacepaypal").style.display = "none";
+            $("#pay1").removeClass('activepayment');
+            $("#pay2").removeClass('activepayment');
+            $("#pay3").removeClass('activepayment');
+            $("#order_payment_type_1").prop("checked", false);
+            $("#order_payment_type_3").prop("checked", false);
+            $("#order_payment_type_4").prop("checked", false);
             alert($("#required_field").val());
         }
+
+
     }
 
-    if ($("#home2").prop("checked") == true) {
+   else if ($("#home2").prop("checked") == true) {
         shipping_type = 1;
         address = "";
         latlong = "";
         delivery_time = $("#delivery_time").val();
-        if (phone !== "" && city !== "" && payment_type !== "" && delivery_time !== ""  ) {
+        if (phone !== "" && city !== "" && payment_type !== "" && CodePostal !== "" && address !== "" ) {
+        
+            var nameParts = name.split(" ");
+            var firstName = nameParts[0]; // First part is the first name
+            var lastName = nameParts.slice(1).join(" "); // Rest is the last name (if any)
+        
+            var newUserData = {
+                Civilité: 0,
+                Nom: firstName,
+                Prénom: lastName,
+                Adresse: user_address,
+                CodePostal: "",
+                Ville: city,
+                Téléphone: phone,
+                Mobile: phone,
+                RIB: "",
+                Cin: "",
+                solde: 0
+            };
+    
+            var apiUrl = 'https://api.alaindata.com/foodplace41/Client';
+    
+            fetch(apiUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(newUserData),
+            })
+           
+                .then(response => response.text())
+                .then(checkdata => {
+                    
+                        const idStartIndex = checkdata.indexOf('"IDClient":') + '"IDClient":'.length;
+                        const idEndIndex = checkdata.indexOf(',', idStartIndex) !== -1 ? checkdata.indexOf(',', idStartIndex) : checkdata.indexOf('}', idStartIndex);
+                        const idValue1 = checkdata.substring(idStartIndex, idEndIndex);
+                       
+                        //const idValue = data[0].IDClient;
+    
+                        var newCommandData = {
+                            IDClient: idValue1,
+                            NuméroInterneCommande: generateUniqueNumber(),
+                            DateCommande: getCurrentDate(),
+                            TotalTTC: totalprice,
+                            // Other command data
+                        };
+    
+                        var commandApiUrl = 'https://api.alaindata.com/foodplace41/Commande';
+    
+                        fetch(commandApiUrl, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify(newCommandData),
+                        })
+                            .then(response => response.text())
+                            .then(commandData => {
+                                const idStartIndex = commandData.indexOf('"IDCommande":') + '"IDCommande":'.length;
+                                const idEndIndex = commandData.indexOf(',', idStartIndex) !== -1 ? commandData.indexOf(',', idStartIndex) : commandData.indexOf('}', idStartIndex);
+                                const Idcomande = commandData.substring(idStartIndex, idEndIndex);
+                             
+                                if (commandData !== 0) {
+                                    $.ajax({
+                                        url: $("#path_site").val() + "/placeorder",
+                                        method: "GET",
+                                        data: {
+                                            Idcomande: Idcomande,
+                                            phone: phone,
+                                            note: note,
+                                            city: city,
+                                            address: address + ' ' + CodePostal,
+                                            payment_type: payment_type,
+                                            shipping_type: shipping_type,
+                                            totalprice: totalprice,
+                                            subtotal: subtotal,
+                                            charge: charge,
+                                            latlong: latlong,
+                                           delivery_time: delivery_time 
+                                        },
+                                        success: function (data1) {
+                                            if (data1 != 0) {
+                                                window.location.href = $("#path_site").val() + "/viewdetails" + "/" + data1;
+                                            }
+                                        }
+                                    });                            }
+                            });
+                    
+                }); 
+        } else {
+            // Code for handling empty fields
+            document.getElementById("orderplace1").style.display = "none"
+            document.getElementById("orderplacestrip").style.display = "none";
+            document.getElementById("orderplacepaypal").style.display = "none";
+            $("#pay1").removeClass('activepayment');
+            $("#pay2").removeClass('activepayment');
+            $("#pay3").removeClass('activepayment');
+            $("#order_payment_type_1").prop("checked", false);
+            $("#order_payment_type_3").prop("checked", false);
+            $("#order_payment_type_4").prop("checked", false);
             alert($("#required_field").val());
         }
     }
+else{
+    alert($("#required_field").val());
 
-    if (phone !== "" && city !== "" && payment_type !== "" && shipping_type !== 0 && shipping_type !== 1 ) {
-        var nameParts = name.split(" ");
-        var firstName = nameParts[0]; // First part is the first name
-        var lastName = nameParts.slice(1).join(" "); // Rest is the last name (if any)
+}
     
-        var newUserData = {
-            Civilité: 0,
-            Nom: firstName,
-            Prénom: lastName,
-            Adresse: user_address,
-            CodePostal: "",
-            Ville: city,
-            Téléphone: phone,
-            Mobile: phone,
-            RIB: "",
-            Cin: "",
-            solde: 0
-        };
-
-        var apiUrl = 'https://api.alaindata.com/foodplace41/Client';
-
-        fetch(apiUrl, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(newUserData),
-        })
-       
-            .then(response => response.text())
-            .then(checkdata => {
-                
-                    const idStartIndex = checkdata.indexOf('"IDClient":') + '"IDClient":'.length;
-                    const idEndIndex = checkdata.indexOf(',', idStartIndex) !== -1 ? checkdata.indexOf(',', idStartIndex) : checkdata.indexOf('}', idStartIndex);
-                    const idValue1 = checkdata.substring(idStartIndex, idEndIndex);
-                   
-                    //const idValue = data[0].IDClient;
-
-                    var newCommandData = {
-                        IDClient: idValue1,
-                        NuméroInterneCommande: generateUniqueNumber(),
-                        DateCommande: getCurrentDate(),
-                        TotalTTC: totalprice,
-                        // Other command data
-                    };
-
-                    var commandApiUrl = 'https://api.alaindata.com/foodplace41/Commande';
-
-                    fetch(commandApiUrl, {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify(newCommandData),
-                    })
-                        .then(response => response.text())
-                        .then(commandData => {
-                            const idStartIndex = commandData.indexOf('"IDCommande":') + '"IDCommande":'.length;
-                            const idEndIndex = commandData.indexOf(',', idStartIndex) !== -1 ? commandData.indexOf(',', idStartIndex) : commandData.indexOf('}', idStartIndex);
-                            const Idcomande = commandData.substring(idStartIndex, idEndIndex);
-                         
-                            if (commandData !== 0) {
-                                $.ajax({
-                                    url: $("#path_site").val() + "/placeorder",
-                                    method: "GET",
-                                    data: {
-                                        Idcomande: Idcomande,
-                                        phone: phone,
-                                        note: note,
-                                        city: city,
-                                        address: address + ' ' + CodePostal,
-                                        payment_type: payment_type,
-                                        shipping_type: shipping_type,
-                                        totalprice: totalprice,
-                                        subtotal: subtotal,
-                                        charge: charge,
-                                        latlong: latlong,
-                                       delivery_time: delivery_time 
-                                    },
-                                    success: function (data1) {
-                                        if (data1 != 0) {
-                                            window.location.href = $("#path_site").val() + "/viewdetails" + "/" + data1;
-                                        }
-                                    }
-                                });                            }
-                        });
-                
-            }); 
-    } else {
-        // Code for handling empty fields
-        document.getElementById("orderplace1").style.display = "none"
-        document.getElementById("orderplacestrip").style.display = "none";
-        document.getElementById("orderplacepaypal").style.display = "none";
-        $("#pay1").removeClass('activepayment');
-        $("#pay2").removeClass('activepayment');
-        $("#pay3").removeClass('activepayment');
-        $("#order_payment_type_1").prop("checked", false);
-        $("#order_payment_type_3").prop("checked", false);
-        $("#order_payment_type_4").prop("checked", false);
-        alert($("#required_field").val());
-    }
 }
 
 
