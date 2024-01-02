@@ -130,7 +130,7 @@
                                            <h4>{{$currentFamille->name}}</h4>
                                           @if($currentFamille->name == 'BOISSONS')
 
-<p id="boissonsMessage" >Choisissez au maximum 1</p>
+<p id="boissonsMessage" style="color: red;">Choisissez au maximum 1</p>
 @endif
                                        @endif
                        
