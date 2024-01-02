@@ -34,7 +34,14 @@ class Cartcontroller extends Controller {
             $total[]=$dt->price;
         }
     	}	
-    	
+    	else {
+        $total[] = [
+          'id' => 0,
+          'name' => 'No ingredient selected',
+          'price' => 0,
+          // You might add more properties or details of the default option here
+      ];
+      }
     	$id=rand(10,100);
     	$item_data=Item::where("menu_name",$request->get("id"))->first();
     	$qty=$request->get("qty");
