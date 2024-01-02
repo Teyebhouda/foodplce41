@@ -35,13 +35,17 @@ class Cartcontroller extends Controller {
       } else {
           // Process $totalint as an array of ingredient IDs
           $total = explode(",", $totalint);
+          $totalPrices = [];
   
           foreach ($total as $k) {
               $dt = Ingredient::find($k);
-              $totalPrices[] = $dt->price;
+  
+              // Check if $dt is null before accessing its properties
+              if($dt !== null) {
+                  $totalPrices[] = $dt->price;
+              }
           }
       }
-    	
     	$id=rand(10,100);
     	$item_data=Item::where("menu_name",$request->get("id"))->first();
     	$qty=$request->get("qty");
