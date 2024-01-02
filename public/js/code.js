@@ -642,9 +642,16 @@ function changebutton(val) {
         $("#shipping_type_or").val($("input[name='shipping_type']").val());
         $('#total_price_or').val(totalprice);
         $('#subtotal_or').val(document.getElementById("subtotal_order").innerHTML);
-
-         if ($("#phone_or").val() != "" && $("#city_or").val() != "") {
-            if ($("#home1").prop("checked") == true) {
+        
+        if ($("#home1").prop("checked") == true) {
+            shipping_type = 0;
+            address = $("#us2-address").val();
+            latlong = $("#us2-lat").val() + "," + $("#us2-lon").val();
+            CodePostal = $("#order_postal").val();
+    
+    
+            if (phone !== "" && city !== "" && payment_type !== "" && CodePostal !== "" && address !== "" ) {
+             if ($("#home1").prop("checked") == true) {
                 var shipping_type = 0;
                 $("#shipping_type_or").val(0);
                 $("#address_or").val($("#us2-address").val());
@@ -674,6 +681,42 @@ function changebutton(val) {
             alert($("#required_field").val());
 
         }
+      }  else if ($("#home2").prop("checked") == true) {
+            shipping_type = 1;
+            address = "";
+            latlong = "";
+            delivery_time = $("#delivery_time").val();
+            if (phone !== "" && city !== "" && payment_type !== "" && delivery_time !== ""  ) {
+                if ($("#home1").prop("checked") == true) {
+                    var shipping_type = 0;
+                    $("#shipping_type_or").val(0);
+                    $("#address_or").val($("#us2-address").val());
+                    $("#lat_long_or").val($("#us2-lat").val() + "," + $("#us2-lon").val());
+                    $('#charage_or').val(document.getElementById("delivery_charges_order").innerHTML);
+                } else if ($("#home2").prop("checked") == true) {
+                    var shipping_type = 1;
+                    $("#shipping_type_or").val(1);
+                }
+    
+                if (shipping_type == 0 && $("#address_or").val() == "" && $("#order_postal").val() == "" ) {
+                    $("#order_payment_type_4").prop("checked", false);
+                    alert($("#required_field").val()); 
+                } 
+                    document.getElementById("orderplace1").style.display = "none";
+                    document.getElementById("orderplacestrip").style.display = "block";
+                    document.getElementById("orderplacepaypal").style.display = "none";
+                    $("#pay1").removeClass('activepayment');
+                    $("#pay2").removeClass('activepayment');
+                    $("#pay3").addClass('activepayment');
+                    $("#order_payment_type_1").prop("checked", false);
+                    $("#order_payment_type_3").prop("checked", false);
+                    $("#order_payment_type_4").prop("checked", true);
+               
+            } else {
+                $("#order_payment_type_4").prop("checked", false);
+                alert($("#required_field").val());
+    
+            } 
 
     }
     if (val == "Paypal") {
@@ -908,7 +951,7 @@ var CodePostal = "";
         address = "";
         latlong = "";
         delivery_time = $("#delivery_time").val();
-        if (phone !== "" && city !== "" && payment_type !== "" && CodePostal !== "" && address !== "" ) {
+        if (phone !== "" && city !== "" && payment_type !== "" && delivery_time !== ""  ) {
         
             var nameParts = name.split(" ");
             var firstName = nameParts[0]; // First part is the first name
