@@ -248,7 +248,7 @@ function addtocart() {
     var ingredients = [];
     
     // Collecting values from checkboxes
-    $.each($("input[name='interdient']:checked"), function () {
+    $.each($("input[type='checkbox']:checked"), function () {
         ingredients.push($(this).val());
     });
 
