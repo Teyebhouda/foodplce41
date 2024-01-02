@@ -651,8 +651,8 @@ function changebutton(val) {
         if ($("#home1").prop("checked") == true) {
             shipping_type = 0;
             // address = $("#us2-address").val();
-            latlong = $("#us2-lat").val() + "," + $("#us2-lon").val();
-            CodePostal = $("#order_postal").val();
+            // latlong = $("#us2-lat").val() + "," + $("#us2-lon").val();
+             CodePostal = $("#order_postal").val();
     
     
             if (phone !== "" && city !== "" && payment_type !== "" && CodePostal !== "" && address !== "" ) {
@@ -660,8 +660,8 @@ function changebutton(val) {
                 var shipping_type = 0;
                 $("#shipping_type_or").val(0);
                 $("#address_or").val($("#us2-address").val());
-                $("#lat_long_or").val($("#us2-lat").val() + "," + $("#us2-lon").val());
-                $('#charage_or').val(document.getElementById("delivery_charges_order").innerHTML);
+                // $("#lat_long_or").val($("#us2-lat").val() + "," + $("#us2-lon").val());
+                // $('#charage_or').val(document.getElementById("delivery_charges_order").innerHTML);
             } else if ($("#home2").prop("checked") == true) {
                 var shipping_type = 1;
                 $("#shipping_type_or").val(1);
