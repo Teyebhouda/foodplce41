@@ -822,7 +822,7 @@ function changebutton(val) {
 
 
 }
-
+}
 function changeoption(val) {
     var subtotal = $("#subtotalorder").val();
     var discharges = $("#delivery_charges").val();
