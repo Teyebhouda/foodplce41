@@ -622,8 +622,8 @@ function changebutton(val) {
     var phone = $("#order_phone").val();
     var city = $("#order_city").val();
       address = $("#us2-address").val();
-    CodePostal = $("#order_postal").val();
-    delivery_time = $("#delivery_time").val();
+    // CodePostal = $("#order_postal").val();
+    // delivery_time = $("#delivery_time").val();
 
     var address = $("#us2-addres").val();
     if (val == "Cash" || val == "by Card") {
