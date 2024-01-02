@@ -719,6 +719,12 @@ function changebutton(val) {
             } 
 
     }
+    else {
+        $("#order_payment_type_4").prop("checked", false);
+        alert($("#required_field").val());
+
+    } 
+}
     if (val == "Paypal") {
         var totalprice = document.getElementById("finaltotal_order").innerHTML;
         $("#phone_pal").val($("#order_phone").val());
