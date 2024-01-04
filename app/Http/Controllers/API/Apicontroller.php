@@ -938,7 +938,7 @@ static public function generate_timezone_list(){
                                        'description' => "Amount: ".$request->get("total_price").' - '. $unique_id,
                                        'source' => $request->get("stripeToken"),                    
                                        'amount' => (int)($request->get("total_price") * 100), 
-                                       'currency' => 'USD'
+                                       'currency' => 'EUR'
                                     ));
                                     $data=Order::find($store->id);
                                     $data->charges_id=$charge->id;
