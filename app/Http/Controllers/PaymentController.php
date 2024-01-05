@@ -297,6 +297,12 @@ try {
           // Assuming $deliveryTime holds the actual delivery time value
           $libProdText .= " " . $request->get('delivery_time');
       }
+      else if ($store->shipping_type == 0) {
+        // Assuming $deliveryTime holds the actual delivery time value
+        $libProdText .= "/" .   $store->delivery_charge;
+    }
+
+    
       $apiLineData = [
         "IDCommande"   => $IDCommande,//here insert commande id
         "Référence"    => "",
