@@ -340,7 +340,7 @@ try {
         $data=Order::find($store->id);
         $data->charges_id=$charge->id;
         if ($charge->status === 'succeeded') {
-            $apiLineData = [
+            $apiLineData1 = [
                 "IDCommande"   => $IDCommande,//here insert commande id
                 "Référence"    => "",
                 "LibProd" => "Moy Paiement  " . $store->payment_type . "\n" . "Payé" ,
@@ -356,7 +356,7 @@ try {
                     'headers' => [
                         'Content-Type' => 'application/json', // Set the Content-Type header
                     ],
-                    'json' => $apiLineData, // JSON-encode the data
+                    'json' => $apiLineData1, // JSON-encode the data
                 ]);
             
                 // Handle the response here
@@ -367,7 +367,7 @@ try {
             }
             echo "Payment successful!";
         } else {
-            $apiLineData = [
+            $apiLineData1 = [
                 "IDCommande"   => $IDCommande,//here insert commande id
                 "Référence"    => "",
                 "LibProd" => "Moy Paiement  " . $store->payment_type . "\n" . "NonPayé" ,
@@ -383,7 +383,7 @@ try {
                     'headers' => [
                         'Content-Type' => 'application/json', // Set the Content-Type header
                     ],
-                    'json' => $apiLineData, // JSON-encode the data
+                    'json' => $apiLineData1, // JSON-encode the data
                 ]);
             
                 // Handle the response here
