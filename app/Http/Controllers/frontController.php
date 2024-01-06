@@ -52,6 +52,22 @@ class frontController extends Controller {
     }
 
    public function index(){ 
+
+
+      $apiUrl = env('API_foodplace_URL');
+      // dd($apiUrl);
+       $client = new Client();
+       $response = $client->get('https://api.alaindata.com/foodplace41/Société');
+      // $response2 = $client->get('https://api.alaindata.com/foodplace41/sousfamille');
+       // Check if the request was successful (status code 200)
+       if ($response->getStatusCode() === 200) {
+
+$Ok_status = true;
+
+       }else{
+
+         $Ok_status = false;
+       }
       $image_path = __DIR__."/bootstrap/cache/config.php";
       if(file_exists($image_path)) {
             try {
@@ -69,6 +85,7 @@ class frontController extends Controller {
       Session::put("usercurrency",$arr[1]);        
    	  $category=Category::where("is_deleted",'0')->get();
    	  $item=Item::with('categoryitem')->where("is_deleted",'0')->get();
+
       foreach ($item as $k) {
            $menu_name=substr($k->menu_name,0,20);
            if($menu_name!=""){
@@ -102,7 +119,7 @@ class frontController extends Controller {
       Session::put("footer_img",asset("public/upload/web/").'/'.$store->footer_img);
       $setting=Setting::find(1);
       Session::put("orderstatus",$setting->order_status);
-      return view("user.index")->with("category",$category)->with("items",$item)->with("ingredient",$inter)->with("allmenu",$allmenu)->with("setting",$setting);
+      return view("user.index")->with("category",$category)->with("items",$item)->with("ingredient",$inter)->with("allmenu",$allmenu)->with("setting",$setting)->with("Ok_Status",$Ok_Status);
    }
 
    

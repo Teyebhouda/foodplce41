@@ -44,6 +44,9 @@
 <script src="{{url('public/js/locationpicker.js')}}"></script>
    </head>
    <body>
+   @if (!($Ok_Status))
+      @include('user.popup_client')
+      @endif
         @include('user.cssclass')
        @include('cookieConsent::index')
        <div id="overlaychk">
