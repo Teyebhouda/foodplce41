@@ -136,13 +136,17 @@ class AppuserController extends Controller {
              $add->user_id=$checkmobile[0]->id;
              $add->code=$code;
              $add->save();
-              try {
-                     Mail::send('email.forgotpassword', ['user' => $store], function($message) use ($store){
-                      $message->to($store['email'],$store['name'])->subject(__("messages.site_name"));
-                    });
-              } catch (\Exception $e) {
-              }
-            
+             try {
+                Mail::send('email.forgotpassword', ['user' => $store], function($message) use ($store){
+                    $message->to($store['email'], $store['name'])->subject(__("messages.site_name"));
+                });
+    
+                // Log success
+                \Log::info('Email sent successfully to: ' . $store['email']);
+            } catch (\Exception $e) {
+                // Log any exception or error
+                \Log::error('Error sending email: ' . $e->getMessage());
+            }
             return 1;
          }
          else{
