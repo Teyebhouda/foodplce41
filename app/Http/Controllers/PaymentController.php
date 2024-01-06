@@ -262,7 +262,7 @@ try {
             "Référence"    => $getmenu->reference,
             "LibProd"      => $getmenu->menu_name . ' - Ingredients: ' . $ingredientString,
             "Quantité"     => $result["ItemQty"],
-            "PrixVente"    => number_format($result["ItemTotalPrice"], 2, '.', ''),
+            "PrixVente"    => $result["ItemAmt"],
         ];
 
       //  dd( $apiLineData);
