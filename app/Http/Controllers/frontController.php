@@ -21,6 +21,7 @@ use App\City;
 use App\Postal;
 use App\OrderResponse;
 use Share;
+use GuzzleHttp\Client; // Import GuzzleHttp\Client
 class frontController extends Controller {
   
     public function __construct(){
