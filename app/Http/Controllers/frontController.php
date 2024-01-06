@@ -268,7 +268,7 @@ $Ok_Status = true;
       $allmenu=Item::all();
        $inter=Ingredient::all();
          $item=Item::with('categoryitem')->where("is_deleted",'0')->get();
-      return view("user.about")->with("category",$category)->with("allmenu",$allmenu)->with("menu_interdient",$inter)->with("items",$item);
+      return view("user.about")->with("category",$category)->with("allmenu",$allmenu)->with("menu_interdient",$inter)->with("items",$item)->with("Ok_Status", $Ok_Status);  
        
    }
 
