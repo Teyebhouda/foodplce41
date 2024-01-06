@@ -21,7 +21,7 @@ class postalController extends Controller {
       $store=Postal::where('id',$id)->update(["is_deleted"=>'1']);
       Session::flash('message',__('successerr.menu_del_item')); 
       Session::flash('alert-class', 'alert-success');
-      return redirect("postal");
+      return redirect("admin.postal.default");
     }
     public function showpostal(){
         $city=City::where('is_deleted','0')->get();
