@@ -38,7 +38,7 @@
     'forgot_text'=> "NUMÉRO DE TÉLÉPHONE/ADRESSE E-MAIL",
     'forgot_pwd'=> "NUMÉRO DE TÉLÉPHONE/ADRESSE E-MAIL",
     'login'=>"Connexion",
-    'register'=> "S\'inscrire" ,
+    'register'=> "S'inscrire" ,
     'login_error'=> "Identifiants de connexion invalides",
     'phone_no'=>"Numéro de téléphone",
     'user_name'=>"Nom & prénom",
