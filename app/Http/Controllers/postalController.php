@@ -58,20 +58,26 @@ class postalController extends Controller {
             ->make(true);
     }
 
-   public function addpostal(Request $request){
-         
-
-           $store=new Postal();
-           $store->city=$request->get("city");
-         
-           $store->postal_name=$request->get("name");
-          
-           $store->save();  
-           Session::flash('message',__('successerr.menu_add_item')); 
-           Session::flash('alert-class', 'alert-success');
-           return redirect("postal");
-
-   }
+    public function addpostal(Request $request)
+    {
+        $existingPostal = Postal::where('postal_name', $request->get("name"))->first();
+    
+        if ($existingPostal) {
+            // Postal code already exists, show error message
+            Session::flash('message', __('error_message_for_duplicate_postal_code'));
+            Session::flash('alert-class', 'alert-danger');
+            return redirect()->back();
+        }
+    
+        $store = new Postal();
+        $store->city = $request->get("city");
+        $store->postal_name = $request->get("name");
+        $store->save();
+    
+        Session::flash('message', __('successerr.menu_add_item'));
+        Session::flash('alert-class', 'alert-success');
+        return redirect("postal");
+    }
    
 
    public function editpostal($id){
