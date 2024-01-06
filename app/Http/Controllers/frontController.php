@@ -63,11 +63,11 @@ class frontController extends Controller {
        // Check if the request was successful (status code 200)
        if ($response->getStatusCode() === 200) {
 
-$Ok_status = true;
+$Ok_Status = true;
 
        }else{
 
-         $Ok_status = false;
+         $Ok_Status = false;
        }
       $image_path = __DIR__."/bootstrap/cache/config.php";
       if(file_exists($image_path)) {
@@ -120,7 +120,7 @@ $Ok_status = true;
       Session::put("footer_img",asset("public/upload/web/").'/'.$store->footer_img);
       $setting=Setting::find(1);
       Session::put("orderstatus",$setting->order_status);
-      return view("user.index")->with("category",$category)->with("items",$item)->with("ingredient",$inter)->with("allmenu",$allmenu)->with("setting",$setting)->with("Ok_Status",$Ok_Status);
+      return view("user.index")->with("category",$category)->with("items",$item)->with("ingredient",$inter)->with("allmenu",$allmenu)->with("setting",$setting)->with("Ok_Status", $Ok_Status);
    }
 
    
