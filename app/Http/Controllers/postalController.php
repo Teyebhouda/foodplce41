@@ -50,7 +50,7 @@ class postalController extends Controller {
             })
             
             ->editColumn('action', function ($item) {  
-               $delete= url('deleteitem',array('id'=>$item->id));
+               $delete= url('deletepostal',array('id'=>$item->id));
                $return = '<a onclick="edititem('.$item->id.')"  rel="tooltip" title="" class="m-b-10 m-l-5" data-original-title="Remove" data-toggle="modal" data-target="#edititem"><i class="fa fa-edit f-s-25" style="margin-right: 10px;"></i></a><a onclick="delete_record(' . "'" . $delete . "'" . ')" rel="tooltip" title="" class="m-b-10 m-l-5" data-original-title="Remove"><i class="fa fa-trash f-s-25"></i></a>';    
                return $return;         
             })
