@@ -104,7 +104,8 @@
    <select name="order_city" id="order_city">
       <option value="">{{__('messages.sel_city')}}</option>
       @foreach($city as $ci)
-      <option value="{{$ci->city_name}}" data-postals="{{ json_encode($ci->postals) }}">{{$ci->city_name}}</option>
+      <option value="{{$ci->city_name}}" data-postals="{{ json_encode($ci->postals->where('is_deleted', 0)) }}">{{$ci->city_name}}</option>
+
       @endforeach
    </select>
 </div>
