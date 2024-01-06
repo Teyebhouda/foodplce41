@@ -126,6 +126,20 @@ $Ok_Status = true;
    
 
    public function detailitem($item_id){
+      $apiUrl = env('API_foodplace_URL');
+      // dd($apiUrl);
+       $client = new Client();
+       $response = $client->get('https://api.alaindata.com/foodplace41/Société');
+      // $response2 = $client->get('https://api.alaindata.com/foodplace41/sousfamille');
+       // Check if the request was successful (status code 200)
+       if ($response->getStatusCode() === 200) {
+
+$Ok_Status = true;
+
+       }else{
+
+         $Ok_Status = false;
+       }
       $category=Category::where("is_deleted",'0')->get();
       $itemdetails=Item::find($item_id);
       $item=Item::with('categoryitem')->where("category",$itemdetails->category)->where("is_deleted",'0')->get();
@@ -134,10 +148,24 @@ $Ok_Status = true;
       $inter1=Ingredient::all();
 
        $itemdata=Item::with('categoryitem')->where("is_deleted",'0')->get();
-      return view("user.detailitem")->with("category",$category)->with("itemdetails",$itemdetails)->with("related_item",$item)->with("menu_interdient1",$inter)->with("allmenu",$allmenu)->with("items",$itemdata)->with("menu_interdient",$inter1);
+      return view("user.detailitem")->with("category",$category)->with("itemdetails",$itemdetails)->with("related_item",$item)->with("menu_interdient1",$inter)->with("allmenu",$allmenu)->with("items",$itemdata)->with("menu_interdient",$inter1)->with("Ok_Status", $Ok_Status);
    }
    
    public function savecontact(Request $request){
+      $apiUrl = env('API_foodplace_URL');
+      // dd($apiUrl);
+       $client = new Client();
+       $response = $client->get('https://api.alaindata.com/foodplace41/Société');
+      // $response2 = $client->get('https://api.alaindata.com/foodplace41/sousfamille');
+       // Check if the request was successful (status code 200)
+       if ($response->getStatusCode() === 200) {
+
+$Ok_Status = true;
+
+       }else{
+
+         $Ok_Status = false;
+       }
        $store=new Contact();
        $store->name=strip_tags(preg_replace('#<script(.*?)>(.*?)</script>#is', '',$request->get("name")));
        $store->email=strip_tags(preg_replace('#<script(.*?)>(.*?)</script>#is', '',$request->get("email")));
@@ -149,6 +177,7 @@ $Ok_Status = true;
        return redirect("contactus");
    }
       public function category_list($id){
+         
       $category=Category::all();
       $item=Item::with('categoryitem')->where("category",$id)->where("is_deleted",'0')->get();
       foreach ($item as $k) {
@@ -185,6 +214,20 @@ $Ok_Status = true;
       
    }
   public function cartdetails(){
+   $apiUrl = env('API_foodplace_URL');
+   // dd($apiUrl);
+    $client = new Client();
+    $response = $client->get('https://api.alaindata.com/foodplace41/Société');
+   // $response2 = $client->get('https://api.alaindata.com/foodplace41/sousfamille');
+    // Check if the request was successful (status code 200)
+    if ($response->getStatusCode() === 200) {
+
+$Ok_Status = true;
+
+    }else{
+
+      $Ok_Status = false;
+    }
       $cartCollection = Cart::getContent();
       if($cartCollection->count()){
             foreach ($cartCollection  as $item) {
@@ -199,7 +242,7 @@ $Ok_Status = true;
             $allmenu=Item::all();
            
              $itemdata=Item::with('categoryitem')->where("is_deleted",'0')->get();
-            return view("user.cartdetails")->with("category",$category)->with("itemdetails",$itemdetails)->with("related_item",$item)->with("menu_interdient",$inter)->with("allmenu",$allmenu)->with("delivery_charges",$setting->delivery_charges)->with("items",$itemdata);      
+            return view("user.cartdetails")->with("category",$category)->with("itemdetails",$itemdetails)->with("related_item",$item)->with("menu_interdient",$inter)->with("allmenu",$allmenu)->with("delivery_charges",$setting->delivery_charges)->with("items",$itemdata)->with("Ok_Status", $Ok_Status);      
       }else{
              return redirect("/");
       }
@@ -207,6 +250,20 @@ $Ok_Status = true;
    
    
    public function showaboutus(){
+      $apiUrl = env('API_foodplace_URL');
+      // dd($apiUrl);
+       $client = new Client();
+       $response = $client->get('https://api.alaindata.com/foodplace41/Société');
+      // $response2 = $client->get('https://api.alaindata.com/foodplace41/sousfamille');
+       // Check if the request was successful (status code 200)
+       if ($response->getStatusCode() === 200) {
+
+$Ok_Status = true;
+
+       }else{
+
+         $Ok_Status = false;
+       }
       $category=Category::where("is_deleted",'0')->get();
       $allmenu=Item::all();
        $inter=Ingredient::all();
@@ -216,6 +273,20 @@ $Ok_Status = true;
    }
 
    public function viewdetails($id){
+      $apiUrl = env('API_foodplace_URL');
+      // dd($apiUrl);
+       $client = new Client();
+       $response = $client->get('https://api.alaindata.com/foodplace41/Société');
+      // $response2 = $client->get('https://api.alaindata.com/foodplace41/sousfamille');
+       // Check if the request was successful (status code 200)
+       if ($response->getStatusCode() === 200) {
+
+$Ok_Status = true;
+
+       }else{
+
+         $Ok_Status = false;
+       }
      if(!Session::get("login_user")){
           return redirect("/");
      } 
@@ -228,7 +299,7 @@ $Ok_Status = true;
      $allmenu=Item::all();
      $inter=Ingredient::all();
      $item=Item::with('categoryitem')->where("is_deleted",'0')->get();
-     return view("user.viewdetails")->with("category",$category)->with("allmenu",$allmenu)->with("menu_interdient",$inter)->with("items",$item)->with("order",$order)->with("itemlist",$itemls);
+     return view("user.viewdetails")->with("category",$category)->with("allmenu",$allmenu)->with("menu_interdient",$inter)->with("items",$item)->with("order",$order)->with("itemlist",$itemls)->with("Ok_Status", $Ok_Status);
    }
    public function checkout(Request $request){
 
@@ -246,7 +317,7 @@ $Ok_Status = true;
          
          $long=72.896816;
          $item=Item::with('categoryitem')->where("is_deleted",'0')->get();
-         return view("user.checkout")->with("category",$category)->with("allmenu",$allmenu)->with("menu_interdient",$inter)->with("items",$item)->with("shipping",$request->get("delivery_option"))->with("delivery_charges",$setting->delivery_charges)->with("city",$city)->with('latitude',$lat)->with("longtitude",$long)->with("setting",$setting)->with("postal",$postal);
+         return view("user.checkout")->with("category",$category)->with("allmenu",$allmenu)->with("menu_interdient",$inter)->with("items",$item)->with("shipping",$request->get("delivery_option"))->with("delivery_charges",$setting->delivery_charges)->with("city",$city)->with('latitude',$lat)->with("longtitude",$long)->with("setting",$setting)->with("postal",$postal)->with("Ok_Status", $Ok_Status);
      }
      else{
            Session::flash('message', __('messages.shipping_error')); 
@@ -256,29 +327,89 @@ $Ok_Status = true;
      
    }
    public function showcontactus(){
+      $apiUrl = env('API_foodplace_URL');
+      // dd($apiUrl);
+       $client = new Client();
+       $response = $client->get('https://api.alaindata.com/foodplace41/Société');
+      // $response2 = $client->get('https://api.alaindata.com/foodplace41/sousfamille');
+       // Check if the request was successful (status code 200)
+       if ($response->getStatusCode() === 200) {
+
+$Ok_Status = true;
+
+       }else{
+
+         $Ok_Status = false;
+       }
     $category=Category::where("is_deleted",'0')->get();
     $allmenu=Item::all();
       $inter=Ingredient::all();
         $item=Item::with('categoryitem')->where("is_deleted",'0')->get();
-    return view("user.contact")->with("category",$category)->with("allmenu",$allmenu)->with("menu_interdient",$inter)->with("items",$item);   
+    return view("user.contact")->with("category",$category)->with("allmenu",$allmenu)->with("menu_interdient",$inter)->with("items",$item)->with("Ok_Status", $Ok_Status);  
    }
+
+
+
+
    public function showservice(){
+      $apiUrl = env('API_foodplace_URL');
+      // dd($apiUrl);
+       $client = new Client();
+       $response = $client->get('https://api.alaindata.com/foodplace41/Société');
+      // $response2 = $client->get('https://api.alaindata.com/foodplace41/sousfamille');
+       // Check if the request was successful (status code 200)
+       if ($response->getStatusCode() === 200) {
+
+$Ok_Status = true;
+
+       }else{
+
+         $Ok_Status = false;
+       }
      $category=Category::where("is_deleted",'0')->get();
      $allmenu=Item::all();
        $inter=Ingredient::all();
          $item=Item::with('categoryitem')->where("is_deleted",'0')->get();
-     return view("user.service")->with("category",$category)->with("allmenu",$allmenu)->with("menu_interdient",$inter)->with("items",$item);    
+     return view("user.service")->with("category",$category)->with("allmenu",$allmenu)->with("menu_interdient",$inter)->with("items",$item)->with("Ok_Status", $Ok_Status);     
    }
 
    public function termofuse(){
+      $apiUrl = env('API_foodplace_URL');
+      // dd($apiUrl);
+       $client = new Client();
+       $response = $client->get('https://api.alaindata.com/foodplace41/Société');
+      // $response2 = $client->get('https://api.alaindata.com/foodplace41/sousfamille');
+       // Check if the request was successful (status code 200)
+       if ($response->getStatusCode() === 200) {
+
+$Ok_Status = true;
+
+       }else{
+
+         $Ok_Status = false;
+       }
      $category=Category::where("is_deleted",'0')->get();
      $allmenu=Item::all();
        $inter=Ingredient::all();
          $item=Item::with('categoryitem')->where("is_deleted",'0')->get();
-     return view("user.term")->with("category",$category)->with("allmenu",$allmenu)->with("menu_interdient",$inter)->with("items",$item);
+     return view("user.term")->with("category",$category)->with("allmenu",$allmenu)->with("menu_interdient",$inter)->with("items",$item)->with("Ok_Status", $Ok_Status);  
    }
 
     public function myaccount(){
+      $apiUrl = env('API_foodplace_URL');
+      // dd($apiUrl);
+       $client = new Client();
+       $response = $client->get('https://api.alaindata.com/foodplace41/Société');
+      // $response2 = $client->get('https://api.alaindata.com/foodplace41/sousfamille');
+       // Check if the request was successful (status code 200)
+       if ($response->getStatusCode() === 200) {
+
+$Ok_Status = true;
+
+       }else{
+
+         $Ok_Status = false;
+       }
       if(!Session::get("login_user")){
           return redirect("/");
       }
@@ -287,7 +418,7 @@ $Ok_Status = true;
       $inter=Ingredient::all();
       $item=Item::with('categoryitem')->where("is_deleted",'0')->get();
       $myorder=Order::where("user_id",Session::get("login_user"))->orderby('id','DESC')->get();
-      return view("user.myaccount")->with("category",$category)->with("allmenu",$allmenu)->with("menu_interdient",$inter)->with("items",$item)->with("myorder",$myorder);
+      return view("user.myaccount")->with("category",$category)->with("allmenu",$allmenu)->with("menu_interdient",$inter)->with("items",$item)->with("myorder",$myorder)->with("Ok_Status", $Ok_Status);  
    }
 }
 
