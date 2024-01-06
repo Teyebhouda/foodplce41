@@ -64,7 +64,7 @@ class postalController extends Controller {
     
         if ($existingPostal) {
             // Postal code already exists, show error message
-            Session::flash('message', __('error_message_for_duplicate_postal_code'));
+            Session::flash('message', __('Cecode postal existe déja'));
             Session::flash('alert-class', 'alert-danger');
             return redirect()->back();
         }
