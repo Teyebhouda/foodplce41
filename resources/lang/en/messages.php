@@ -91,7 +91,7 @@
     'DC'=>"Frais de livraison" ,
     'shipping'=>"Expédition",
     'HD'=>"LIVRAISON À DOMICILE",
-    'LP'=>"Pick Up" ,
+    'LP'=>" Emporter" ,
     'ship_sug'=>"Les options d'expédition seront mises à jour lors du paiement",
     'btn_checkout'=>"Passer à la caisse",
     'returning_customer'=>"Passer à la caisse",
