@@ -400,6 +400,35 @@ if ($store->shipping_type == 1) {
       $addresponse->order_id=$store->id;
       $addresponse->desc=json_encode($data);
       $addresponse->save();
+
+      $data = [
+        'clientFirstName' => $store->name,
+        'clientLastName' => $getuser->name,
+        'clientNum1' => $getuser->mob_number,
+        'clientAdresse' => $getuser->address,
+        'commandId' => $store->id,
+        'currentDateTime' => now()->format('d/m/Y H:i'),
+        'cartItems' => $cartCollection,
+        'totalPrice' =>  $store->total_price,
+        'email' => $store->email,
+        
+    ];
+
+
+      //Send User Email
+      try {
+        Mail::send('email.ConfirmOrderClient', ['user' => $store], function($message) use ($store){
+            $message->to($store['email'], $store['name'])->subject(__("messages.site_name"));
+        });
+
+        // Log success
+        \Log::info('Email sent successfully to: ' . $store['email']);
+       
+    } catch (\Exception $e) {
+        // Log any exception or error
+        \Log::error('Error sending email: ' . $e->getMessage());
+       
+    }
       Cart::clear();
       Session::flash('message', __('messages.order_success')); 
       Session::flash('alert-class', 'alert-success');
