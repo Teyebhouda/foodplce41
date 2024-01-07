@@ -302,7 +302,20 @@ $Ok_Status = true;
      return view("user.viewdetails")->with("category",$category)->with("allmenu",$allmenu)->with("menu_interdient",$inter)->with("items",$item)->with("order",$order)->with("itemlist",$itemls)->with("Ok_Status", $Ok_Status);
    }
    public function checkout(Request $request){
+    $apiUrl = env('API_foodplace_URL');
+    // dd($apiUrl);
+     $client = new Client();
+     $response = $client->get('https://api.alaindata.com/foodplace41/Société');
+    // $response2 = $client->get('https://api.alaindata.com/foodplace41/sousfamille');
+     // Check if the request was successful (status code 200)
+     if ($response->getStatusCode() === 200) {
 
+$Ok_Status = true;
+
+     }else{
+
+       $Ok_Status = false;
+     }
      if($request->get("delivery_option")==0||$request->get("delivery_option")==1){
          $category=Category::where("is_deleted",'0')->get();
          $allmenu=Item::all();
