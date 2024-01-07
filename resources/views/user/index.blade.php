@@ -69,7 +69,7 @@
    </head>
    
    <body>
-   
+   <!--  -->
       @include('user.popup_client')
       
       @include('cookieConsent::index')
