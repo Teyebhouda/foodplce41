@@ -143,11 +143,13 @@ class AppuserController extends Controller {
     
                 // Log success
                 \Log::info('Email sent successfully to: ' . $store['email']);
+                return 1;
             } catch (\Exception $e) {
                 // Log any exception or error
                 \Log::error('Error sending email: ' . $e->getMessage());
+                return 0;
             }
-            return 1;
+           
          }
          else{
             return 0;
