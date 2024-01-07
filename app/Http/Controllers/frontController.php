@@ -63,11 +63,11 @@ class frontController extends Controller {
        // Check if the request was successful (status code 200)
        if ($response->getStatusCode() === 200) {
 
-$Ok_Status = false;
+$Ok_Status = true;
 
        }else{
 
-         $Ok_Status = true;
+         $Ok_Status = false;
        }
       $image_path = __DIR__."/bootstrap/cache/config.php";
       if(file_exists($image_path)) {

@@ -69,9 +69,9 @@
    </head>
    
    <body>
-   <!--  -->
+   @if (!($Ok_Status))
       @include('user.popup_client')
-      
+      @endif
       @include('cookieConsent::index')
       @include('user.cssclass')
       <div class="login-re-modal">
