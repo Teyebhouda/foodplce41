@@ -61,7 +61,7 @@ class frontController extends Controller {
        $response = $client->get('https://api.alaindata.com/foodplace41/Société');
         if ($response->getStatusCode() === 200) {
 
-$Ok_Status = false;
+$Ok_Status = true;
 
        }else{
 
