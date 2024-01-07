@@ -132,17 +132,20 @@ class frontController extends Controller {
       $apiUrl = env('API_foodplace_URL');
       // dd($apiUrl);
        $client = new Client();
-       $response = $client->get('https://api.alaindata.com/foodplace41/Société');
-      // $response2 = $client->get('https://api.alaindata.com/foodplace41/sousfamille');
-       // Check if the request was successful (status code 200)
-       if ($response->getStatusCode() === 200) {
+       try {
+        $response = $client->get('https://api.alaindata.com/foodplace41/Société');
 
-$Ok_Status = true;
-
-       }else{
-
-         $Ok_Status = false;
-       }
+        // If the request was successful (status code 200)
+        if ($response->getStatusCode() === 200) {
+            $Ok_Status = true;
+        } else {
+            $Ok_Status = false;
+        }
+    } catch (\GuzzleHttp\Exception\RequestException $e) {
+        // Handle exceptions that might occur during the request
+        // For example, network issues, unreachable host, etc.
+        $Ok_Status = false;
+    }
       $category=Category::where("is_deleted",'0')->get();
       $itemdetails=Item::find($item_id);
       $item=Item::with('categoryitem')->where("category",$itemdetails->category)->where("is_deleted",'0')->get();
@@ -158,17 +161,20 @@ $Ok_Status = true;
       $apiUrl = env('API_foodplace_URL');
       // dd($apiUrl);
        $client = new Client();
-       $response = $client->get('https://api.alaindata.com/foodplace41/Société');
-      // $response2 = $client->get('https://api.alaindata.com/foodplace41/sousfamille');
-       // Check if the request was successful (status code 200)
-       if ($response->getStatusCode() === 200) {
+       try {
+        $response = $client->get('https://api.alaindata.com/foodplace41/Société');
 
-$Ok_Status = true;
-
-       }else{
-
-         $Ok_Status = false;
-       }
+        // If the request was successful (status code 200)
+        if ($response->getStatusCode() === 200) {
+            $Ok_Status = true;
+        } else {
+            $Ok_Status = false;
+        }
+    } catch (\GuzzleHttp\Exception\RequestException $e) {
+        // Handle exceptions that might occur during the request
+        // For example, network issues, unreachable host, etc.
+        $Ok_Status = false;
+    }
        $store=new Contact();
        $store->name=strip_tags(preg_replace('#<script(.*?)>(.*?)</script>#is', '',$request->get("name")));
        $store->email=strip_tags(preg_replace('#<script(.*?)>(.*?)</script>#is', '',$request->get("email")));
@@ -220,17 +226,20 @@ $Ok_Status = true;
    $apiUrl = env('API_foodplace_URL');
    // dd($apiUrl);
     $client = new Client();
-    $response = $client->get('https://api.alaindata.com/foodplace41/Société');
-   // $response2 = $client->get('https://api.alaindata.com/foodplace41/sousfamille');
-    // Check if the request was successful (status code 200)
-    if ($response->getStatusCode() === 200) {
+    try {
+      $response = $client->get('https://api.alaindata.com/foodplace41/Société');
 
-$Ok_Status = true;
-
-    }else{
-
+      // If the request was successful (status code 200)
+      if ($response->getStatusCode() === 200) {
+          $Ok_Status = true;
+      } else {
+          $Ok_Status = false;
+      }
+  } catch (\GuzzleHttp\Exception\RequestException $e) {
+      // Handle exceptions that might occur during the request
+      // For example, network issues, unreachable host, etc.
       $Ok_Status = false;
-    }
+  }
       $cartCollection = Cart::getContent();
       if($cartCollection->count()){
             foreach ($cartCollection  as $item) {
@@ -256,17 +265,20 @@ $Ok_Status = true;
       $apiUrl = env('API_foodplace_URL');
       // dd($apiUrl);
        $client = new Client();
-       $response = $client->get('https://api.alaindata.com/foodplace41/Société');
-      // $response2 = $client->get('https://api.alaindata.com/foodplace41/sousfamille');
-       // Check if the request was successful (status code 200)
-       if ($response->getStatusCode() === 200) {
+       try {
+        $response = $client->get('https://api.alaindata.com/foodplace41/Société');
 
-$Ok_Status = true;
-
-       }else{
-
-         $Ok_Status = false;
-       }
+        // If the request was successful (status code 200)
+        if ($response->getStatusCode() === 200) {
+            $Ok_Status = true;
+        } else {
+            $Ok_Status = false;
+        }
+    } catch (\GuzzleHttp\Exception\RequestException $e) {
+        // Handle exceptions that might occur during the request
+        // For example, network issues, unreachable host, etc.
+        $Ok_Status = false;
+    }
       $category=Category::where("is_deleted",'0')->get();
       $allmenu=Item::all();
        $inter=Ingredient::all();
@@ -279,17 +291,20 @@ $Ok_Status = true;
       $apiUrl = env('API_foodplace_URL');
       // dd($apiUrl);
        $client = new Client();
-       $response = $client->get('https://api.alaindata.com/foodplace41/Société');
-      // $response2 = $client->get('https://api.alaindata.com/foodplace41/sousfamille');
-       // Check if the request was successful (status code 200)
-       if ($response->getStatusCode() === 200) {
+       try {
+        $response = $client->get('https://api.alaindata.com/foodplace41/Société');
 
-$Ok_Status = true;
-
-       }else{
-
-         $Ok_Status = false;
-       }
+        // If the request was successful (status code 200)
+        if ($response->getStatusCode() === 200) {
+            $Ok_Status = true;
+        } else {
+            $Ok_Status = false;
+        }
+    } catch (\GuzzleHttp\Exception\RequestException $e) {
+        // Handle exceptions that might occur during the request
+        // For example, network issues, unreachable host, etc.
+        $Ok_Status = false;
+    }
      if(!Session::get("login_user")){
           return redirect("/");
      } 
@@ -308,17 +323,20 @@ $Ok_Status = true;
     $apiUrl = env('API_foodplace_URL');
     // dd($apiUrl);
      $client = new Client();
-     $response = $client->get('https://api.alaindata.com/foodplace41/Société');
-    // $response2 = $client->get('https://api.alaindata.com/foodplace41/sousfamille');
-     // Check if the request was successful (status code 200)
-     if ($response->getStatusCode() === 200) {
+     try {
+      $response = $client->get('https://api.alaindata.com/foodplace41/Société');
 
-$Ok_Status = true;
-
-     }else{
-
-       $Ok_Status = false;
-     }
+      // If the request was successful (status code 200)
+      if ($response->getStatusCode() === 200) {
+          $Ok_Status = true;
+      } else {
+          $Ok_Status = false;
+      }
+  } catch (\GuzzleHttp\Exception\RequestException $e) {
+      // Handle exceptions that might occur during the request
+      // For example, network issues, unreachable host, etc.
+      $Ok_Status = false;
+  }
      if($request->get("delivery_option")==0||$request->get("delivery_option")==1){
          $category=Category::where("is_deleted",'0')->get();
          $allmenu=Item::all();
@@ -346,17 +364,20 @@ $Ok_Status = true;
       $apiUrl = env('API_foodplace_URL');
       // dd($apiUrl);
        $client = new Client();
-       $response = $client->get('https://api.alaindata.com/foodplace41/Société');
-      // $response2 = $client->get('https://api.alaindata.com/foodplace41/sousfamille');
-       // Check if the request was successful (status code 200)
-       if ($response->getStatusCode() === 200) {
+       try {
+        $response = $client->get('https://api.alaindata.com/foodplace41/Société');
 
-$Ok_Status = true;
-
-       }else{
-
-         $Ok_Status = false;
-       }
+        // If the request was successful (status code 200)
+        if ($response->getStatusCode() === 200) {
+            $Ok_Status = true;
+        } else {
+            $Ok_Status = false;
+        }
+    } catch (\GuzzleHttp\Exception\RequestException $e) {
+        // Handle exceptions that might occur during the request
+        // For example, network issues, unreachable host, etc.
+        $Ok_Status = false;
+    }
     $category=Category::where("is_deleted",'0')->get();
     $allmenu=Item::all();
       $inter=Ingredient::all();
@@ -371,17 +392,20 @@ $Ok_Status = true;
       $apiUrl = env('API_foodplace_URL');
       // dd($apiUrl);
        $client = new Client();
-       $response = $client->get('https://api.alaindata.com/foodplace41/Société');
-      // $response2 = $client->get('https://api.alaindata.com/foodplace41/sousfamille');
-       // Check if the request was successful (status code 200)
-       if ($response->getStatusCode() === 200) {
+       try {
+        $response = $client->get('https://api.alaindata.com/foodplace41/Société');
 
-$Ok_Status = true;
-
-       }else{
-
-         $Ok_Status = false;
-       }
+        // If the request was successful (status code 200)
+        if ($response->getStatusCode() === 200) {
+            $Ok_Status = true;
+        } else {
+            $Ok_Status = false;
+        }
+    } catch (\GuzzleHttp\Exception\RequestException $e) {
+        // Handle exceptions that might occur during the request
+        // For example, network issues, unreachable host, etc.
+        $Ok_Status = false;
+    }
      $category=Category::where("is_deleted",'0')->get();
      $allmenu=Item::all();
        $inter=Ingredient::all();
@@ -393,17 +417,20 @@ $Ok_Status = true;
       $apiUrl = env('API_foodplace_URL');
       // dd($apiUrl);
        $client = new Client();
-       $response = $client->get('https://api.alaindata.com/foodplace41/Société');
-      // $response2 = $client->get('https://api.alaindata.com/foodplace41/sousfamille');
-       // Check if the request was successful (status code 200)
-       if ($response->getStatusCode() === 200) {
+       try {
+        $response = $client->get('https://api.alaindata.com/foodplace41/Société');
 
-$Ok_Status = true;
-
-       }else{
-
-         $Ok_Status = false;
-       }
+        // If the request was successful (status code 200)
+        if ($response->getStatusCode() === 200) {
+            $Ok_Status = true;
+        } else {
+            $Ok_Status = false;
+        }
+    } catch (\GuzzleHttp\Exception\RequestException $e) {
+        // Handle exceptions that might occur during the request
+        // For example, network issues, unreachable host, etc.
+        $Ok_Status = false;
+    }
      $category=Category::where("is_deleted",'0')->get();
      $allmenu=Item::all();
        $inter=Ingredient::all();
@@ -415,17 +442,20 @@ $Ok_Status = true;
       $apiUrl = env('API_foodplace_URL');
       // dd($apiUrl);
        $client = new Client();
-       $response = $client->get('https://api.alaindata.com/foodplace41/Société');
-      // $response2 = $client->get('https://api.alaindata.com/foodplace41/sousfamille');
-       // Check if the request was successful (status code 200)
-       if ($response->getStatusCode() === 200) {
+       try {
+        $response = $client->get('https://api.alaindata.com/foodplace41/Société');
 
-$Ok_Status = true;
-
-       }else{
-
-         $Ok_Status = false;
-       }
+        // If the request was successful (status code 200)
+        if ($response->getStatusCode() === 200) {
+            $Ok_Status = true;
+        } else {
+            $Ok_Status = false;
+        }
+    } catch (\GuzzleHttp\Exception\RequestException $e) {
+        // Handle exceptions that might occur during the request
+        // For example, network issues, unreachable host, etc.
+        $Ok_Status = false;
+    }
       if(!Session::get("login_user")){
           return redirect("/");
       }
