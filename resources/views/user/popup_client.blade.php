@@ -22,26 +22,45 @@
 
 <!-- CSS styles remain unchanged -->
 <style>
+
     /* Style for the overlay */
-    .popup-overlay {
-        /* Your existing CSS styles */
-    }
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* semi-transparent black */
+    z-index: 9999;
+    display: none; /* initially hidden */
+}
 
-    /* Style for the popup box */
-    .popup {
-        /* Your existing CSS styles */
-    }
+/* Style for the popup box */
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    z-index: 10000;
+    display: none; /* initially hidden */
+}
 
-    /* Additional styling for the content */
-    .popup-content {
-        /* Your existing CSS styles */
-    }
+/* Additional styling for the content */
+.popup-content {
+    text-align: center;
+}
 
-    .popup h2 {
-        /* Your existing CSS styles */
-    }
+.popup h2 {
+    margin-bottom: 10px;
+    color: #333;
+}
 
-    .popup p {
-        /* Your existing CSS styles */
-    }
-</style>
+.popup p {
+    color: #555;
+}
+
+    </style>
