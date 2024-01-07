@@ -59,9 +59,7 @@ class frontController extends Controller {
       // dd($apiUrl);
        $client = new Client();
        $response = $client->get('https://api.alaindata.com/foodplace41/Société');
-      // $response2 = $client->get('https://api.alaindata.com/foodplace41/sousfamille');
-       // Check if the request was successful (status code 200)
-       if ($response->getStatusCode() === 200) {
+        if ($response->getStatusCode() === 200) {
 
 $Ok_Status = true;
 
