@@ -281,7 +281,7 @@
                         <?php }else{?>
                         <a href="{{url('myaccount')}}" ><i class="fa fa-user" aria-hidden="true"></i></a>
                         <?php }?>
-                        <a href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-shopping-cart" aria-hidden="true">
+                        <a href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-shopping-cart fa-3x" aria-hidden="true">
                         <span id="totalcart">
                         <?php $cartCollection = Cart::getContent();
                            $carttotal=0;
