@@ -364,7 +364,7 @@
                      </a>
                      <?php }?>
                      <a href="#" data-toggle="modal" data-target="#myModal">
-                     <i class="fa fa-shopping-cart fa-3x" aria-hidden="true">
+                     <i class="fa fa-shopping-cart fa-2x" aria-hidden="true">
                      <span id="totalcart">
                      <?php $cartCollection = Cart::getContent();
                         $carttotal=0;
