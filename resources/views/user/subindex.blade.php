@@ -293,7 +293,7 @@
                             if($cartCollection->count()!=0)
                                 {
                                     $carttotal=$cartCollection->count();
-                                    echo '<div class="cric" style="border: 1px solid white;">'.$cartCollection->count().'</div>';
+                                    echo '<div class="cric" style="border: 1px solid green;">'.$cartCollection->count().'</div>';
                                 }
                            ?> 
                         </span>
