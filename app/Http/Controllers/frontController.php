@@ -65,12 +65,12 @@ class frontController extends Controller {
         if ($response->getStatusCode() === 200) {
             $Ok_Status = true;
         } else {
-            $Ok_Status = true;
+            $Ok_Status = false;
         }
     } catch (\GuzzleHttp\Exception\RequestException $e) {
         // Handle exceptions that might occur during the request
         // For example, network issues, unreachable host, etc.
-        $Ok_Status = true;
+        $Ok_Status = false;
     }
       $image_path = __DIR__."/bootstrap/cache/config.php";
       if(file_exists($image_path)) {

@@ -22,6 +22,7 @@ use DateTimeZone;
 use DateTime;
 use App\Ingredient;
 use GuzzleHttp\Client; // Import GuzzleHttp\Client
+use Mail;
 
 class PaymentController extends Controller
 {
@@ -334,6 +335,34 @@ try {
       $addresponse->order_id=$store->id;
       $addresponse->desc=json_encode($data);
       $addresponse->save();
+
+
+//send Email to client 
+
+$emailData = [
+    'user' => $store, // Pass the entire order object
+    'finalresult' => $finalresult // Pass the array of ordered items with ingredients
+];
+
+
+  //Send User Email
+  try {
+    Mail::send('email.ConfirmOrderClient', $emailData, function($message) use ($store){
+        $message->to($store['email'], $store['name'])->subject(__("messages.site_name"));
+    });
+
+    // Log success
+    \Log::info('Email sent successfully to: ' . $store['email']);
+   
+} catch (\Exception $e) {
+    // Log any exception or error
+    \Log::error('Error sending email: ' . $e->getMessage());
+   
+}
+
+
+
+
       \Stripe\Stripe::setApiKey(Session::get("stripe_secret"));
             
                 $unique_id = uniqid(); 

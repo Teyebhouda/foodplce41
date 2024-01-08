@@ -401,23 +401,15 @@ if ($store->shipping_type == 1) {
       $addresponse->desc=json_encode($data);
       $addresponse->save();
 
-      $data = [
-        'clientFirstName' => $store->name,
-        'clientLastName' => $getuser->name,
-        'clientNum1' => $getuser->mob_number,
-        'clientAdresse' => $getuser->address,
-        'commandId' => $store->id,
-        'currentDateTime' => now()->format('d/m/Y H:i'),
-        'cartItems' => $cartCollection,
-        'totalPrice' =>  $store->total_price,
-        'email' => $store->email,
-        
+      $emailData = [
+        'user' => $store, // Pass the entire order object
+        'finalresult' => $finalresult // Pass the array of ordered items with ingredients
     ];
 
 
       //Send User Email
       try {
-        Mail::send('email.ConfirmOrderClient', ['user' => $store], function($message) use ($store){
+        Mail::send('email.ConfirmOrderClient', $emailData, function($message) use ($store){
             $message->to($store['email'], $store['name'])->subject(__("messages.site_name"));
         });
 

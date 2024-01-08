@@ -36,6 +36,7 @@ use PayPal\Api\ExecutePayment;
 use PayPal\Api\PaymentExecution;
 use PayPal\Api\Transaction;
 use GuzzleHttp\Client; // Import GuzzleHttp\Client
+use Mail;
 
 class PaypalController extends Controller
 {
@@ -425,6 +426,28 @@ try {
             // Log an error if an exception occurs during the request
             error_log("API request error: " . $e->getMessage());
         }
+//send Email to client 
+
+$emailData = [
+    'user' => $store, // Pass the entire order object
+    'finalresult' => $finalresult // Pass the array of ordered items with ingredients
+];
+
+
+  //Send User Email
+  try {
+    Mail::send('email.ConfirmOrderClient', $emailData, function($message) use ($store){
+        $message->to($store['email'], $store['name'])->subject(__("messages.site_name"));
+    });
+
+    // Log success
+    \Log::info('Email sent successfully to: ' . $store['email']);
+   
+} catch (\Exception $e) {
+    // Log any exception or error
+    \Log::error('Error sending email: ' . $e->getMessage());
+   
+}
 
 
 
@@ -517,6 +540,9 @@ try {
                 error_log("API request error: " . $e->getMessage());
             }
              return redirect("viewdetails/".$order->id);
+
+
+
         }
          $order=Order::where("pay_pal_paymentId",$payment_id)->first();
          if(count($order)!=0){
