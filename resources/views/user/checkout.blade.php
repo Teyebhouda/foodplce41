@@ -137,7 +137,7 @@
       console.log(postalOptions);
       if (!(Array.isArray(postalOptions))) {
        // Convert the object into an array of values
-    var postalOptionsArray = Object.values(postalOptions);}
+     postalOptions= Object.values(postalOptions);}
         if (Array.isArray(postalOptions)) {
             var options = '<option value="">Sélectionner un code postal</option>';
             
