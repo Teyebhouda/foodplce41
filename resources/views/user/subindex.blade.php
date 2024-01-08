@@ -275,6 +275,11 @@
                      </ul>
                   </div>
                   <div class="kd-social">
+                    
+                     <a href="{{ Session::get('facebook')}}"  target="_blank"> <i class="fa fa-facebook" aria-hidden="true"></i></a>
+                     <a href="{{ Session::get('twitter')}}"  target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                     <a href="{{ Session::get('whatsapp')}}"  target="_blank"><i class="fa fa-whatsapp" aria-hidden="true"></i></a>
+
                      <div class="login">
                         <?php if(empty(Session::get('login_user'))){?>
                         <a href="#" data-toggle="modal" data-target="#myModal1"><i class="fa fa-user" aria-hidden="true"></i></a>
@@ -295,9 +300,6 @@
                         <input type="hidden" id="carttotal" value="{{$carttotal}}">
                         </i></a>
                      </div>
-                     <a href="{{ Session::get('facebook')}}"  target="_blank"> <i class="fa fa-facebook" aria-hidden="true"></i></a>
-                     <a href="{{ Session::get('twitter')}}"  target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                     <a href="{{ Session::get('whatsapp')}}"  target="_blank"><i class="fa fa-whatsapp" aria-hidden="true"></i></a>
                   </div>
                   <div class="tm">
                      <div id="toggle" onclick="changetab()">
