@@ -135,7 +135,10 @@
     if (postalOptionsEncoded) {
         var postalOptions = JSON.parse($('<textarea />').html(postalOptionsEncoded).text());
       console.log(postalOptions);
-      //   if (Array.isArray(postalOptions)) {
+      if (!(Array.isArray(postalOptions))) {
+       // Convert the object into an array of values
+    var postalOptionsArray = Object.values(postalOptions);}
+        if (Array.isArray(postalOptions)) {
             var options = '<option value="">Sélectionner un code postal</option>';
             
             postalOptions.forEach(function(postal) {
@@ -143,7 +146,7 @@
             });
 
             $('#order_postal').html(options);
-      //   }
+        }
     }
 });
 
