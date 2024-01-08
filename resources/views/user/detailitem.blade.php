@@ -1,3 +1,15 @@
+
+<style>
+   .checkbox-custom-label {
+    display: flex;
+    justify-content: space-between;
+}
+
+.price {
+    margin-left: auto;
+}
+
+   </style>
 @extends('user.subindex') @section('content')
 <?php 
    function readMoreHelper1($story_desc, $chars = 75) {
@@ -92,7 +104,7 @@
                                           <p>
                                           <input type="radio" id="radio-{{$i}}" class="checkbox-custom" name="interdient" value="{{$mi->id}}" data-price="{{$mi->price}}"  {{ $currentFamille->name !== 'BOISSONS' && $familyCounter === 0 ? 'checked' : '' }}>
                                              <label for="radio-{{$i}}" class="checkbox-custom-label">
-                                                 {{$mi->item_name}} ({{$mi->price}} €)
+                                                 {{$mi->item_name}} 
                                              </label>
                                          </p> 
                                          {{-- <p>
@@ -135,12 +147,13 @@
                                        @endif
                        
                                        <p>
-                                           <?php $checkboxId = 'checkbox-' . $i; ?>
-                                           <input type="checkbox" id="{{$checkboxId}}" class="checkbox-custom" name="{{$currentFamille->name}}" value="{{$mi->id}}" onchange="addprice('{{$mi->price}}','{{$i}}','{{$currentFamille->name}}')" {{$maxSelections}}>
-                                           <label for="{{$checkboxId}}" class="checkbox-custom-label">
-                                               {{$mi->item_name}} ({{$mi->price}} €)
-                                           </label>
-                                       </p>
+    <?php $checkboxId = 'checkbox-' . $i; ?>
+    <input type="checkbox" id="{{$checkboxId}}" class="checkbox-custom" name="{{$currentFamille->name}}" value="{{$mi->id}}" onchange="addprice('{{$mi->price}}','{{$i}}','{{$currentFamille->name}}')" {{$maxSelections}}>
+    <label for="{{$checkboxId}}" class="checkbox-custom-label">
+        <span>{{$mi->item_name}}</span>
+        <span class="price">({{$mi->price}} €)</span>
+    </label>
+</p>
                                        <?php $i++; ?>
                                    @endif
                                @endforeach
