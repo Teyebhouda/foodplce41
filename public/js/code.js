@@ -882,7 +882,9 @@ function changeoption(val) {
 
 
 function orderplace() {
-    document.getElementById("orderplace1Btn").disabled = true;
+    var button = document.getElementById("orderplace1Btn");
+    utton.disabled = true;
+    button.style.opacity = 0.5;
     // var button = document.querySelector('button[onclick="orderplace()"]');
     // button.disabled = true;
     console.log("button clicked!!!");
@@ -992,7 +994,7 @@ var CodePostal = "";
                                         },
                                         success: function (data1) {
                                             if (data1 != 0) {
-                                                // window.location.href = $("#path_site").val() + "/viewdetails" + "/" + data1;
+                                                window.location.href = $("#path_site").val() + "/viewdetails" + "/" + data1;
                                             }
                                         }
                                     });                            }
@@ -1103,7 +1105,7 @@ var CodePostal = "";
                                         },
                                         success: function (data1) {
                                             if (data1 != 0) {
-                                                // window.location.href = $("#path_site").val() + "/viewdetails" + "/" + data1;
+                                                window.location.href = $("#path_site").val() + "/viewdetails" + "/" + data1;
                                             }
                                         }
                                     });                            }
