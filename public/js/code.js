@@ -882,9 +882,7 @@ function changeoption(val) {
 
 
 function orderplace() {
-    var button = document.getElementById("orderplace1Btn");
-    button.disabled = true;
-    button.style.opacity = 0.5;
+   
     // var button = document.querySelector('button[onclick="orderplace()"]');
     // button.disabled = true;
     console.log("button clicked!!!");
@@ -913,7 +911,9 @@ var CodePostal = "";
 
 
         if (phone !== "" && city !== "" && payment_type !== "" && CodePostal !== "" && address !== "" ) {
-        
+            var button = document.getElementById("orderplace1Btn");
+            button.disabled = true;
+            button.style.opacity = 0.5;
             var nameParts = name.split(" ");
             var firstName = nameParts[0]; // First part is the first name
             var lastName = nameParts.slice(1).join(" "); // Rest is the last name (if any)
@@ -1024,7 +1024,9 @@ var CodePostal = "";
         latlong = "";
         delivery_time = $("#delivery_time").val();
         if (phone !== "" && city !== "" && payment_type !== "" && delivery_time !== ""  ) {
-        
+            var button = document.getElementById("orderplace1Btn");
+            button.disabled = true;
+            button.style.opacity = 0.5;
             var nameParts = name.split(" ");
             var firstName = nameParts[0]; // First part is the first name
             var lastName = nameParts.slice(1).join(" "); // Rest is the last name (if any)
