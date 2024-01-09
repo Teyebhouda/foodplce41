@@ -882,9 +882,9 @@ function changeoption(val) {
 
 
 function orderplace() {
-   
-    var button = document.querySelector('button[onclick="orderplace()"]');
-    button.disabled = true;
+    document.getElementById("orderplace1Btn").disabled = true;
+    // var button = document.querySelector('button[onclick="orderplace()"]');
+    // button.disabled = true;
     console.log("button clicked!!!");
     var phone = $("#order_phone").val();
     var name = $("#user_name").val();
@@ -1129,7 +1129,7 @@ else{
 
 }
 
-button.disabled = false;  
+document.getElementById("orderplace1Btn").disabled = false;  
 }
 
 

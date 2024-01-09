@@ -284,7 +284,7 @@ $('#order_city').trigger('change');
                </div>
                @if(Session::get('login_user'))
                <div id="orderplace1">
-                  <button type="button" onclick="orderplace()">
+                  <button type="button" onclick="orderplace()" id="orderplace1Btn">
                   <span style="">{{__('messages.place_order')}}</span>
                   </button>
                </div>
