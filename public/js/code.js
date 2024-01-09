@@ -992,7 +992,7 @@ var CodePostal = "";
                                         },
                                         success: function (data1) {
                                             if (data1 != 0) {
-                                                window.location.href = $("#path_site").val() + "/viewdetails" + "/" + data1;
+                                                // window.location.href = $("#path_site").val() + "/viewdetails" + "/" + data1;
                                             }
                                         }
                                     });                            }
@@ -1103,7 +1103,7 @@ var CodePostal = "";
                                         },
                                         success: function (data1) {
                                             if (data1 != 0) {
-                                                window.location.href = $("#path_site").val() + "/viewdetails" + "/" + data1;
+                                                // window.location.href = $("#path_site").val() + "/viewdetails" + "/" + data1;
                                             }
                                         }
                                     });                            }
