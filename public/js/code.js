@@ -1129,7 +1129,7 @@ else{
 
 }
 
-document.getElementById("orderplace1Btn").disabled = false;  
+// document.getElementById("orderplace1Btn").disabled = false;  
 }
 
 
