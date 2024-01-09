@@ -885,6 +885,7 @@ function orderplace() {
    
     var button = document.querySelector('button[onclick="orderplace()"]');
     button.disabled = true;
+    console.log("button clicked!!!");
     var phone = $("#order_phone").val();
     var name = $("#user_name").val();
     var user_address = $("#user_address").val();
