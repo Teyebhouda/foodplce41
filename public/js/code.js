@@ -882,8 +882,8 @@ function changeoption(val) {
 
 
 function orderplace() {
-    
-    var button = document.document.getElementById("orderplace1");
+   
+    var button = document.querySelector('button[onclick="orderplace()"]');
     button.disabled = true;
     var phone = $("#order_phone").val();
     var name = $("#user_name").val();
