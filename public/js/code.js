@@ -883,7 +883,7 @@ function changeoption(val) {
 
 function orderplace() {
     var button = document.getElementById("orderplace1Btn");
-    utton.disabled = true;
+    button.disabled = true;
     button.style.opacity = 0.5;
     // var button = document.querySelector('button[onclick="orderplace()"]');
     // button.disabled = true;
